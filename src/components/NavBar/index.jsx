@@ -1,5 +1,5 @@
 import React, { Component } from "react"
-import { Container, Inner, NavLinks } from "./styles";
+import { Container, NavLinks } from "./styles";
 import { NavLink } from "react-router-dom"
 
 export default class NavBar extends Component {
