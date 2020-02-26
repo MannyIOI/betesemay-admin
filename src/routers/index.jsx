@@ -5,6 +5,7 @@ import { BrowserRouter as Router, Route, Redirect } from "react-router-dom"
 import EmployeeContainer from "../screens/EmployeesScreen";
 import ItemsContainer from "../screens/ItemsScreen";
 
+import { Container } from "./styles"
 const routes = [
     {
         name: "Items",
@@ -27,10 +28,12 @@ const routes = [
 const Routes = () => (
     <div>
         <Router>
-            <NavBar routes = {routes}/>
-            <Route exact path = "/" render={() => <Redirect to="/items"/>} />
-            <Route exact path = "/items" component = {ItemsContainer}/>
-            <Route exact path = "/employees" component = {EmployeeContainer}/>
+            <Container>
+                <NavBar routes = {routes}/>
+                <Route exact path = "/" render={() => <Redirect to="/items"/>} />
+                <Route exact path = "/items" component = {ItemsContainer}/>
+                <Route exact path = "/employees" component = {EmployeeContainer}/>
+            </Container>
         </Router>
     </div>
 )

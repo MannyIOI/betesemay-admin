@@ -1,11 +1,12 @@
 import React, { Component } from 'react'
+import {Container} from "./style"
 
 export default class Items extends Component {
     render() {
         return (
-            <div>
+            <Container>
                 Items
-            </div>
+            </Container>
         )
     }
 }
