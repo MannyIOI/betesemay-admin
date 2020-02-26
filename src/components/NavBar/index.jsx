@@ -4,11 +4,10 @@ import { NavLink } from "react-router-dom"
 
 export default class NavBar extends Component {
     render(){
-        let height = 350;
+        // let height = 350;
         // const { pathname } = this.props.history.location
         return (
-            <Container height={height}>
-                <Inner height={height}>
+            <Container>
                     <NavLinks>
                         {this.props.routes.map(item => (
                             <NavLink
@@ -22,7 +21,6 @@ export default class NavBar extends Component {
                         ))}
 
                     </NavLinks>
-                </Inner>
             </Container>
         )
     }

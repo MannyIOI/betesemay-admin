@@ -1,16 +1,22 @@
 import styled from "styled-components";
 
 export const Container = styled.div`
-    width: 300px;
-    height: 100px;
+    min-width: 200px;
+    max-width: 300px;
+    height: 100vh;
     display: grid;
-    align-items: center;
 `
 
 export const NavLinks = styled.div`
     .nav-item {
+        height: 5%;
         opacity: 0.6;
         color: white;
+        text-decoration: none;
+        background: gray;
+        width: 100%;
+        text-align: center;
+        padding-top: 24px;
     }
     .active-nav-item {
         opacity: 1;
@@ -25,10 +31,6 @@ export const NavLinks = styled.div`
     background: black;
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
-`
-
-export const Inner = styled.div`
-    width: 100%;
-    max-width: 90%;
+    align-items: center;
+    justify-content: center;
 `
