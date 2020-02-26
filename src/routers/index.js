@@ -1,5 +1,9 @@
 import React from "react"
 import NavBar from "../components/NavBar"
+import { BrowserRouter as Router, Route, Redirect } from "react-router-dom"
+
+import EmployeeContainer from "../screens/EmployeesScreen";
+import ItemsContainer from "../screens/ItemsScreen";
 
 const routes = [
     {
@@ -22,7 +26,12 @@ const routes = [
 
 const Routes = () => (
     <div>
-        <NavBar />
+        <Router>
+            <NavBar routes = {routes}/>
+            <Route exact path = "/" render={() => <Redirect to="/items"/>} />
+            <Route exact path = "/items" component = {ItemsContainer}/>
+            <Route exact path = "/employees" component = {EmployeeContainer}/>
+        </Router>
     </div>
 )
 
