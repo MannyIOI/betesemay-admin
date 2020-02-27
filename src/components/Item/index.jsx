@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 
-import { Container, ItemInfoContainer, ItemTitleContainer, ItemDetailContainer } from "./styles"
+import { Container, ItemInfoContainer, ItemActionsContainer, ItemTitleContainer, ItemDetailContainer } from "./styles"
 
 export default class Item extends Component {
     render() {
@@ -16,10 +16,7 @@ export default class Item extends Component {
                         <p>Total Count - 1</p>
                     </ItemDetailContainer>
                 </ItemInfoContainer>
-                {/* <ItemActionsContainer>
-                    <p>Lend out</p>
-                    <p>Return</p>
-                </ItemActionsContainer> */}
+                <ItemActionsContainer/>
             </Container>
         )
     }

@@ -28,7 +28,7 @@ export const NavLinks = styled.div`
         opacity: 1;
     }
 
-    background: black;
+    background: #435A6F;
     display: flex;
     flex-direction: column;
     align-items: center;

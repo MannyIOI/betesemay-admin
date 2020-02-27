@@ -1,22 +1,22 @@
 import styled from "styled-components"
 
 export const Container = styled.div`
-    height: 10%;
-    min-width: 300px;
+    height: 25%;
+    min-width: 25%;
     display: grid;
-    grid-template-columns: repeat(5, 1fr);
-    margin: 15px;
+    grid-template-columns: repeat(15, 1fr);
+    margin: 25px;
     cursor: pointer;
+    background: #596B8D;
 `
 
 export const ItemInfoContainer = styled.div`
-    background: lightgrey;
-    grid-column: 1/5;
+    grid-column: 1/15;
     width:100%;
+    color: white;
 `
 
 export const ItemTitleContainer = styled.div`
-    background: grey;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -28,8 +28,8 @@ export const ItemDetailContainer = styled.div`
 `
 
 export const ItemActionsContainer = styled.div`
-    background: #0073cf;
-    grid-column: 5/6;
+    background: red;
+    grid-column: 15/16;
     width: 100%;
     color: white;
     display: flex;
