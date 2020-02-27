@@ -6,6 +6,7 @@ export const Container = styled.div`
     display: grid;
     grid-template-columns: repeat(5, 1fr);
     margin: 15px;
+    cursor: pointer;
 `
 
 export const ItemInfoContainer = styled.div`
@@ -19,6 +20,7 @@ export const ItemTitleContainer = styled.div`
     display: flex;
     align-items: center;
     justify-content: center;
+    color: white;
 `
 
 export const ItemDetailContainer = styled.div`
