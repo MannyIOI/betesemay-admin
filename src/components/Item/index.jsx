@@ -1,23 +1,22 @@
-import React, { Component } from 'react'
+import React from 'react'
 
 import { Container, ItemInfoContainer, ItemActionsContainer, ItemTitleContainer, ItemDetailContainer } from "./styles"
 
-export default class Item extends Component {
-    render() {
-        return (
-            <Container>
-                
-                <ItemInfoContainer >
-                    <ItemTitleContainer>
-                        <h2>Item Title</h2>
-                    </ItemTitleContainer>
-                    <ItemDetailContainer>
-                        <p>Item Description</p>
-                        <p>Total Count - 1</p>
-                    </ItemDetailContainer>
-                </ItemInfoContainer>
-                <ItemActionsContainer/>
-            </Container>
-        )
-    }
+export default (props) => {
+    return (
+        <Container>
+            
+            <ItemInfoContainer >
+                <ItemTitleContainer>
+                    <h2>{props.item.name}</h2>
+                </ItemTitleContainer>
+                <ItemDetailContainer>
+                    <p>{props.item.description}</p>
+                    <p>Total Count - {props.item.count}</p>
+                </ItemDetailContainer>
+            </ItemInfoContainer>
+
+            <ItemActionsContainer/>
+        </Container>
+    )
 }
