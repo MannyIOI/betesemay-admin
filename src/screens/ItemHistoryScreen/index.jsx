@@ -1,10 +1,12 @@
-import React, { Component } from 'react'
+import React from 'react'
 import { Container } from "./style";
 
-export const ItemHistory = () => {
+const ItemHistory = () => {
     return (
         <Container>
             Create Employee Screen
         </Container>
     )
 }
+
+export default ItemHistory;

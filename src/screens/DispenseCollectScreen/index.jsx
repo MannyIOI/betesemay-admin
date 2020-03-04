@@ -1,10 +1,12 @@
-import React, { Component } from 'react'
+import React from 'react'
 import { Container } from "./style";
 
-export const DispenseCollect = () => {
+const DispenseCollect = () => {
     return (
         <Container>
             Dispense Collect Screen
         </Container>
     )
 }
+
+export default DispenseCollect;

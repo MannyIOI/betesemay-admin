@@ -1,10 +1,12 @@
-import React, { Component } from 'react'
+import React from 'react'
 import { Container } from "./style";
 
-export const CreateEmployee = () => {
+const CreateEmployee = () => {
     return (
         <Container>
             Create Employee Screen
         </Container>
     )
 }
+
+export default CreateEmployee;

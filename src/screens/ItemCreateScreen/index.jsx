@@ -1,10 +1,12 @@
-import React, { Component } from 'react'
+import React from 'react'
 import { Container } from "./style";
 
-export const CreateItem = () => {
+const CreateItem = () => {
     return (
         <Container>
             Create Item Screen
         </Container>
     )
 }
+
+export default CreateItem;

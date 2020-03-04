@@ -1,5 +1,5 @@
 import React from "react"
-import NavBar from "../components/NavBar"
+import SideBar from "../components/SideBar"
 import { BrowserRouter as Router, Route, Redirect } from "react-router-dom"
 
 import EmployeeContainer from "../screens/EmployeesScreen";
@@ -14,14 +14,6 @@ const routes = [
     {
         name: "Employees",
         to: "/employees"
-    },
-    {
-        name: "Return Item",
-        to: "/return"
-    },
-    {
-        name: "Login",
-        to: "login"
     }
 ]
 
@@ -29,7 +21,7 @@ const Routes = () => (
     <div>
         <Router>
             <Container>
-                <NavBar routes = {routes}/>
+                <SideBar routes = {routes}/>
                 <Route exact path = "/" render={() => <Redirect to="/items"/>} />
                 <Route exact path = "/items" component = {ItemsContainer}/>
                 <Route exact path = "/employees" component = {EmployeeContainer}/>
