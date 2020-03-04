@@ -1,10 +1,10 @@
 import React, { Component } from 'react'
 import { Container } from "./style";
 
-export const LendReturn = () => {
+export const DispenseCollect = () => {
     return (
         <Container>
-            Lend Return Screen
+            Dispense Collect Screen
         </Container>
     )
 }
