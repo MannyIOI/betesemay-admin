@@ -1,12 +1,17 @@
 import React from 'react'
-import { Container } from "./style";
+import { withApollo } from 'react-apollo'
+import { Container, Input, FormContainer, SubmitBtn } from "./style";
 
-const CreateItem = () => {
+const CreateItem = ({client}) => {
     return (
         <Container>
-            Create Item Screen
+            <FormContainer>
+                <Input placeholder="Item Name"/>
+                <Input placeholder="Item Description"/>
+                <SubmitBtn>Create Item</SubmitBtn>
+            </FormContainer>
         </Container>
     )
 }
 
-export default CreateItem;
+export default withApollo(CreateItem);

@@ -6,6 +6,7 @@ import EmployeeContainer from "../screens/EmployeesScreen";
 import ItemsContainer from "../screens/ItemsScreen";
 
 import { Container } from "./styles"
+import CreateItem from "../screens/ItemCreateScreen";
 const routes = [
     {
         name: "Items",
@@ -25,6 +26,7 @@ const Routes = () => (
                 <Route exact path = "/" render={() => <Redirect to="/items"/>} />
                 <Route exact path = "/items" component = {ItemsContainer}/>
                 <Route exact path = "/employees" component = {EmployeeContainer}/>
+                <Route exact path = "/items/create" component = {CreateItem}/>
             </Container>
         </Router>
     </div>
