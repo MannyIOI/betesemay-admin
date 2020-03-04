@@ -1,10 +1,10 @@
 import React, { Component } from 'react'
 import { Container } from "./style";
 
-export const Employee = () => {
+export const CreateItem = () => {
     return (
         <Container>
-            Employee Screen
+            Create Item Screen
         </Container>
     )
 }
