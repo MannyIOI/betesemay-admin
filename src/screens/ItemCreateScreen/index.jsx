@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React from 'react'
 import { withApollo } from 'react-apollo'
 import { Container, Input, FormContainer, SubmitBtn } from "./style";
 import { CREATE_ITEM } from "./queries";
@@ -6,20 +6,11 @@ import { useInput } from "../../hooks/inputHooks";
 
 const CreateItem = ({client}) => {
     const { value: name, bind: bindName } = useInput("")
-    const { value: description, bind: bindDesc } = useInput("") 
-    // const { desc, setDesc } = useInput("")
-    // console.log({...bind})
-    // const handleNameChange = e => {
-    //     setName(e.target.value)
-    // }
-
-    // const handleDescChange = e => {
-    //     setDescription(e.target.value)
-    // }
+    const { value: description, bind: bindDesc } = useInput("")
 
     const createNewItem = async () => {
         try {
-            const { } = await client.mutate({
+            await client.mutate({
                 mutation: CREATE_ITEM,
                 variables: { name: name, desc: description }
             });
