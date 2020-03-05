@@ -1,8 +1,7 @@
 import styled from "styled-components"
 
 export const Container = styled.div`
-    height: 25%;
-    min-width: 25%;
+    // height: 25%;
     display: grid;
     grid-template-columns: repeat(15, 1fr);
     margin: 25px;

@@ -1,17 +1,17 @@
 import styled from "styled-components"
 
 export const Container = styled.div`
-    display: flex;
-    height: 88vh;
-    width: 90%;
-    margin: 50px;
+    display: grid;
     background: #EAEAEA;
-    flex-wrap: wrap;
-    border-radius: 30px;
-    justify-content: space-around;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr;
+    width: 90%;
+    
 `
 
 export const NavigationContainer = styled.div`
     min-width: 25%;
     margin: 25px;
+    grid-column: 4/5;
+    grid-row: 3/4;
 `
