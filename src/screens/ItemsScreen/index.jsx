@@ -5,12 +5,12 @@ import { withApollo } from 'react-apollo'
 import Item from "../../components/Item"
 import { GET_ALL_ITEMS } from "./queries";
 
-const ItemsPage = ({ client }) => {
+const ItemsPage = (props) => {
     const [items, setItems] = useState([]);
 
     const setNewItems = async () =>{ 
         try {
-            const { data } = await client.query({
+            const { data } = await props.client.query({
                 query: GET_ALL_ITEMS
             });
             setItems(data.getAllItems)
@@ -18,14 +18,17 @@ const ItemsPage = ({ client }) => {
             console.log(error)
         }
     }
-    useEffect(() =>{ setNewItems() }, []);
-    // console.log(items.map, items)
+
+    useEffect(() =>{ setNewItems() });
+    
     return (
         <Container>
             { items.map(item => (<Item key = {item.name} item={item}/>)) }
             
             <NavigationContainer> 
-                Nav Region
+                <button>Previous</button>
+                <button>Next</button>
+                <button onClick={()=>props.history.push({pathname: "/items/create/"})}>Create</button>
             </NavigationContainer>
         </Container>
     )
