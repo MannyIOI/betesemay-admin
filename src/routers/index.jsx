@@ -4,9 +4,12 @@ import { BrowserRouter as Router, Route, Redirect } from "react-router-dom"
 
 import EmployeeContainer from "../screens/EmployeesScreen";
 import ItemsContainer from "../screens/ItemsScreen";
+import CreateItem from "../screens/ItemCreateScreen";
+import CreateEmployee from "../screens/CreateEmployeeScreen";
 
 import { Container } from "./styles"
-import CreateItem from "../screens/ItemCreateScreen";
+
+
 const routes = [
     {
         name: "Items",
@@ -27,6 +30,7 @@ const Routes = () => (
                 <Route exact path = "/items" component = {ItemsContainer}/>
                 <Route exact path = "/employees" component = {EmployeeContainer}/>
                 <Route exact path = "/items/create" component = {CreateItem}/>
+                <Route exact path = "/employees/create" component = {CreateEmployee} />
             </Container>
         </Router>
     </div>
