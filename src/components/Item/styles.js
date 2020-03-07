@@ -2,15 +2,10 @@ import styled from "styled-components"
 
 export const ItemActionsContainer = styled.div`
     background: red;
-    width: 100%;
-    grid-column: 13/13;
-    grid-row: 1/3;
+    display: none;
     color: white;
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
     text-align: center;
-    font-size: 40px;
+    font-size: 20px;
     cursor: pointer;
     :hover {
         background: #D04D2E;
@@ -29,9 +24,8 @@ export const Container = styled.div`
     cursor: pointer;
     background: #596B8D;
     &:hover ${ItemActionsContainer} { 
-        grid-column: 12/13;
-        grid-row: 1/2;
-        animation-duration: 1s;
+        display: flex;
+        justify-content: center;
     }
 `
 
