@@ -16,7 +16,7 @@ export default (props) => {
                 </ItemDetailContainer>
             </ItemInfoContainer>
 
-            <ItemActionsContainer/>
+            <ItemActionsContainer>x</ItemActionsContainer>
         </Container>
     )
 }
