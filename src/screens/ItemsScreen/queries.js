@@ -5,7 +5,7 @@ export const GET_ALL_ITEMS = gql`
         getAllItems(page: $page){
             results {
                 id
-                name
+                title
                 description
             }
             total
