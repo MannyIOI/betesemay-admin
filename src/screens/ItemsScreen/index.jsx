@@ -35,7 +35,7 @@ const ItemsPage = (props) => {
     
     return (
         <Container>
-            { items.map(item => (<Item key = {item.id} item={item} refreshItems={setNewItems}/>)) }
+            { items.map(item => (<Item key = {item.id} item={item} refreshItems={setNewItems} history={props.history} />)) }
             
             <NavigationContainer> 
                 

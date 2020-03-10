@@ -4,10 +4,7 @@ import { Container, ItemInfoContainer, ItemActionsContainer, ItemTitleContainer,
 import { DELETE_ITEM } from './queries'
 
 const Item = (props) => {
-    // const client = props.client
-    // const refresh = props.refreshItems
-    // console.log(refresh)
-
+    
     const deleteItem = async () =>{ 
         let id = props.item.id;
         try {
@@ -34,7 +31,10 @@ const Item = (props) => {
                 </ItemDetailContainer>
             </ItemInfoContainer>
 
-            <ItemActionsContainer onClick={deleteItem}>x</ItemActionsContainer>
+            <ItemActionsContainer>
+                <button onClick={()=>props.history.push({pathname: "/items/update/"+props.item.id})}>Update</button>
+                <button onClick={deleteItem}>Delete</button>
+            </ItemActionsContainer>
         </Container>
     )
 }
