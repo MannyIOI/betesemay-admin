@@ -4,7 +4,6 @@ import { Container, ItemInfoContainer, ItemActionsContainer, ItemTitleContainer,
 import { DELETE_ITEM } from './queries'
 
 const Item = (props) => {
-    
     const deleteItem = async () =>{ 
         let id = props.item.id;
         try {
@@ -12,7 +11,7 @@ const Item = (props) => {
                 mutation: DELETE_ITEM,
                 variables: { id }
             })
-            await props.refreshItems()
+            props.history.go({pathname: "/items/"})
         } catch (error) {
             console.log(error)
         }
