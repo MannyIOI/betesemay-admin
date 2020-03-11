@@ -1,30 +1,15 @@
 import React from 'react'
 import { withApollo } from "react-apollo";
-import { Container, ItemInfoContainer, ItemActionsContainer, ItemTitleContainer, ItemDetailContainer } from "./styles"
-import { DELETE_ITEM } from './queries'
+import { Container, CategoryDetailContainer, CategoryInfoContainer, CategoryTitleContainer } from "./styles"
 
-const Item = (props) => {
-    const deleteItem = async () =>{ 
-        let id = props.item.id;
-        try {
-            await props.client.mutate({
-                mutation: DELETE_ITEM,
-                variables: { id }
-            })
-            props.history.go({pathname: "/items/"})
-        } catch (error) {
-            console.log(error)
-        }
-    }
-
+const Category = (props) => {
     return (
         <Container>
-            
-            <ItemInfoContainer >
-                <ItemTitleContainer>
+            <CategoryInfoContainer >
+                <CategoryTitleContainer>
                     <h2>{props.category.title}</h2>
-                </ItemTitleContainer>
-            </ItemInfoContainer>
+                </CategoryTitleContainer>
+            </CategoryInfoContainer>
         </Container>
     )
 }

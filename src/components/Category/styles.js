@@ -1,20 +1,5 @@
 import styled from "styled-components"
 
-export const ItemActionsContainer = styled.div`
-    background: red;
-    display: none;
-    color: white;
-    text-align: center;
-    font-size: 20px;
-    cursor: pointer;
-    :hover {
-        background: #D04D2E;
-    }
-    :active {
-        background: green;
-    }
-`
-
 export const Container = styled.div`
     // height: 25%;
     display: grid;
@@ -29,21 +14,21 @@ export const Container = styled.div`
     }
 `
 
-export const ItemInfoContainer = styled.div`
+export const CategoryInfoContainer = styled.div`
     grid-column: 1/12;
     grid-row: 1/10
     width:100%;
     color: white;
 `
 
-export const ItemTitleContainer = styled.div`
+export const CategoryTitleContainer = styled.div`
     display: flex;
     align-items: center;
     justify-content: center;
     color: white;
 `
 
-export const ItemDetailContainer = styled.div`
+export const CategoryDetailContainer = styled.div`
     padding: 20px;
 `
 
