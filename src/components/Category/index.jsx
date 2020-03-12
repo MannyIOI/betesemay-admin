@@ -1,6 +1,6 @@
 import React from 'react'
 import { withApollo } from "react-apollo";
-import { Container, CategoryDetailContainer, CategoryInfoContainer, CategoryTitleContainer } from "./styles"
+import { Container, CategoryInfoContainer, CategoryTitleContainer } from "./styles"
 
 const Category = (props) => {
     return (
@@ -14,4 +14,4 @@ const Category = (props) => {
     )
 }
 
-export default withApollo(Item);
+export default withApollo(Category);

@@ -9,7 +9,7 @@ const UpdateItem = ({client, history, match}) => {
     const { value: category, setValue: setCategory, bind: bindCategory } = useInput("")
     const { value: title, setValue: setTitle, bind: bindTitle } = useInput("")
     const { value: description, setValue: setDescription, bind: bindDesc } = useInput("")
-    const { value: dispense_period, setValue: setDispensePeriod, bind: bindDispensePeriod } = useInput(0)
+    const { value: dispense_period, setValue: setDispensePeriod } = useInput(0)
     const { value: quantity, setValue: setQuantity, bind: bindQuantity } = useInput(0)
     const { value: in_coffin, setValue: setInCoffin, bind: bindInCoffin } = useInput(0)
 
@@ -50,7 +50,7 @@ const UpdateItem = ({client, history, match}) => {
         setInCoffin(in_coffin)
     }
 
-    useEffect(() => { getItem() }, [])
+    useEffect(() => { getItem() })
 
     return (
         <Container>

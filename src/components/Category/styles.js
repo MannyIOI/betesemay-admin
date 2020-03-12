@@ -8,10 +8,6 @@ export const Container = styled.div`
     margin: 25px;
     cursor: pointer;
     background: #596B8D;
-    &:hover ${ItemActionsContainer} { 
-        display: flex;
-        justify-content: center;
-    }
 `
 
 export const CategoryInfoContainer = styled.div`

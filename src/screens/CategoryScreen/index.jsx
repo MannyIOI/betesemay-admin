@@ -35,7 +35,6 @@ const CategoriesPage = (props) => {
     
     return (
         <Container>
-            <p>Category</p>
             { categories.map(category => (<Category key = { category.id } 
                                                     category = { category } 
                                                     refreshCategories = { setNewCategories } 
