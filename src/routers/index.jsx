@@ -14,8 +14,8 @@ import CategoryContainer from "../screens/CategoryScreen"
 
 import { Container } from "./styles"
 import ItemsByCategory from "../screens/ItemsByCategoryScreen";
-
-
+require('dotenv').config()
+console.log(process.env.NODE_ENV)
 const routes = [
     {
         name: "Categories",
