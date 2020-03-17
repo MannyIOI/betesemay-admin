@@ -4,7 +4,10 @@ export const GET_ITEM = gql`
     query get_item($id: ID!){
         getItem(id: $id){
             id
-            category
+            category {
+                id
+                title
+            }
             title
             description
             quantity
