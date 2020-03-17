@@ -6,6 +6,7 @@ export const Container = styled.div`
     grid-template-columns: 1fr 1fr 1fr 1fr;
     grid-template-rows: 1fr 1fr 1fr;
     width: 90%;
+    
 `
 
 export const NavigationContainer = styled.div`

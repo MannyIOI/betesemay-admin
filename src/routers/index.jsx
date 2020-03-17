@@ -13,6 +13,7 @@ import CreateEmployee from "../screens/CreateEmployeeScreen";
 import CategoryContainer from "../screens/CategoryScreen"
 
 import { Container } from "./styles"
+import ItemsByCategory from "../screens/ItemsByCategoryScreen";
 
 
 const routes = [
@@ -45,6 +46,7 @@ const Routes = () => (
                 <Route exact path = "/employees/create" component = { CreateEmployee } />
 
                 <Route exact path = "/categories" component = { CategoryContainer } />
+                <Route exact path = "/categories/:categoryId" component = { ItemsByCategory } />
             </Container>
         </Router>
     </div>

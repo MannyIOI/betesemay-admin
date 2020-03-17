@@ -4,7 +4,7 @@ import { Container, CategoryInfoContainer, CategoryTitleContainer } from "./styl
 
 const Category = (props) => {
     return (
-        <Container>
+        <Container onClick={()=>props.history.push({pathname: "/categories/"+props.category.id})}>
             <CategoryInfoContainer >
                 <CategoryTitleContainer>
                     <h2>{props.category.title}</h2>

@@ -8,6 +8,7 @@ export const Container = styled.div`
     margin: 25px;
     cursor: pointer;
     background: #596B8D;
+    cursor: pointer;
 `
 
 export const CategoryInfoContainer = styled.div`
