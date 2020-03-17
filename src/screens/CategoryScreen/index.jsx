@@ -16,7 +16,6 @@ const CategoriesPage = (props) => {
                 query: GET_ALL_CATEGORIES,
                 variables: { page }
             })
-            console.log(data)
             setCategories(data.getAllCategories.results)
             setCategoryCount(data.getAllCategories.total)
         } catch (error) {

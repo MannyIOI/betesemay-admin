@@ -1,11 +1,14 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
+import Select from "react-select";
 import { withApollo } from 'react-apollo'
 import { Container, Input, FormContainer, SubmitBtn } from "./style";
 import { CREATE_ITEM } from "./queries";
 import { useInput } from "../../hooks/inputHooks";
+import { GET_ALL_CATEGORIES } from '../CategoryScreen/queries';
 
 const CreateItem = ({client, history}) => {
-    const { value: category, bind: bindCategory } = useInput("eb126f3d-ba1a-408a-9048-fb78e2d765b3")
+    const { value: categories, setValue: setCategories} = useInput([]);
+    const [ category, setCategory ] = useState("")
     const { value: title, bind: bindTitle } = useInput("item-")
     const { value: description, bind: bindDesc } = useInput("description")
     const { value: dispense_period, bind: bindDispensePeriod } = useInput(2)
@@ -30,10 +33,30 @@ const CreateItem = ({client, history}) => {
         }
     }
 
+    
+    // let name = 0;
+    useEffect(() => { 
+        console.log("jere")
+        try {
+            client.query({
+                query: GET_ALL_CATEGORIES,
+                variables: { page: 0 }
+            }).then(res => {
+                let categories = []
+                res.data.getAllCategories.results.forEach(category => {
+                    categories.push({label: category.title, value: category.id})
+                });
+                setCategories(categories)
+            })
+        } catch (error) {
+            console.log(error)
+        }
+     }, [client, setCategories]);
+
     return (
         <Container>
             <FormContainer>
-                <Input placeholder="Category Id" { ...bindCategory } />
+                <Select options={categories} onChange={(e)=>setCategory(e.value)}/>
                 <Input placeholder="Title" { ...bindTitle } />
                 <Input placeholder="Description" { ...bindDesc } />
                 <Input placeholder="Dispense Period" type="number" { ...bindDispensePeriod } />
