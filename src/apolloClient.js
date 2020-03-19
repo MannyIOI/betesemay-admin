@@ -1,4 +1,4 @@
-import ApolloClient, { InMemoryCache } from 'apollo-boost';
+import ApolloClient from 'apollo-boost';
 require("dotenv").config()
 console.log(process.env.REACT_APP_SERVER_ADDRESS+'/graphql')
 const defaultOptions = {
@@ -12,8 +12,7 @@ const defaultOptions = {
 
 const client = new ApolloClient({
   defaultOptions,
-  uri: process.env.REACT_APP_SERVER_ADDRESS+'/graphql',
-  cache: new InMemoryCache()
+  uri: process.env.REACT_APP_SERVER_ADDRESS+'/graphql'
 });
 
 export default client;
