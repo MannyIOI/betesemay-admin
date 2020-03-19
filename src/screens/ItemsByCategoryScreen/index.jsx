@@ -42,7 +42,7 @@ const ItemsPage = (props) => {
                 
                 <button onClick={onPrevClicked} disabled={page<=0}>Previous</button>
                 <button onClick={onNextClicked} disabled={(page)*11 + items.length>=itemCount}>Next</button>
-                <button onClick={()=>props.history.push({pathname: "/items/create/"})}>Create</button>
+                <button onClick={()=>props.history.push({pathname: "/items/create/"})}>Creaaate</button>
             </NavigationContainer>
         </Container>
     )
