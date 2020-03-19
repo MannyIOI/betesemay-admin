@@ -11,7 +11,7 @@ const UpdateItem = ({client, history, match}) => {
     
     const { value: categories, setValue: setCategories} = useInput([]);
     const [ category, setCategory ] = useState("")
-
+    // const [ title, setTitle ] = useState("")
     const { value: title, setValue: setTitle, bind: bindTitle } = useInput("")
     const { value: description, setValue: setDescription, bind: bindDesc } = useInput("")
     const { value: dispense_period, setValue: setDispensePeriod } = useInput(0)
@@ -37,24 +37,25 @@ const UpdateItem = ({client, history, match}) => {
         }
     }
 
-    const getItem = async () => {
-        const get_item = await client.query({
-            query: GET_ITEM,
-            variables: { id: match.params.itemId }
-        })
-        setItem(get_item.data.getItem)
-    }
 
-    const setItem = ({category, title, description, dispense_period, quantity, in_coffin}) => {
-        setCategory(category.id)
-        setTitle(title)
-        setDescription(description)
-        setDispensePeriod(dispense_period)
-        setQuantity(quantity)
-        setInCoffin(in_coffin)
-    }
+    useEffect(() => { 
+        const setItem = ({category, title, description, dispense_period, quantity, in_coffin}) => {
+            setCategory(category.id)
+            setTitle(title)
+            setDescription(description)
+            setDispensePeriod(dispense_period)
+            setQuantity(quantity)
+            setInCoffin(in_coffin)
+        }
 
-    useEffect(() => { getItem() })
+            client.query({
+                query: GET_ITEM,
+                variables: { id: match.params.itemId }
+            }).then(res => {
+                setItem(res.data.getItem)
+            })
+     }, [client, match, setCategory, setTitle, setDescription, setDispensePeriod, setQuantity, setInCoffin])
+
     useEffect(() => { 
         try {
             client.query({
@@ -77,7 +78,7 @@ const UpdateItem = ({client, history, match}) => {
             <FormContainer>
                 Item Id <Input placeholder="Item Id" value={match.params.itemId} { ...bindItemId } disabled />
                 Category Id <Select options={categories} onChange={(e)=>setCategory(e.value)}/>
-                Title <Input placeholder="Title" { ...bindTitle } />
+                Title <Input placeholder="Title" {...bindTitle} />
                 Description <Input placeholder="Description" { ...bindDesc } />
                 {/* Dispense Period <Input placeholder="Dispense Period" type="number" { ...bindDispensePeriod } /> */}
                 Total Quantity <Input placeholder="Total Quantity" type="number" { ...bindQuantity } />
