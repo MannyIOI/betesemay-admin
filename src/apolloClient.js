@@ -6,6 +6,7 @@ const defaultOptions = {
     fetchPolicy: "network-only"
   },
   mutate: {
+    fetchPolicy: "network-only",
     errorPolicy: "all"
   }
 };
