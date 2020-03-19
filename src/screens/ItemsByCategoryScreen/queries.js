@@ -6,9 +6,12 @@ export const GET_ITEMS_BY_CATEGORY = gql`
             results{
                 id
                 title
+                description
                 category{
                     title
                 }
+                quantity
+                in_coffin
             }
         }
     }

@@ -7,6 +7,8 @@ export const GET_ALL_ITEMS = gql`
                 id
                 title
                 description
+                quantity
+                in_coffin
             }
             total
         }
