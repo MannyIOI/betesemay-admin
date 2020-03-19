@@ -3,7 +3,7 @@ require("dotenv").config()
 console.log(process.env.REACT_APP_SERVER_ADDRESS+'/graphql')
 const defaultOptions = {
   query: {
-    fetchPolicy: "no-cache"
+    fetchPolicy: "network-only"
   },
   mutate: {
     errorPolicy: "all"
