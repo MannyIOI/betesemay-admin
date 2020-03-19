@@ -8,12 +8,14 @@ import ItemsContainer from "../screens/ItemsScreen";
 import CreateItem from "../screens/ItemCreateScreen";
 import UpdateItem from "../screens/ItemUpdateScreen";
 
+import ItemsByCategory from "../screens/ItemsByCategoryScreen";
+
 import CreateEmployee from "../screens/CreateEmployeeScreen";
 
-import CategoryContainer from "../screens/CategoryScreen"
+import CategoryContainer from "../screens/CategoryScreen";
+import CollectDispense from "../screens/DispenseCollectScreen";
 
 import { Container } from "./styles"
-import ItemsByCategory from "../screens/ItemsByCategoryScreen";
 require('dotenv').config()
 console.log(process.env.NODE_ENV)
 const routes = [
@@ -41,6 +43,7 @@ const Routes = () => (
                 <Route exact path = "/items" component = { ItemsContainer }/>
                 <Route exact path = "/items/create" component = { CreateItem }/>
                 <Route exact path = "/items/update/:itemId" component = { UpdateItem } />
+                <Route exact path = "/items/:itemId" component = { CollectDispense } />
 
                 <Route exact path = "/employees" component = { EmployeeContainer }/>
                 <Route exact path = "/employees/create" component = { CreateEmployee } />
