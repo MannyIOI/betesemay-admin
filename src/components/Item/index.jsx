@@ -18,7 +18,7 @@ const Item = (props) => {
     }
 
     return (
-        <Container>
+        <Container onClick={()=>props.history.push({pathname: "/items/"+props.item.id})}>
             
             <ItemTitleContainer>
                 <h2>{props.item.title}</h2>
