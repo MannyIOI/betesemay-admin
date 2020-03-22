@@ -1,10 +1,16 @@
-import React from 'react'
+import React, { useState} from 'react'
 import { Container } from "./style";
 import { MDBTable } from 'mdbreact';
-import DispenseCollectModal from '../../components/DispenseCollectModal'
+import DispenseModal from '../../components/DispenseModal'
 
 const DispenseCollect = ({ client, history }) => {
-
+    const [dispenseModalIsOpen,setDispenseModalIsOpen] = useState(false);
+    function openDispenseModal() {
+        setDispenseModalIsOpen(true);
+    }
+    function closeDispenseModal(){
+        setDispenseModalIsOpen(false);
+    }
     // const DispenseCollect = "";
     
     // const GetItemHistory = "";
@@ -17,10 +23,10 @@ const DispenseCollect = ({ client, history }) => {
             
             <p>Item Detail</p>
             
-            <button>Dispense Item</button>
+            <button onClick={openDispenseModal}>Dispense Item</button>
             <button>Collect Item</button>
 
-            <DispenseCollectModal/>
+            <DispenseModal isOpen={dispenseModalIsOpen} closeModal = {closeDispenseModal}/>
 
             <p>Item History</p>
             <MDBTable>
