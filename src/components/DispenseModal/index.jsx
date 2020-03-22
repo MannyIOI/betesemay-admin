@@ -22,7 +22,7 @@ const customStyles = {
   };
 
 const DispenseModal = ({ client, isOpen, closeModal }) => {
-    const [dispenseDate, setDispenseDate] = useState(Date.now())
+    const [dispenseDate, setDispenseDate] = useState(new Date())
     const [expectedReturnDate, setExpectedReturnDate] = useState("")
     const [employee, setEmployee] = useState("")
     const [modalError, setModalError] = useState("");
@@ -53,7 +53,6 @@ const DispenseModal = ({ client, isOpen, closeModal }) => {
 
     function dispense() {
         if(validate()){
-            console.log("validated data")
             closeModal()
         }
     }
@@ -77,7 +76,6 @@ const DispenseModal = ({ client, isOpen, closeModal }) => {
      }, [client, setEmployees]);
     
 
-    // let employees = [{label: "employee-1", value: "id"}]
     return (
         <div>
             <Modal
@@ -89,12 +87,12 @@ const DispenseModal = ({ client, isOpen, closeModal }) => {
 
                     <DatePicker placeholderText="Dispense date" 
                                 selected={dispenseDate} 
-                                onChange={date=>setDispenseDate(date.getTime())}
+                                onChange={date=>setDispenseDate(date)}
                                 style={{width: "100%"}}/>
 
                     <DatePicker placeholderText="Expected Return date" 
                                 selected={expectedReturnDate} 
-                                onChange={date=>setExpectedReturnDate(date.getTime())}
+                                onChange={date=>setExpectedReturnDate(date)}
                                 style={{width: "100%"}}/>
 
                     <p style={{color:"red"}}>{modalError}</p>
