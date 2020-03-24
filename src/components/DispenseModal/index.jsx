@@ -4,7 +4,7 @@ import Select from 'react-select';
 import DatePicker from 'react-datepicker';
 import "react-datepicker/dist/react-datepicker.css";
 import { withApollo } from 'react-apollo';
-import { GET_ALL_EMPLOYEES } from './queries';
+import { GET_ALL_EMPLOYEES, DISPENSE_COLLECT_ITEM, CREATE_ITEM_HISTORY } from './queries';
 
 const customStyles = {
     content : {
@@ -21,7 +21,7 @@ const customStyles = {
     }
   };
 
-const DispenseModal = ({ client, isOpen, closeModal }) => {
+const DispenseModal = ({ client, isOpen, closeModal, item }) => {
     const [dispenseDate, setDispenseDate] = useState(new Date())
     const [expectedReturnDate, setExpectedReturnDate] = useState("")
     const [employee, setEmployee] = useState("")
@@ -46,16 +46,16 @@ const DispenseModal = ({ client, isOpen, closeModal }) => {
         }
         else { 
             setModalError("")
+            dispenseDate = dispenseDate.toISOString();
+            expectedReturnDate = dispenseDate.toISOString();
             retVal = true 
         }
         return retVal;
     }
 
-    function dispense() {
+    const dispense = async () => {
         if(validate()){
-            console.log(dispenseDate)
-
-            
+            await Dispense()
             closeModal()
         }
     }
@@ -77,6 +77,30 @@ const DispenseModal = ({ client, isOpen, closeModal }) => {
         }
      }, [client, setEmployees]);
     
+    
+    const Dispense = async () => {
+        try {
+            await client.mutate({
+                mutation: DISPENSE_COLLECT_ITEM,
+                variables: { id: item.id, state: "DISPENSED" }
+            })
+            
+            await client.mutate({
+                mutation: CREATE_ITEM_HISTORY,
+                variables: { 
+                    item: item.id, 
+                    to: "ab2d4b5f-cc6c-4b37-b31f-95abb68b1599",
+                    dispense_date: dispenseDate,
+                    expected_return_date: expectedReturnDate,
+                    return_date: expectedReturnDate
+                }
+            })
+            return true
+            
+        } catch (error) {
+            return error
+        }
+    }
 
     return (
         <div>
