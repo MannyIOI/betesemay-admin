@@ -12,8 +12,6 @@ const CreateItem = ({client, history}) => {
     const { value: title, bind: bindTitle } = useInput("item-")
     const { value: description, bind: bindDesc } = useInput("description")
     const { value: dispense_period, bind: bindDispensePeriod } = useInput(2)
-    const { value: quantity, bind: bindQuantity } = useInput(3)
-    const { value: in_coffin, bind: bindInCoffin } = useInput(2)
 
     const createNewItem = async () => {
         try {
@@ -22,9 +20,7 @@ const CreateItem = ({client, history}) => {
                 variables: { category: category,
                              title: title, 
                              desc: description,
-                             dispense_period: dispense_period,
-                             quantity: quantity,
-                             in_coffin: in_coffin
+                             dispense_period: dispense_period
                             }
             });
             await history.push({pathname: "/items/"})
@@ -60,8 +56,6 @@ const CreateItem = ({client, history}) => {
                 <Input placeholder="Title" { ...bindTitle } />
                 <Input placeholder="Description" { ...bindDesc } />
                 <Input placeholder="Dispense Period" type="number" { ...bindDispensePeriod } />
-                <Input placeholder="Total Quantity" type="number" { ...bindQuantity } />
-                <Input placeholder="In Coffin Quantity" type="number" { ...bindInCoffin } />
                 <SubmitBtn onClick={createNewItem}>Create Item</SubmitBtn>
             </FormContainer>
         </Container>
