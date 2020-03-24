@@ -12,14 +12,15 @@ export const NavLinks = styled.div`
         height: 5%;
         opacity: 0.6;
         color: white;
-        text-decoration: none;
-        background: gray;
+        text-decoration: none; 
         width: 100%;
         text-align: center;
         padding-top: 24px;
     }
     .active-nav-item {
         opacity: 1;
+        background: #EAEAEA;
+        color: #435A6F;
     }
     .white-color {
         opacity: 1;
