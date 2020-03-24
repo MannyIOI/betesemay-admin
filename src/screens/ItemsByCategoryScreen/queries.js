@@ -10,8 +10,6 @@ export const GET_ITEMS_BY_CATEGORY = gql`
                 category{
                     title
                 }
-                quantity
-                in_coffin
             }
         }
     }

@@ -26,8 +26,8 @@ const Item = (props) => {
 
             <ItemDetailContainer>
                 <p>{props.item.description}</p>
-                <p>In Coffin - {props.item.in_coffin}</p>
-                <p>Quantity - {props.item.quantity}</p>
+                <p>D.P {props.item.dispense_period}</p>
+                <p>{props.item.state}</p>
             </ItemDetailContainer>
 
             <ItemActionsContainer>

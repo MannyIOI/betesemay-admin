@@ -7,8 +7,11 @@ export const GET_ALL_ITEMS = gql`
                 id
                 title
                 description
-                quantity
-                in_coffin
+                state
+                category{
+                    id
+                    title
+                }
             }
             total
         }

@@ -53,13 +53,15 @@ const DispenseModal = ({ client, isOpen, closeModal }) => {
 
     function dispense() {
         if(validate()){
+            console.log(dispenseDate)
+
+            
             closeModal()
         }
     }
 
     useEffect(() => { 
         try {
-            console.log("here")
             client.query({
                 query: GET_ALL_EMPLOYEES
             }).then(res => {
