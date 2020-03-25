@@ -64,10 +64,11 @@ const DispenseModal = ({ client, isOpen, closeModal, item }) => {
     useEffect(() => { 
         try {
             client.query({
-                query: GET_ALL_EMPLOYEES
+                query: GET_ALL_EMPLOYEES,
+                variables: { page: 0 }
             }).then(res => {
                 let employees = []
-                res.data.getAllEmployees.forEach(employee => {
+                res.data.getAllEmployees.results.forEach(employee => {
                     employees.push({label: employee.first_name + " " + employee.last_name + " from " + employee.role,
                                              value: employee.id})
                 });
