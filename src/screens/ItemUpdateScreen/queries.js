@@ -10,8 +10,6 @@ export const GET_ITEM = gql`
             }
             title
             description
-            quantity
-            in_coffin
         }
     }
 `
@@ -19,15 +17,12 @@ export const GET_ITEM = gql`
 export const UPDATE_ITEM = gql`
     mutation update_item ( $id: ID!, $category: ID,
                             $title: String, $desc: String, 
-                            $dispense_period: Int, $quantity: Int, 
-                            $in_coffin: Int){
+                            $dispense_period: Int){
         updateItem(data: { id: $id,
                             category: $category,
                             title: $title, 
                             description: $desc,
-                            dispense_period: $dispense_period,
-                            quantity: $quantity,
-                            in_coffin: $in_coffin}){
+                            dispense_period: $dispense_period   }){
             
             title
         }

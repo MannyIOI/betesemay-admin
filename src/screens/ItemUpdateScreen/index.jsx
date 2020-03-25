@@ -15,8 +15,6 @@ const UpdateItem = ({client, history, match}) => {
     const { value: title, setValue: setTitle, bind: bindTitle } = useInput("")
     const { value: description, setValue: setDescription, bind: bindDesc } = useInput("")
     const { value: dispense_period, setValue: setDispensePeriod } = useInput(0)
-    const { value: quantity, setValue: setQuantity, bind: bindQuantity } = useInput(0)
-    const { value: in_coffin, setValue: setInCoffin, bind: bindInCoffin } = useInput(0)
 
     const updateItem = async () => {
         try {
@@ -26,9 +24,7 @@ const UpdateItem = ({client, history, match}) => {
                              category: category,
                              title: title, 
                              desc: description,
-                             dispense_period: parseInt(dispense_period),
-                             quantity: parseInt(quantity),
-                             in_coffin: parseInt(in_coffin)
+                             dispense_period: parseInt(dispense_period)
                             }
             });
             await history.push({pathname: "/items/"})
@@ -39,13 +35,11 @@ const UpdateItem = ({client, history, match}) => {
 
 
     useEffect(() => { 
-        const setItem = ({category, title, description, dispense_period, quantity, in_coffin}) => {
+        const setItem = ({category, title, description, dispense_period}) => {
             setCategory(category.id)
             setTitle(title)
             setDescription(description)
             setDispensePeriod(dispense_period)
-            setQuantity(quantity)
-            setInCoffin(in_coffin)
         }
 
             client.query({
@@ -54,7 +48,7 @@ const UpdateItem = ({client, history, match}) => {
             }).then(res => {
                 setItem(res.data.getItem)
             })
-     }, [client, match, setCategory, setTitle, setDescription, setDispensePeriod, setQuantity, setInCoffin])
+     }, [client, match, setCategory, setTitle, setDescription, setDispensePeriod])
 
     useEffect(() => { 
         try {
@@ -81,8 +75,6 @@ const UpdateItem = ({client, history, match}) => {
                 Title <Input placeholder="Title" {...bindTitle} />
                 Description <Input placeholder="Description" { ...bindDesc } />
                 {/* Dispense Period <Input placeholder="Dispense Period" type="number" { ...bindDispensePeriod } /> */}
-                Total Quantity <Input placeholder="Total Quantity" type="number" { ...bindQuantity } />
-                In Coffin <Input placeholder="In Coffin Quantity" type="number" { ...bindInCoffin } />
                 <SubmitBtn onClick={updateItem}>Update Item</SubmitBtn>
             </FormContainer>
         </Container>

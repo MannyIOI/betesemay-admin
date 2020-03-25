@@ -17,14 +17,18 @@ const Item = (props) => {
         }
     }
 
+    const updateItem = async () => {
+        props.history.push({pathname: "/items/"+props.item.id})
+    }
+
     return (
-        <Container onClick={()=>props.history.push({pathname: "/items/"+props.item.id})}>
+        <Container >
             
-            <ItemTitleContainer>
+            <ItemTitleContainer onClick={updateItem}>
                 <h2>{props.item.title}</h2>
             </ItemTitleContainer>
 
-            <ItemDetailContainer>
+            <ItemDetailContainer onClick={updateItem}>
                 <p>{props.item.description}</p>
                 <p>D.P {props.item.dispense_period}</p>
                 <p>{props.item.state}</p>
