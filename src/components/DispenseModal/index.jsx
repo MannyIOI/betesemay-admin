@@ -46,17 +46,18 @@ const DispenseModal = ({ client, isOpen, closeModal, item }) => {
         }
         else { 
             setModalError("")
-            dispenseDate = dispenseDate.toISOString();
-            expectedReturnDate = dispenseDate.toISOString();
             retVal = true 
         }
         return retVal;
     }
 
     const dispense = async () => {
-        if(validate()){
-            await Dispense()
+        if(validate() && await Dispense()){
             closeModal()
+            window.location.reload(false); 
+        }
+        else if(validate()){
+            setModalError("There was an error from the server")
         }
     }
 
@@ -84,17 +85,18 @@ const DispenseModal = ({ client, isOpen, closeModal, item }) => {
                 mutation: DISPENSE_COLLECT_ITEM,
                 variables: { id: item.id, state: "DISPENSED" }
             })
-            
+
             await client.mutate({
                 mutation: CREATE_ITEM_HISTORY,
                 variables: { 
                     item: item.id, 
                     to: "ab2d4b5f-cc6c-4b37-b31f-95abb68b1599",
-                    dispense_date: dispenseDate,
-                    expected_return_date: expectedReturnDate,
-                    return_date: expectedReturnDate
+                    dispense_date: dispenseDate.toISOString(),
+                    expected_return_date: expectedReturnDate.toISOString(),
+                    return_date: expectedReturnDate.toISOString()
                 }
             })
+
             return true
             
         } catch (error) {

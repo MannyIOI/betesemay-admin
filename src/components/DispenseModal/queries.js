@@ -21,12 +21,12 @@ export const DISPENSE_COLLECT_ITEM = gql`
 
 export const CREATE_ITEM_HISTORY = gql`
     mutation create_item_history($item: ID!, $to: ID!, 
-                                    $dispense_date: Date!, $expected_return_date: Date!, 
-                                    $return_date: Date){
+                                    $dispense_date: String!, $expected_return_date: String!, 
+                                    $return_date: String){
                                         
         createHistory(data:{ dispense_date: $dispense_date,
                                 expected_return_date: $expected_return_date,
-                                return_date: $expected_return_date,
+                                return_date: $return_date,
                                 item: $item,
                                 to: $to }){
         dispense_date
