@@ -2,7 +2,7 @@ import React from 'react'
 import Modal from "react-modal"
 import "react-datepicker/dist/react-datepicker.css";
 import { withApollo } from 'react-apollo';
-import { DISPENSE_COLLECT_ITEM } from '../DispenseModal/queries';
+import { DISPENSE_COLLECT_ITEM, CREATE_ITEM_HISTORY } from '../DispenseModal/queries';
 
 const customStyles = {
     content : {
@@ -80,6 +80,18 @@ const CollectModal = ({ client, isOpen, closeModal, item }) => {
                 mutation: DISPENSE_COLLECT_ITEM,
                 variables: { id: item.id, state: "IN_STOCK" }
             })
+
+            await client.mutate({
+                mutation: CREATE_ITEM_HISTORY,
+                variables: { 
+                    item: item.id, 
+                    to: "ab2d4b5f-cc6c-4b37-b31f-95abb68b1599",
+                    dispense_date: new Date().toISOString(),
+                    expected_return_date: new Date().toISOString(),
+                    return_date: new Date().toISOString()
+                }
+            })
+
             return true
             
         } catch (error) {
