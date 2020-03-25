@@ -8,6 +8,7 @@ export const GET_ITEMS_BY_CATEGORY = gql`
                 title
                 description
                 category{
+                    id
                     title
                 }
             }

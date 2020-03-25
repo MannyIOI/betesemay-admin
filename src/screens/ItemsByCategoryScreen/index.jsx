@@ -13,13 +13,13 @@ const ItemsPage = (props) => {
     const setNewItems = async () =>{ 
         console.log(props.match.params.categoryId)
         try {
-            const { data } = await props.client.query({
+            props.client.query({
                 query: GET_ITEMS_BY_CATEGORY,
                 variables: { page, category: props.match.params.categoryId }
+            }).then(res => {
+                setItems(res.data.getItemsByCategory.results)
+                setItemCount(res.data.getItemsByCategory.total)
             })
-            console.log(data)
-            setItems(data.getItemsByCategory.results)
-            setItemCount(data.getItemsByCategory.total)
         } catch (error) {
             console.log(error)
         }
