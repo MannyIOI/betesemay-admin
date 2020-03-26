@@ -4,7 +4,7 @@ import { MDBTable } from 'mdbreact';
 import { withApollo } from "react-apollo";
 
 import DispenseModal from '../../components/DispenseModal'
-import { GET_ITEM_DETAIL } from './queries';
+import { GET_ITEM_DETAIL, GET_ITEM_HISTORY } from './queries';
 import CollectModal from '../../components/CollectModal';
 
 
@@ -12,8 +12,9 @@ import CollectModal from '../../components/CollectModal';
 const DispenseCollect = ({ client, history, match }) => {
     const [dispenseModalIsOpen,setDispenseModalIsOpen] = useState(false);
     const [collectModalIsOpen, setCollectModalIsOpen] = useState(false);
-
+    const [histories, setHistories] = useState([])
     const [item, setItem] = useState({})
+    
     function openDispenseModal() {
         setDispenseModalIsOpen(true);
     }
@@ -52,12 +53,20 @@ const DispenseCollect = ({ client, history, match }) => {
                 variables: { id: match.params.itemId }
             }).then(res=>{
                 setItem(res.data.getItem)
-            });
+                if(item.id != null){
+                    client.query({
+                        query: GET_ITEM_HISTORY,
+                        variables: { item: item.id, page: 0 }
+                    }).then(res => {
+                        setHistories(res.data.getHistoriesByItem.results)
+                    })
+                }
+            });       
             
         } catch (error) {
             console.log(error)
         }
-    }, [client, setItem, match.params.itemId])
+    }, [client, setItem, item, setHistories, match.params.itemId])
 
     return (
         <Container>
@@ -75,7 +84,7 @@ const DispenseCollect = ({ client, history, match }) => {
             <DispenseModal isOpen={dispenseModalIsOpen} closeModal = {closeDispenseModal} item={item}/>
             <CollectModal isOpen={collectModalIsOpen} closeModal = {closeCollectModal} item={item}/>
             <p>Item History</p>
-
+                {histories.map(history => <p>{history.to.first_name} {history.to.role}</p>)}
             <MDBTable>
 
             </MDBTable>

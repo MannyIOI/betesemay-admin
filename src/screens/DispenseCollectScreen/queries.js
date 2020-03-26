@@ -14,3 +14,17 @@ export const GET_ITEM_DETAIL = gql`
         }
     }
 `
+
+export const GET_ITEM_HISTORY = gql`
+    query get_item_history($item: ID!, $page: Int!) {
+        getHistoriesByItem(item: $item, page: $page){
+            results{
+                id
+                to{
+                    first_name
+                    role
+                }
+            }
+        }
+    }
+`
