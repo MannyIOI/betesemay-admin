@@ -49,7 +49,7 @@ const Employee = ({client, history, match}) => {
                     </MDBTableHead>
                     <MDBTableBody>
                         {employees.map(employee => (
-                            <tr>
+                            <tr key={employee.id}>
                                 <td>{employee.first_name}</td>
                                 <td>{employee.email}</td>
                                 <td>{employee.address}</td>
