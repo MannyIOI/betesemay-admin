@@ -39,9 +39,7 @@ const CollectModal = ({ client, isOpen, closeModal, item, histories }) => {
                 variables: { 
                     item: item.id, 
                     to: histories[0].to.id,
-                    dispense_date: new Date().toISOString(),
-                    expected_return_date: new Date().toISOString(),
-                    return_date: new Date().toISOString()
+                    type: "COLLECTED"
                 }
             })
 

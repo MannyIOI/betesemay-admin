@@ -92,9 +92,7 @@ const DispenseModal = ({ client, isOpen, closeModal, item }) => {
                 variables: { 
                     item: item.id, 
                     to: employee,
-                    dispense_date: dispenseDate.toISOString(),
-                    expected_return_date: expectedReturnDate.toISOString(),
-                    return_date: expectedReturnDate.toISOString()
+                    type: "DISPENSED"
                 }
             })
 
