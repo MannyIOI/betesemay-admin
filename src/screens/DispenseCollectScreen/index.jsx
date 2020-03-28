@@ -1,8 +1,9 @@
 import React, { useState, useEffect} from 'react'
 import { Container } from "./style";
-import { MDBTable } from 'mdbreact';
+import { MDBTable, MDBTableHead, MDBTableBody } from 'mdbreact';
 import { withApollo } from "react-apollo";
-
+import 'mdbreact/dist/css/mdb.css';
+import 'mdbreact/dist/css/style.css';
 import DispenseModal from '../../components/DispenseModal'
 import { GET_ITEM_DETAIL, GET_ITEM_HISTORY } from './queries';
 import CollectModal from '../../components/CollectModal';
@@ -28,23 +29,6 @@ const DispenseCollect = ({ client, history, match }) => {
     function closeCollectModal() {
         setCollectModalIsOpen(false)
     }
-    // const DispenseCollect = "";
-    
-    // const GetItemHistory = "";
-
-    // console.log(match.params.itemId)
-    // const GetItemDetail = async () => {
-    //     try {
-    //         const { data } = await client.query({
-    //             query: GET_ITEM_DETAIL,
-    //             variables: { id: match.params.itemId }
-    //         });
-    //         setItem(data.getItem)
-            
-    //     } catch (error) {
-    //         console.log(error)
-    //     }
-    // };
 
     useEffect(() => {
         try {
@@ -82,11 +66,30 @@ const DispenseCollect = ({ client, history, match }) => {
             <p>State - {item.state}</p>
             <p>Dispense Period - {item.dispense_period}</p>
             <DispenseModal isOpen={dispenseModalIsOpen} closeModal = {closeDispenseModal} item={item}/>
-            <CollectModal isOpen={collectModalIsOpen} closeModal = {closeCollectModal} item={item}/>
+            <CollectModal histories={histories} isOpen={collectModalIsOpen} closeModal = {closeCollectModal} item={item}/>
             <p>Item History</p>
-                {histories.map(history => <p>{history.to.first_name} {history.to.role}</p>)}
+                
             <MDBTable>
-
+                <MDBTableHead color="blue" textWhite>
+                    <tr>
+                        <th>Full Name</th>
+                        <th>Email</th>
+                        <th>Role</th>
+                        <th>Type</th>
+                        <th>Date</th>
+                    </tr>
+                </MDBTableHead>
+                <MDBTableBody>
+                    {histories.map(history => 
+                        <tr>
+                            <td>{history.to.first_name}</td> 
+                            <td>{history.to.email}</td>
+                            <td>{history.to.role}</td>
+                            <td>Dispensed</td>
+                            <td>{new Date(parseInt(history.dispense_date)).toUTCString()}</td>
+                        </tr>
+                    )}
+                </MDBTableBody>
             </MDBTable>
         </Container>
     )
