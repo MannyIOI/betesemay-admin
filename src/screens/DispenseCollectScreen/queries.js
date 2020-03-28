@@ -27,8 +27,8 @@ export const GET_ITEM_HISTORY = gql`
                     email
                     role
                 }
-                dispense_date
-                return_date
+                type
+                created_at
             }
         }
     }

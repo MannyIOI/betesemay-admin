@@ -69,7 +69,7 @@ const DispenseCollect = ({ client, history, match }) => {
             <CollectModal histories={histories} isOpen={collectModalIsOpen} closeModal = {closeCollectModal} item={item}/>
             <p>Item History</p>
                 
-            <MDBTable>
+            <MDBTable borderless hover>
                 <MDBTableHead color="blue" textWhite>
                     <tr>
                         <th>Full Name</th>
@@ -81,12 +81,12 @@ const DispenseCollect = ({ client, history, match }) => {
                 </MDBTableHead>
                 <MDBTableBody>
                     {histories.map(history => 
-                        <tr>
+                        <tr key={history.id}>
                             <td>{history.to.first_name}</td> 
                             <td>{history.to.email}</td>
                             <td>{history.to.role}</td>
-                            <td>Dispensed</td>
-                            <td>{new Date(parseInt(history.dispense_date)).toUTCString()}</td>
+                            <td>{history.type}</td>
+                            <td>{new Date(parseInt(history.created_at)).toUTCString()}</td>
                         </tr>
                     )}
                 </MDBTableBody>
