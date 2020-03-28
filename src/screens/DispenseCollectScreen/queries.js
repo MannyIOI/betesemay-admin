@@ -21,9 +21,14 @@ export const GET_ITEM_HISTORY = gql`
             results{
                 id
                 to{
+                    id
                     first_name
+                    address
+                    email
                     role
                 }
+                dispense_date
+                return_date
             }
         }
     }
