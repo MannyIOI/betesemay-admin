@@ -1,10 +1,12 @@
 import styled from "styled-components";
 
 export const Container = styled.div`
-    min-width: 200px;
-    max-width: 300px;
+    .collapsed {
+        background: black;
+    }
     height: 100vh;
     display: grid;
+    width: 10%;
 `
 
 export const NavLinks = styled.div`
@@ -34,4 +36,9 @@ export const NavLinks = styled.div`
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    height: 95vh;
+`
+
+export const CollapseButton = styled.button`
+    height: 5vh;
 `
