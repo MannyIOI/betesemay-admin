@@ -5,7 +5,7 @@ export const Container = styled.div`
     background: #EAEAEA;
     grid-template-columns: 1fr 1fr 1fr 1fr;
     grid-template-rows: 1fr 1fr 1fr;
-    width: 90%;
+    width: 100%;
     
 `
 

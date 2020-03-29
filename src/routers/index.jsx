@@ -16,22 +16,34 @@ import CategoryContainer from "../screens/CategoryScreen";
 import CreateCategory from "../screens/CategoryCreateScreen"
 
 import CollectDispense from "../screens/DispenseCollectScreen";
+import {
+    OrderedListOutlined,
+    GroupOutlined,
+    UserOutlined
+  } from '@ant-design/icons';
+
 
 import { Container } from "./styles"
 require('dotenv').config()
 console.log(process.env.NODE_ENV)
 const routes = [
     {
+        key: "2",
         name: "Categories",
-        to: "/categories"
+        to: "/categories",
+        icon: <OrderedListOutlined />
     },
     {
+        key: "1",
         name: "Items",
-        to: "/items"
+        to: "/items",
+        icon: <GroupOutlined />
     },
     {
+        key: "3",
         name: "Employees",
-        to: "/employees"
+        to: "/employees",
+        icon: <UserOutlined />
     }
 ]
 
