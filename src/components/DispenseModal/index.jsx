@@ -13,11 +13,11 @@ const customStyles = {
       right                 : 'auto',
       bottom                : 'auto',
       width                 : '50%',
-      height                : '30%',
+      height                : '50%',
     //   marginRight           : '-50%',
       padding               : '5%',
       transform             : 'translate(-50%, -50%)',
-      backdrop              : 'grey'
+      backdrop              : 'black'
     }
   };
 
@@ -104,12 +104,14 @@ const DispenseModal = ({ client, isOpen, closeModal, item }) => {
     }
 
     return (
-        <div>
+        <div >
             <Modal
                 isOpen={isOpen}
                 onRequestClose={closeModal}
                 style={customStyles}
-                contentLabel="Example Modal">
+                contentLabel="Example Modal"
+                
+                >
                     <Select placeholder="Employees" options={employees} onChange={({value})=>setEmployee(value)}/>
 
                     <DatePicker placeholderText="Dispense date" 
