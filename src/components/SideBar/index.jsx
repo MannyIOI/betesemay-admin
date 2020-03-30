@@ -30,7 +30,7 @@ export default class NavBar extends Component {
                             justifyContent: 'center' }}>
 
                   <Button type="primary" onClick={this.toggleCollapsed} style={{ 
-                      marginBottom: 200, minWidth: '40%' ,
+                      marginBottom: 100, minWidth: '40%' ,
                       maxWidth: '50%', 
                       alignSelf: 'center' }}>
 
