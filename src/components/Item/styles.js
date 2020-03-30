@@ -1,18 +1,12 @@
 import styled from "styled-components"
 
 export const ItemActionsContainer = styled.div`
-    // background: red;
     display: none;
     flex: column;
     color: white;
-    grid-row: 1/2;
-    grid-column: 9/13;
-    :hover {
-        // background: #D04D2E;
-    }
-    :active {
-        // background: green;
-    }
+    grid-row: 1/3;
+    grid-column: 8/13;
+    margin: 10px;
 `
 
 export const Container = styled.div`
@@ -46,3 +40,26 @@ export const ItemDetailContainer = styled.div`
     color: white;
 `
 
+export const UpdateButton = styled.button`
+    background: #b87333;
+    border: 0px;
+    grid-column: 8/10;
+    :hover {
+        background: #b88933;
+    }
+    :active {
+        background: #b87322;
+    }
+`
+
+export const DeleteButton = styled.button`
+    background: #c04000;
+    border: 0px;
+    grid-column: 10/12;
+    :hover {
+        background: #E04000;
+    }
+    :active {
+        background: #A04000;
+    }
+`

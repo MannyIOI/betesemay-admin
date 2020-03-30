@@ -1,6 +1,6 @@
 import React from 'react'
 import { withApollo } from "react-apollo";
-import { Container, ItemActionsContainer, ItemTitleContainer, ItemDetailContainer } from "./styles"
+import { Container, ItemActionsContainer, ItemTitleContainer, ItemDetailContainer, UpdateButton, DeleteButton } from "./styles"
 import { DELETE_ITEM } from './queries'
 
 const Item = (props) => {
@@ -35,8 +35,8 @@ const Item = (props) => {
             </ItemDetailContainer>
 
             <ItemActionsContainer>
-                <button onClick={()=>props.history.push({pathname: "/items/update/"+props.item.id})}>Update</button>
-                <button onClick={deleteItem}>Delete</button>
+                <UpdateButton onClick={()=>props.history.push({pathname: "/items/update/"+props.item.id})}>Update</UpdateButton>
+                <DeleteButton onClick={deleteItem}>Delete</DeleteButton>
             </ItemActionsContainer>
         </Container>
     )
