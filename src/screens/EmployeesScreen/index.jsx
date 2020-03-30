@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from 'react'
 import { Container, TableContainer, ActionContainer } from "./style";
 import { MDBTable, MDBTableBody, MDBTableHead } from "mdbreact";
-import 'mdbreact/dist/css/mdb.css';
-import 'mdbreact/dist/css/style.css';
+// import 'mdbreact/dist/css/mdb.css';
+// import 'mdbreact/dist/css/style.css';
 import { GET_ALL_EMPLOYEES } from './queries';
 import { withApollo } from 'react-apollo';
 

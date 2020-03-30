@@ -1,12 +1,7 @@
 import styled from "styled-components";
 
 export const Container = styled.div`
-    .collapsed {
-        background: black;
-    }
-    height: 100vh;
-    display: grid;
-    width: 10%;
+    width: max-content;
 `
 
 export const NavLinks = styled.div`
