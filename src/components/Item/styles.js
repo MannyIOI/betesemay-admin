@@ -21,6 +21,9 @@ export const Container = styled.div`
         display: flex;
         justify-content: center;
     }
+    :hover {
+        background: #596B95;
+    }
 `
 
 export const ItemTitleContainer = styled.div`

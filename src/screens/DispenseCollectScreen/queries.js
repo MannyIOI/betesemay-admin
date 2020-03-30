@@ -30,6 +30,7 @@ export const GET_ITEM_HISTORY = gql`
                 type
                 created_at
             }
+            total
         }
     }
 `
