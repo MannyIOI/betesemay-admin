@@ -26,7 +26,7 @@ export const Container = styled.div`
 export const ItemTitleContainer = styled.div`
     display: flex;
     grid-column: 1/13;
-    grid-row: 2/3;
+    grid-row: 2/4;
     text-align: center;
     align-items: center;
     justify-content: center;
@@ -44,6 +44,8 @@ export const UpdateButton = styled.button`
     background: #b87333;
     border: 0px;
     grid-column: 8/10;
+    border-radius: 10px 0px 0px 10px;
+    cursor: pointer;
     :hover {
         background: #b88933;
     }
@@ -56,10 +58,24 @@ export const DeleteButton = styled.button`
     background: #c04000;
     border: 0px;
     grid-column: 10/12;
+    border-radius: 0px 10px 10px 0px;
+    cursor: pointer;
     :hover {
         background: #E04000;
     }
     :active {
         background: #A04000;
     }
+`
+
+export const Title = styled.h2`
+    color: white;
+    font-weight: 600;
+    font-size: 25px;
+`
+
+export const Text = styled.p`
+    color: white;
+    font-weight: 100;
+    font-size: 16px;
 `

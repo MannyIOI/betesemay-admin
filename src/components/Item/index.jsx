@@ -1,6 +1,13 @@
 import React from 'react'
 import { withApollo } from "react-apollo";
-import { Container, ItemActionsContainer, ItemTitleContainer, ItemDetailContainer, UpdateButton, DeleteButton } from "./styles"
+import { Container, 
+            ItemActionsContainer, 
+            ItemTitleContainer, 
+            ItemDetailContainer, 
+            UpdateButton, 
+            DeleteButton,
+            Title,
+            Text } from "./styles"
 import { DELETE_ITEM } from './queries'
 
 const Item = (props) => {
@@ -25,13 +32,13 @@ const Item = (props) => {
         <Container >
             
             <ItemTitleContainer onClick={updateItem}>
-                <h2>{props.item.title}</h2>
+                <Title>{props.item.title}</Title>
             </ItemTitleContainer>
 
             <ItemDetailContainer onClick={updateItem}>
-                <p>{props.item.description}</p>
-                <p>D.P {props.item.dispense_period}</p>
-                <p>{props.item.state}</p>
+                <Text>{props.item.description}</Text>
+                <Text>D.P {props.item.dispense_period}</Text>
+                <Text>{props.item.state}</Text>
             </ItemDetailContainer>
 
             <ItemActionsContainer>
