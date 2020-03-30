@@ -36,7 +36,6 @@ const Employee = ({client, history, match}) => {
 
     return (
         <Container>
-            Employee Screen
             <TableContainer>
                 <MDBTable bordered hover style={{width: "100%"}}>
                     <MDBTableHead color="blue" textWhite>
