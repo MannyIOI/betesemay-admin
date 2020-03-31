@@ -14,4 +14,7 @@ export const NavigationContainer = styled.div`
     margin: 25px;
     grid-column: 4/5;
     grid-row: 3/4;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 `
