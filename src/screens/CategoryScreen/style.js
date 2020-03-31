@@ -2,7 +2,6 @@ import styled from "styled-components"
 
 export const Container = styled.div`
     display: grid;
-    background: #EAEAEA;
     grid-template-columns: 1fr 1fr 1fr 1fr;
     grid-template-rows: 1fr 1fr 1fr;
     width: 100%;

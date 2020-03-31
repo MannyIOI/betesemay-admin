@@ -2,7 +2,6 @@ import styled from "styled-components";
 
 export const Container = styled.div`
     display: grid;
-    background: #EAEAEA;
     grid-template-columns: 1fr 1fr 1fr;
     grid-template-rows: 1fr 3fr 1fr;
     width: 100%;
@@ -16,7 +15,8 @@ export const Input = styled.input`
     padding: 12px 20px;
     margin: 8px 0;
     box-sizing: border-box;
-    background: #E0E5EC;
+    border-radius: 5px;
+    border: 1px solid #dae4ee;
 `
 
 export const SubmitBtn = styled.button`
@@ -43,4 +43,9 @@ export const FormContainer = styled.div`
 
     grid-column: 2/3;
     grid-row: 2/3;
+    justify-content: center;
+    padding: 20px;
+
+    background-color:#E0E5EC;
+    box-shadow: 9px 9px 16px rgb(163,177,198,0.6), -9px -9px 16px rgba(255,255,255, 0.5);
 `

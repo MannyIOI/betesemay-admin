@@ -3,6 +3,7 @@ import { withApollo } from 'react-apollo'
 import { Container, Input, SubmitBtn, FormContainer } from "./style";
 import { useInput } from "../../hooks/inputHooks";
 import { CREATE_EMPLOYEE } from "./queries";
+import { CreateButton } from '../EmployeesScreen/style';
 
 const CreateEmployee = ({client, history}) => {
     const { value: first_name, bind: bindFirstName } = useInput("")
@@ -36,15 +37,15 @@ const CreateEmployee = ({client, history}) => {
 
     return (
         <Container>
-            Create Employee Screen
-            <FormContainer>
+            <FormContainer title="Create Employee" >
+                <h2 style={{color: "#6f4685", fontWeight: "700", textAlign: "center"}}>Create Employee</h2>
                 <Input placeholder="Email" {...bindEmail} />
-                <Input placeholder="Phone Number" {...bindPhone} style={{width: "91%"}}type="number"/>
+                <Input placeholder="Phone Number" {...bindPhone} type="number"/>
                 <Input placeholder="First Name" {...bindFirstName} />
                 <Input placeholder="Last Name" {...bindLastName} />
                 <Input placeholder="Role" {...bindRole} />
                 <Input placeholder="Address" {...bindAddress} />
-                <SubmitBtn onClick={handleSubmit}>Submit</SubmitBtn>
+                <CreateButton onClick={handleSubmit}>Submit</CreateButton>
             </FormContainer>
         </Container>
     )

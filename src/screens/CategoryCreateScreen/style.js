@@ -6,7 +6,6 @@ export const Container = styled.div`
     grid-template-rows: 1fr 1fr 1fr 1fr;
     width: 100%;
     height: 100vh;
-    background: #E0E5EC;
     align-items: center;
     background-color:#E0E5EC;
 `

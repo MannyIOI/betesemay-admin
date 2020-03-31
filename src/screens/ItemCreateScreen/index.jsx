@@ -1,10 +1,12 @@
 import React, { useState, useEffect } from 'react'
 import Select from "react-select";
 import { withApollo } from 'react-apollo'
-import { Container, Input, FormContainer, SubmitBtn, NumberInput } from "./style";
+import { Container, FormContainer, NumberInput } from "./style";
+import { Input } from '../CreateEmployeeScreen/style'
 import { CREATE_ITEM } from "./queries";
 import { useInput } from "../../hooks/inputHooks";
 import { GET_ALL_CATEGORIES } from '../CategoryScreen/queries';
+import { CreateButton } from '../EmployeesScreen/style';
 
 const CreateItem = ({client, history}) => {
     const { value: categories, setValue: setCategories} = useInput([]);
@@ -53,11 +55,13 @@ const CreateItem = ({client, history}) => {
     return (
         <Container>
             <FormContainer>
+                
+                <h2 style={{color: "#6f4685", fontWeight: "700", textAlign: "center"}}>Create Employee</h2>
                 <Select options={categories} onChange={(e)=>setCategory(e.value)} defaultValue={category}/>
                 <Input placeholder="Title" { ...bindTitle } />
                 <Input placeholder="Description" { ...bindDesc } />
                 <NumberInput placeholder="Dispense Period" type="number" { ...bindDispensePeriod } />
-                <SubmitBtn onClick={createNewItem}>Create Item</SubmitBtn>
+                <CreateButton onClick={createNewItem}>Create Item</CreateButton>
             </FormContainer>
         </Container>
     )

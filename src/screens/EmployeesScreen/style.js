@@ -15,12 +15,18 @@ export const TableContainer = styled.div`
 `
 
 export const Table = styled(MDBTable)`
-
+    width: 100%;
+    text-align: center;
+    color: #34414e;
     background-color:#E0E5EC;
     box-shadow: 9px 9px 16px rgb(163,177,198,0.6), -9px -9px 16px rgba(255,255,255, 0.5);
     border-radius: 10px;
     tr:nth-child(even) {
-        background-color: #d2d2d2;
+        background-color: #778899;
+        color: white;
+        :hover {
+            background-color: #8899aa;
+        }
     }
 `
 
