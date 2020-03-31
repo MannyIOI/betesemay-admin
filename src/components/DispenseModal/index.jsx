@@ -5,6 +5,7 @@ import DatePicker from 'react-datepicker';
 import "react-datepicker/dist/react-datepicker.css";
 import { withApollo } from 'react-apollo';
 import { GET_ALL_EMPLOYEES, DISPENSE_COLLECT_ITEM, CREATE_ITEM_HISTORY } from './queries';
+import { DispenseButton } from '../../screens/DispenseCollectScreen/style';
 
 const customStyles = {
     content : {
@@ -125,7 +126,7 @@ const DispenseModal = ({ client, isOpen, closeModal, item }) => {
                                 style={{width: "100%"}}/>
 
                     <p style={{color:"red"}}>{modalError}</p>
-                    <button onClick={dispense}>Dispense</button>
+                    <DispenseButton onClick={dispense}>Dispense</DispenseButton>
             </Modal>
         </div>
     )

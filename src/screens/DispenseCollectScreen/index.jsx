@@ -2,7 +2,9 @@ import React, { useState, useEffect} from 'react'
 import { Container,
             InfoContainer,
             TableContainer,
-            ActionContainer
+            ActionContainer,
+            DispenseButton,
+            CollectButton
 
 } from "./style";
 import { 
@@ -80,12 +82,12 @@ const DispenseCollect = ({ client, history, match }) => {
             <InfoContainer>
                 <p>Item Detail</p>
                 
-                {item.state==="IN_STOCK" && <button onClick={openDispenseModal}>Dispense Item</button>}
-                {item.state==="DISPENSED" && <button onClick={openCollectModal}>Collect Item</button>}
+                {item.state==="IN_STOCK" && <DispenseButton onClick={openDispenseModal}>Dispense Item</DispenseButton>}
+                {item.state==="DISPENSED" && <CollectButton onClick={openCollectModal}>Collect Item</CollectButton>}
                 <div style={{display: "flex", flexDirection: "row"}}>
                     <div style={{marginRight: "50px"}}>
                         <p>Item Id - {item.id}</p>
-                        <p>Description - {item.descritpion}</p>
+                        <p>Description - {item.description}</p>
                     </div>
                     <div>
                         <p>State - {item.state}</p>
@@ -99,7 +101,7 @@ const DispenseCollect = ({ client, history, match }) => {
             </InfoContainer>
             <TableContainer>
                 <MDBTable bordered hover style={{width: "100%", textAlign: 'center'}}>
-                    <MDBTableHead color="blue" textWhite>
+                    <MDBTableHead style={{ background: '#8f4685', color: "white", textAlign: 'center'}} textWhite>
                         <tr>
                             <th>Full Name</th>
                             <th>Email</th>
