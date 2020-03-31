@@ -56,7 +56,7 @@ const CreateItem = ({client, history}) => {
         <Container>
             <FormContainer>
                 
-                <h2 style={{color: "#6f4685", fontWeight: "700", textAlign: "center"}}>Create Employee</h2>
+                <h2 style={{color: "#6f4685", fontWeight: "700", textAlign: "center"}}>Create Item</h2>
                 <Select options={categories} onChange={(e)=>setCategory(e.value)} defaultValue={category}/>
                 <Input placeholder="Title" { ...bindTitle } />
                 <Input placeholder="Description" { ...bindDesc } />

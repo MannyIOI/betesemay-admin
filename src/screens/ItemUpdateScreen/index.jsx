@@ -1,10 +1,12 @@
 import React, { useEffect, useState } from 'react'
 import Select from "react-select"
 import { withApollo } from 'react-apollo'
-import { Container, Input, FormContainer, SubmitBtn } from "./style";
+import { Container, FormContainer, SubmitBtn } from "./style";
+import { Input } from '../CreateEmployeeScreen/style'
 import { UPDATE_ITEM, GET_ITEM } from "./queries";
 import { useInput } from "../../hooks/inputHooks";
 import { GET_ALL_CATEGORIES } from '../CategoryScreen/queries';
+import { CreateButton } from '../EmployeesScreen/style';
 
 const UpdateItem = ({client, history, match}) => {
     const { value: item_id, bind: bindItemId } = useInput(match.params.itemId)
@@ -70,12 +72,14 @@ const UpdateItem = ({client, history, match}) => {
     return (
         <Container>
             <FormContainer>
-                Item Id <Input placeholder="Item Id" value={match.params.itemId} { ...bindItemId } disabled />
-                Category Id <Select options={categories} onChange={(e)=>setCategory(e.value)}/>
-                Title <Input placeholder="Title" {...bindTitle} />
-                Description <Input placeholder="Description" { ...bindDesc } />
+
+                <h2 style={{color: "#6f4685", fontWeight: "700", textAlign: "center"}}>Update Item</h2>
+                <Input placeholder="Item Id" value={match.params.itemId} { ...bindItemId } disabled />
+                <Select options={categories} onChange={(e)=>setCategory(e.value)}/>
+                <Input placeholder="Title" {...bindTitle} />
+                <Input placeholder="Description" { ...bindDesc } />
                 {/* Dispense Period <Input placeholder="Dispense Period" type="number" { ...bindDispensePeriod } /> */}
-                <SubmitBtn onClick={updateItem}>Update Item</SubmitBtn>
+                <CreateButton onClick={updateItem}>Update Item</CreateButton>
             </FormContainer>
         </Container>
     )

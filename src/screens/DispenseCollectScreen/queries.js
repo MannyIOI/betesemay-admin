@@ -23,6 +23,7 @@ export const GET_ITEM_HISTORY = gql`
                 to{
                     id
                     first_name
+                    last_name
                     address
                     email
                     role
