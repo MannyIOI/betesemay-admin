@@ -8,6 +8,7 @@ export const Container = styled.div`
     height: 100vh;
     background: #E0E5EC;
     align-items: center;
+    background-color:#E0E5EC;
 `
 
 export const FormContainer = styled.div`
