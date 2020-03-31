@@ -27,7 +27,8 @@ export default class NavBar extends Component {
                           display: 'flex',
                           background: '#6f4685',
                           flexDirection: 'column',
-                          justifyContent: 'center' }}>
+                          justifyContent: 'center',
+                          transition: '1s' }}>
 
                 <Button type="primary" onClick={this.toggleCollapsed} style={{ 
                     marginBottom: 100, minWidth: '40%' ,

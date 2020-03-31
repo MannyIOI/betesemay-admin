@@ -9,10 +9,11 @@ import { Container,
 } from "./style";
 import { 
     PrevButton,
-    NextButton
+    NextButton,
+    Table
 } from "../EmployeesScreen/style";
 
-import { MDBTable, MDBTableHead, MDBTableBody } from 'mdbreact';
+import { MDBTableHead, MDBTableBody } from 'mdbreact';
 import { withApollo } from "react-apollo";
 import 'mdbreact/dist/css/mdb.css';
 import 'mdbreact/dist/css/style.css';
@@ -80,12 +81,11 @@ const DispenseCollect = ({ client, history, match }) => {
     return (
         <Container>
             <InfoContainer>
-                <p>Item Detail</p>
                 
                 {item.state==="IN_STOCK" && <DispenseButton onClick={openDispenseModal}>Dispense Item</DispenseButton>}
                 {item.state==="DISPENSED" && <CollectButton onClick={openCollectModal}>Collect Item</CollectButton>}
                 <div style={{display: "flex", flexDirection: "row"}}>
-                    <div style={{marginRight: "50px"}}>
+                    <div style={{marginRight: "100px"}}>
                         <p>Item Id - {item.id}</p>
                         <p>Description - {item.description}</p>
                     </div>
@@ -100,7 +100,7 @@ const DispenseCollect = ({ client, history, match }) => {
                 <CollectModal histories={histories} isOpen={collectModalIsOpen} closeModal = {closeCollectModal} item={item}/>
             </InfoContainer>
             <TableContainer>
-                <MDBTable bordered hover style={{width: "100%", textAlign: 'center'}}>
+                <Table bordered hover style={{width: "100%", textAlign: 'center'}}>
                     <MDBTableHead style={{ background: '#8f4685', color: "white", textAlign: 'center'}} textWhite>
                         <tr>
                             <th>Full Name</th>
@@ -121,7 +121,7 @@ const DispenseCollect = ({ client, history, match }) => {
                             </tr>
                         )}
                     </MDBTableBody>
-                </MDBTable>
+                </Table>
             </TableContainer>
             <ActionContainer>
                 <NextButton onClick={onNextClicked} disabled={(page)*11 + histories.length>=historyCount}>Next</NextButton>

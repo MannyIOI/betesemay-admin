@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import Select from "react-select";
 import { withApollo } from 'react-apollo'
-import { Container, Input, FormContainer, SubmitBtn } from "./style";
+import { Container, Input, FormContainer, SubmitBtn, NumberInput } from "./style";
 import { CREATE_ITEM } from "./queries";
 import { useInput } from "../../hooks/inputHooks";
 import { GET_ALL_CATEGORIES } from '../CategoryScreen/queries';
@@ -43,6 +43,7 @@ const CreateItem = ({client, history}) => {
                     categories.push({label: category.title, value: category.id})
                 });
                 setCategories(categories)
+                setCategory(categories[0].value)
             })
         } catch (error) {
             console.log(error)
@@ -52,10 +53,10 @@ const CreateItem = ({client, history}) => {
     return (
         <Container>
             <FormContainer>
-                <Select options={categories} onChange={(e)=>setCategory(e.value)}/>
+                <Select options={categories} onChange={(e)=>setCategory(e.value)} defaultValue={category}/>
                 <Input placeholder="Title" { ...bindTitle } />
                 <Input placeholder="Description" { ...bindDesc } />
-                <Input placeholder="Dispense Period" type="number" { ...bindDispensePeriod } />
+                <NumberInput placeholder="Dispense Period" type="number" { ...bindDispensePeriod } />
                 <SubmitBtn onClick={createNewItem}>Create Item</SubmitBtn>
             </FormContainer>
         </Container>
