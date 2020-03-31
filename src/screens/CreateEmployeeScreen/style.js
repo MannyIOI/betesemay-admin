@@ -9,9 +9,11 @@ export const Container = styled.div`
 `
 
 export const Input = styled.input`
-    margin: 8px;
-    padding: 12px;
-    font-size: 18px;
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    box-sizing: border-box;
+    background: #E0E5EC;
 `
 
 export const SubmitBtn = styled.button`
