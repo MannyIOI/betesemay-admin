@@ -12,17 +12,20 @@ export const ItemActionsContainer = styled.div`
 export const Container = styled.div`
     // height: 25%;
     display: grid;
+    border-radius: 10px;
     grid-template-columns: repeat(12, 1fr);
     grid-template-rows: repeat(8, 10%);
     margin: 25px;
     cursor: pointer;
-    background: #596B8D;
+    background: #6f4685;
+    transition: 0.25s;
     &:hover ${ItemActionsContainer} { 
         display: flex;
         justify-content: center;
     }
     :hover {
-        background: #596B95;
+        background-color:#6f4685;
+        box-shadow: 9px 9px 16px #6f4685, -9px -9px 16px rgba(255,255,255, 0.5);
     }
 `
 
