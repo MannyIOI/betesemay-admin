@@ -20,6 +20,7 @@ export const FormContainer = styled.div`
     width: 40%;
     height: 20%;
     justify-self: center;
+    border-radius: 20px;
 
     background-color:#E0E5EC;
     box-shadow: 9px 9px 16px rgb(163,177,198,0.6), -9px -9px 16px rgba(255,255,255, 0.5);

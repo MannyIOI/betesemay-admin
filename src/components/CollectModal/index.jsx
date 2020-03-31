@@ -3,6 +3,7 @@ import Modal from "react-modal"
 import "react-datepicker/dist/react-datepicker.css";
 import { withApollo } from 'react-apollo';
 import { DISPENSE_COLLECT_ITEM, CREATE_ITEM_HISTORY } from '../DispenseModal/queries';
+import { useState } from 'react';
 
 const customStyles = {
     content : {
@@ -18,7 +19,7 @@ const customStyles = {
     }
   };
 
-const CollectModal = ({ client, isOpen, closeModal, item, histories }) => {
+const CollectModal = ({ client, isOpen, closeModal, item, histories, name }) => {
 
     Modal.setAppElement('body')
 
@@ -49,9 +50,8 @@ const CollectModal = ({ client, isOpen, closeModal, item, histories }) => {
             return error
         }
     }
-
     return (
-        <div>
+        <div style={{transition: "1s"}}>
             <Modal
                 isOpen={isOpen}
                 onRequestClose={closeModal}
@@ -68,7 +68,7 @@ const CollectModal = ({ client, isOpen, closeModal, item, histories }) => {
                                 selected={expectedReturnDate} 
                                 onChange={date=>setExpectedReturnDate(date)}
                                 style={{width: "100%"}}/> */}
-                    <p>Are you sure you want to collect this item from `EMPLOYEE`</p>
+                    <p>Are you sure you want to collect this item from {histories.length > 0 && histories[0].to.first_name + " " + histories[0].to.last_name}</p>
                     
                     {/* <p style={{color:"red"}}>{modalError}</p> */}
                     <button onClick={collect}>Collect</button>
