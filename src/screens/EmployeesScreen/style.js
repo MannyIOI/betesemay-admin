@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { MDBTable } from "mdbreact";
 
 export const Container = styled.div`
     display: grid;
@@ -12,9 +13,19 @@ export const TableContainer = styled.div`
     grid-column: 2/3;
     grid-row: 2/3;
 `
+
+export const Table = styled(MDBTable)`
+    tr:nth-child(even) {
+        background-color: #d2d2d2;
+    }
+`
+
 export const ActionContainer = styled.div`
     grid-column: 3/4;
     grid-row: 3/4;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 `
 
 export const NextButton = styled.button`
