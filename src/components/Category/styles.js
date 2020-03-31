@@ -6,8 +6,14 @@ export const Container = styled.div`
     grid-template-rows: repeat(6, 1fr);
     margin: 25px;
     cursor: pointer;
-    background: #596B8D;
+    background: #6f4685;
+    border-radius: 10px;
     cursor: pointer;
+    transition: 0.25s;
+    :hover {
+        background-color:#6f4685;
+        box-shadow: 9px 9px 16px #6f4685, -9px -9px 16px rgba(255,255,255, 0.5);
+    }
 `
 
 export const CategoryInfoContainer = styled.div`
