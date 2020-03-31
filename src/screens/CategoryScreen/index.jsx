@@ -1,9 +1,10 @@
 import React, { useState, useEffect } from 'react'
-import { Container, NavigationContainer} from "./style"
+import { Container, NavigationContainer } from "./style"
 import { withApollo } from 'react-apollo'
 
 import Category from "../../components/Category"
 import { GET_ALL_CATEGORIES } from "./queries";
+import { PrevButton, NextButton, CreateButton } from '../EmployeesScreen/style';
 
 const CategoriesPage = (props) => {
     const [categories, setCategories] = useState([]);
@@ -41,9 +42,9 @@ const CategoriesPage = (props) => {
             
             <NavigationContainer> 
                 
-                <button onClick={onPrevClicked} disabled={page<=0}>Previous</button>
-                <button onClick={onNextClicked} disabled={(page)*11 + categories.length>=itemCount}>Next</button>
-                <button onClick={()=>props.history.push({pathname: "/categories/create/"})}>Create</button>
+                <PrevButton onClick={onPrevClicked} disabled={page<=0}>Previous</PrevButton>
+                <CreateButton onClick={()=>props.history.push({pathname: "/categories/create/"})}>Create</CreateButton>
+                <NextButton onClick={onNextClicked} disabled={(page)*11 + categories.length>=itemCount}>Next</NextButton>
             </NavigationContainer>
         </Container>
     )
