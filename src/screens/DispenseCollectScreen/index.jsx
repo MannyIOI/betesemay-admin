@@ -5,6 +5,11 @@ import { Container,
             ActionContainer
 
 } from "./style";
+import { 
+    PrevButton,
+    NextButton
+} from "../EmployeesScreen/style";
+
 import { MDBTable, MDBTableHead, MDBTableBody } from 'mdbreact';
 import { withApollo } from "react-apollo";
 import 'mdbreact/dist/css/mdb.css';
@@ -117,8 +122,9 @@ const DispenseCollect = ({ client, history, match }) => {
                 </MDBTable>
             </TableContainer>
             <ActionContainer>
-                <button onClick={onNextClicked} disabled={(page)*11 + histories.length>=historyCount}>Next</button>
-                <button onClick={onPrevClicked} disabled={page<=0}>Previous</button>
+                <NextButton onClick={onNextClicked} disabled={(page)*11 + histories.length>=historyCount}>Next</NextButton>
+                <PrevButton onClick={onPrevClicked} disabled={page<=0}>Previous</PrevButton>   
+
             </ActionContainer>
         </Container>
     )

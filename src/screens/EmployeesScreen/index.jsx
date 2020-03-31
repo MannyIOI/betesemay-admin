@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { Container, TableContainer, ActionContainer } from "./style";
+import { Container, TableContainer, ActionContainer, PrevButton, NextButton, CreateButton } from "./style";
 import { MDBTable, MDBTableBody, MDBTableHead } from "mdbreact";
 // import 'mdbreact/dist/css/mdb.css';
 // import 'mdbreact/dist/css/style.css';
@@ -38,7 +38,7 @@ const Employee = ({client, history, match}) => {
         <Container>
             <TableContainer>
                 <MDBTable bordered hover style={{width: "100%", textAlign: 'center'}}>
-                    <MDBTableHead color="blue" textWhite>
+                    <MDBTableHead style={{background: "#8f4685", color: "white"}} textWhite>
                         <tr>
                             <th>Full Name</th>
                             <th>Email</th>
@@ -59,8 +59,12 @@ const Employee = ({client, history, match}) => {
                         <tr>
                             <td></td><td></td><td></td>
                             <td>
-                                <button onClick={onPrevClicked} disabled={page<=0}>Previous</button>
-                                <button onClick={onNextClicked} disabled={(page)*11 + employees.length>=employeeCount}>Next</button>
+
+                                {page>0 && <PrevButton onClick={onPrevClicked} disabled={page<=0}>Previous</PrevButton>}
+                                { (page)*11 + employees.length<employeeCount &&
+                                    <NextButton onClick={onNextClicked} disabled={(page)*11 + employees.length>=employeeCount}>
+                                        Next
+                                    </NextButton>}
                                 
                             </td>
                         </tr>
@@ -68,7 +72,7 @@ const Employee = ({client, history, match}) => {
                 </MDBTable>
             </TableContainer>
             <ActionContainer>
-                <button onClick={()=>history.push({pathname: "/employees/create/"})}>Create Employee</button>
+                <CreateButton onClick={()=>history.push({pathname: "/employees/create/"})}>Create Employee</CreateButton>
             </ActionContainer>
         </Container>
     )

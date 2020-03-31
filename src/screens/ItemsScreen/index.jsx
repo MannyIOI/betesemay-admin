@@ -4,6 +4,7 @@ import { withApollo } from 'react-apollo'
 
 import Item from "../../components/Item"
 import { GET_ALL_ITEMS } from "./queries";
+import { PrevButton, NextButton, CreateButton } from '../EmployeesScreen/style';
 
 const ItemsPage = (props) => {
     const [items, setItems] = useState([]);
@@ -39,9 +40,11 @@ const ItemsPage = (props) => {
             
             <NavigationContainer> 
                 
-                <button onClick={onPrevClicked} disabled={page<=0}>Previous</button>
-                <button onClick={onNextClicked} disabled={(page)*11 + items.length>=itemCount}>Next</button>
-                <button onClick={()=>props.history.push({pathname: "/items/create/"})}>Create</button>
+                
+                <PrevButton onClick={onPrevClicked} disabled={page<=0}>Previous</PrevButton>
+                <CreateButton onClick={()=>props.history.push({pathname: "/items/create/"})}>Create</CreateButton>
+                <NextButton onClick={onNextClicked} disabled={(page)*11 + items.length>=itemCount}>Next</NextButton>
+
             </NavigationContainer>
         </Container>
     )
