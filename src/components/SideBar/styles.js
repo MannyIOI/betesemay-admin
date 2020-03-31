@@ -8,7 +8,7 @@ export const NavLinks = styled.div`
     .nav-item {
         height: 5%;
         opacity: 0.6;
-        color: white;
+        color: #6f4685;
         text-decoration: none; 
         width: 100%;
         text-align: center;

@@ -13,6 +13,7 @@ export const GET_ITEMS_BY_CATEGORY = gql`
                 }
                 state
             }
+            total
         }
     }
 `
