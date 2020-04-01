@@ -34,12 +34,11 @@ export const DispenseButton = styled.div`
     color: white;
     border: 0px;
     border-radius: 5px;
-    margin: 1px;
-    padding: 10px;
+    margin: 5px 0px 25px 0px;
     font-size: 15px;
     width: 20%;
     align-self: center;
-    padding: 20px;
+    padding: 10px;
     text-align: center;
     transition: 0.5s;
     :disabled {
@@ -59,12 +58,11 @@ export const CollectButton = styled.div`
     color: white;
     border: 0px;
     border-radius: 5px;
-    margin: 1px;
-    padding: 10px;
+    margin: 5px 0px 25px 0px;
     font-size: 15px;
     width: 20%;
     align-self: center;
-    padding: 20px;
+    padding: 10px;
     text-align: center;
     transition: 0.5s;
     :disabled {

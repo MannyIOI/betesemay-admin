@@ -84,6 +84,7 @@ const DispenseCollect = ({ client, history, match }) => {
                 
                 {item.state==="IN_STOCK" && <DispenseButton onClick={openDispenseModal}>Dispense Item</DispenseButton>}
                 {item.state==="DISPENSED" && <CollectButton onClick={openCollectModal}>Collect Item</CollectButton>}
+                
                 <div style={{display: "flex", flexDirection: "row"}}>
                     <div style={{marginRight: "100px"}}>
                         <p>Item Id - {item.id}</p>

@@ -11,7 +11,7 @@ import { CreateButton } from '../EmployeesScreen/style';
 const CreateItem = ({client, history}) => {
     const { value: categories, setValue: setCategories} = useInput([]);
     const [ category, setCategory ] = useState("")
-    const { value: title, bind: bindTitle } = useInput("item-")
+    const { value: title, bind: bindTitle } = useInput("")
     const { value: description, bind: bindDesc } = useInput("description")
     const { value: dispense_period, bind: bindDispensePeriod } = useInput(2)
 
