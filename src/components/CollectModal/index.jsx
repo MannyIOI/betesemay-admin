@@ -3,7 +3,6 @@ import Modal from "react-modal"
 import "react-datepicker/dist/react-datepicker.css";
 import { withApollo } from 'react-apollo';
 import { DISPENSE_COLLECT_ITEM, CREATE_ITEM_HISTORY } from '../DispenseModal/queries';
-import { useState } from 'react';
 
 const customStyles = {
     content : {

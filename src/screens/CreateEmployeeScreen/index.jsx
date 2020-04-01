@@ -1,6 +1,6 @@
 import React from 'react'
 import { withApollo } from 'react-apollo'
-import { Container, Input, SubmitBtn, FormContainer } from "./style";
+import { Container, Input, FormContainer } from "./style";
 import { useInput } from "../../hooks/inputHooks";
 import { CREATE_EMPLOYEE } from "./queries";
 import { CreateButton } from '../EmployeesScreen/style';

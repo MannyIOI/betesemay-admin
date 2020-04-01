@@ -1,9 +1,10 @@
 import React from 'react'
 import { withApollo } from 'react-apollo'
-import { Container, Input, FormContainer } from "./style";
+import { Container, FormContainer } from "./style";
 import { useInput } from "../../hooks/inputHooks";
 import { CREATE_CATEGORY } from './queries';
 import { CreateButton } from '../EmployeesScreen/style';
+import { Input } from '../CreateEmployeeScreen/style';
 
 const CreateCategory = ({ client, history }) => {
     // const { value: categories, setValue: setCategories} = useInput([]);
@@ -47,6 +48,8 @@ const CreateCategory = ({ client, history }) => {
     return (
         <Container>
             <FormContainer>
+                
+                <h2 style={{color: "#6f4685", fontWeight: "700", textAlign: "center"}}>Create Category</h2>
                 <Input placeholder="Category Category" { ...bindCategory }/>
                 <CreateButton onClick={createCategory}>Create Category</CreateButton>
             </FormContainer>

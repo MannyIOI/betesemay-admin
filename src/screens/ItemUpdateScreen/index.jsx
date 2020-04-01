@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import Select from "react-select"
 import { withApollo } from 'react-apollo'
-import { Container, FormContainer, SubmitBtn } from "./style";
+import { Container, FormContainer } from "./style";
 import { Input } from '../CreateEmployeeScreen/style'
 import { UPDATE_ITEM, GET_ITEM } from "./queries";
 import { useInput } from "../../hooks/inputHooks";
