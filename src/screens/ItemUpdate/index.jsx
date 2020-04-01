@@ -2,11 +2,11 @@ import React, { useEffect, useState } from 'react'
 import Select from "react-select"
 import { withApollo } from 'react-apollo'
 import { Container, FormContainer } from "./style";
-import { Input } from '../CreateEmployeeScreen/style'
+import { Input } from '../CreateEmployee/style'
 import { UPDATE_ITEM, GET_ITEM } from "./queries";
 import { useInput } from "../../hooks/inputHooks";
-import { GET_ALL_CATEGORIES } from '../CategoryScreen/queries';
-import { CreateButton } from '../EmployeesScreen/style';
+import { GET_ALL_CATEGORIES } from '../Categories/queries';
+import { CreateButton } from '../Employees/style';
 import { BeatLoader } from 'react-spinners';
 
 const UpdateItem = ({client, history, match}) => {

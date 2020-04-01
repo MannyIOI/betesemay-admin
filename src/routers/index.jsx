@@ -2,20 +2,20 @@ import React from "react"
 import SideBar from "../components/SideBar"
 import { BrowserRouter as Router, Route, Redirect, Switch } from "react-router-dom"
 
-import EmployeeContainer from "../screens/EmployeesScreen";
+import EmployeeContainer from "../screens/Employees";
 
-import ItemsContainer from "../screens/ItemsScreen";
-import CreateItem from "../screens/ItemCreateScreen";
-import UpdateItem from "../screens/ItemUpdateScreen";
+import ItemsContainer from "../screens/Items";
+import CreateItem from "../screens/ItemCreate";
+import UpdateItem from "../screens/ItemUpdate";
 
-import ItemsByCategory from "../screens/ItemsByCategoryScreen";
+import ItemsByCategory from "../screens/ItemsByCategory";
 
-import CreateEmployee from "../screens/CreateEmployeeScreen";
+import CreateEmployee from "../screens/CreateEmployee";
 
-import CategoryContainer from "../screens/CategoryScreen";
-import CreateCategory from "../screens/CategoryCreateScreen"
+import CategoryContainer from "../screens/Categories";
+import CreateCategory from "../screens/CategoryCreate";
 
-import CollectDispense from "../screens/DispenseCollectScreen";
+import CollectDispense from "../screens/DispenseCollect";
 import {
     OrderedListOutlined,
     GroupOutlined,

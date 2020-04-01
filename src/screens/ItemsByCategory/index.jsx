@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import { Container, NavigationContainer} from "./style"
-import { PrevButton, NextButton, CreateButton } from '../EmployeesScreen/style'
+import { PrevButton, NextButton, CreateButton } from '../Employees/style'
 import { withApollo } from 'react-apollo'
 
 import Item from "../../components/Item"

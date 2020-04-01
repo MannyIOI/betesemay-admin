@@ -3,8 +3,8 @@ import { withApollo } from 'react-apollo'
 import { Container, FormContainer } from "./style";
 import { useInput } from "../../hooks/inputHooks";
 import { CREATE_CATEGORY } from './queries';
-import { CreateButton } from '../EmployeesScreen/style';
-import { Input } from '../CreateEmployeeScreen/style';
+import { CreateButton } from '../Employees/style';
+import { Input } from '../CreateEmployee/style';
 import { useState } from 'react';
 import { BeatLoader } from 'react-spinners';
 

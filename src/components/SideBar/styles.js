@@ -1,7 +1,8 @@
 import styled from "styled-components";
 
 export const Container = styled.div`
-    width: max-content;
+    width: 20%;
+    height: 100vh;
 `
 
 export const NavLinks = styled.div`

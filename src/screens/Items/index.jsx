@@ -4,7 +4,7 @@ import { withApollo } from 'react-apollo'
 
 import Item from "../../components/Item"
 import { GET_ALL_ITEMS } from "./queries";
-import { PrevButton, NextButton, CreateButton } from '../EmployeesScreen/style';
+import { PrevButton, NextButton, CreateButton } from '../Employees/style';
 import Loading from '../../components/Loading';
 const ItemsPage = (props) => {
     const [items, setItems] = useState([]);

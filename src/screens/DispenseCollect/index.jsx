@@ -11,7 +11,7 @@ import {
     PrevButton,
     NextButton,
     Table
-} from "../EmployeesScreen/style";
+} from "../Employees/style";
 
 import { MDBTableHead, MDBTableBody } from 'mdbreact';
 import { withApollo } from "react-apollo";

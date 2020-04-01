@@ -3,7 +3,7 @@ import { withApollo } from 'react-apollo'
 import { Container, Input, FormContainer } from "./style";
 import { useInput } from "../../hooks/inputHooks";
 import { CREATE_EMPLOYEE } from "./queries";
-import { CreateButton } from '../EmployeesScreen/style';
+import { CreateButton } from '../Employees/style';
 import { BeatLoader } from 'react-spinners';
 
 const CreateEmployee = ({client, history}) => {
