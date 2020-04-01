@@ -42,7 +42,7 @@ const Employee = ({client, history, match}) => {
     return (
         <Container>
             <TableContainer>
-                <Table  bordered hover>
+                <Table hover>
                     <MDBTableHead style={{background: "#8f4685", color: "white"}} textWhite>
                         <tr>
                             <th>Full Name</th>

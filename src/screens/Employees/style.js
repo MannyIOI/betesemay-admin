@@ -21,6 +21,7 @@ export const Table = styled(MDBTable)`
     background-color:#E0E5EC;
     box-shadow: 9px 9px 16px rgb(163,177,198,0.6), -9px -9px 16px rgba(255,255,255, 0.5);
     border-radius: 10px;
+    border-collapse: collapse;
     tr:nth-child(even) {
         background-color: #778899;
         color: white;

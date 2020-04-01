@@ -21,7 +21,7 @@ import {
     GroupOutlined,
     UserOutlined,
     QuestionOutlined,
-    DashboardTwoTone
+    AppstoreOutlined
   } from '@ant-design/icons';
 
 
@@ -33,7 +33,7 @@ const routes = [
         key: "5",
         name: "Dashboard",
         to: "/dashboard",
-        icon: <DashboardTwoTone />
+        icon: <AppstoreOutlined />
     },
 
     {

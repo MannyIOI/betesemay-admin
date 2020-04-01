@@ -1,7 +1,5 @@
 import React, { Component } from "react"
 import { NavLink } from "react-router-dom"
-import { Menu, Button } from 'antd';
-import { FaAngleDoubleRight, FaAngleDoubleLeft } from "react-icons/fa"
 import { Container, NavContainer, NavLinks } from "./styles";
 export default class NavBar extends Component {
     state = {
@@ -18,7 +16,7 @@ export default class NavBar extends Component {
 
           <Container>
             <NavContainer>
-              <h1 style={{color: "white", fontWeight: "500", textAlign: "center" ,fontFamily: "Lucida Console"}}>Betesemay</h1>
+              <h2 style={{color: "white", fontWeight: "600", textAlign: "center" ,fontFamily: "Lucida Console"}}>Betesemay</h2>
               <hr color="white" style={{width: "100%", marginBottom: "50px"}}/>
               <NavLinks>
                 {this.props.routes.map(item => (
