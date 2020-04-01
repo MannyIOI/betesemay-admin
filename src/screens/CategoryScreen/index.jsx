@@ -5,11 +5,13 @@ import { withApollo } from 'react-apollo'
 import Category from "../../components/Category"
 import { GET_ALL_CATEGORIES } from "./queries";
 import { PrevButton, NextButton, CreateButton } from '../EmployeesScreen/style';
+import Loading from '../../components/Loading';
 
 const CategoriesPage = (props) => {
     const [categories, setCategories] = useState([]);
     const [page, setPage] = useState(0)
     const [itemCount, setCategoryCount] = useState(0);
+    const [isLoading, setIsLoading] = useState(true)
 
     const setNewCategories = async () =>{ 
         try {
@@ -17,6 +19,7 @@ const CategoriesPage = (props) => {
                 query: GET_ALL_CATEGORIES,
                 variables: { page }
             })
+            setIsLoading(false)
             setCategories(data.getAllCategories.results)
             setCategoryCount(data.getAllCategories.total)
         } catch (error) {
@@ -27,9 +30,11 @@ const CategoriesPage = (props) => {
     useEffect(() =>{ setNewCategories() });
 
     const onNextClicked = async () => {
+        setIsLoading(true)
         setPage(page+1)
     }
     const onPrevClicked = async () => {
+        setIsLoading(true)
         setPage(page-1)
     }
     
@@ -45,6 +50,7 @@ const CategoriesPage = (props) => {
                 <PrevButton onClick={onPrevClicked} disabled={page<=0}>Previous</PrevButton>
                 <CreateButton onClick={()=>props.history.push({pathname: "/categories/create/"})}>Create</CreateButton>
                 <NextButton onClick={onNextClicked} disabled={(page)*11 + categories.length>=itemCount}>Next</NextButton>
+                <Loading isLoading={isLoading}/>
             </NavigationContainer>
         </Container>
     )
