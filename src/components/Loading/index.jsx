@@ -8,7 +8,7 @@ const override = css`
     border-color: #0073cf;
     position: absolute;
     left: 55%;
-    top: 45%
+    top: 45%;
 `;
 
 const Loading = (props) => {

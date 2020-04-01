@@ -7,6 +7,7 @@ import { CREATE_ITEM } from "./queries";
 import { useInput } from "../../hooks/inputHooks";
 import { GET_ALL_CATEGORIES } from '../CategoryScreen/queries';
 import { CreateButton } from '../EmployeesScreen/style';
+import { BeatLoader } from 'react-spinners';
 
 const CreateItem = ({client, history}) => {
     const { value: categories, setValue: setCategories} = useInput([]);
@@ -14,9 +15,11 @@ const CreateItem = ({client, history}) => {
     const { value: title, bind: bindTitle } = useInput("")
     const { value: description, bind: bindDesc } = useInput("description")
     const { value: dispense_period, bind: bindDispensePeriod } = useInput(2)
+    const [isLoading, setIsLoading] = useState(true)
 
     const createNewItem = async () => {
         try {
+            setIsLoading(true)
             await client.mutate({
                 mutation: CREATE_ITEM,
                 variables: { category: category,
@@ -34,7 +37,6 @@ const CreateItem = ({client, history}) => {
     
     // let name = 0;
     useEffect(() => { 
-        console.log("jere")
         try {
             client.query({
                 query: GET_ALL_CATEGORIES,
@@ -46,6 +48,7 @@ const CreateItem = ({client, history}) => {
                 });
                 setCategories(categories)
                 setCategory(categories[0].value)
+                setIsLoading(false)
             })
         } catch (error) {
             console.log(error)
@@ -61,7 +64,14 @@ const CreateItem = ({client, history}) => {
                 <Input placeholder="Title" { ...bindTitle } />
                 <Input placeholder="Description" { ...bindDesc } />
                 <NumberInput placeholder="Dispense Period" type="number" { ...bindDispensePeriod } />
-                <CreateButton onClick={createNewItem}>Create Item</CreateButton>
+                <CreateButton onClick={createNewItem} disabled ={isLoading} style={isLoading?
+                                                                {border: '3px solid #6f4685', 
+                                                                    background: "#E0E5EC", 
+                                                                    width: '40%'}:
+                                                                {border: '0px'}}>
+
+                    {!isLoading ? 'Create Category' : <BeatLoader color={"#0073cf"} loading={isLoading}/>}
+                </CreateButton>
             </FormContainer>
         </Container>
     )

@@ -5,38 +5,15 @@ import { useInput } from "../../hooks/inputHooks";
 import { CREATE_CATEGORY } from './queries';
 import { CreateButton } from '../EmployeesScreen/style';
 import { Input } from '../CreateEmployeeScreen/style';
+import { useState } from 'react';
+import { BeatLoader } from 'react-spinners';
 
 const CreateCategory = ({ client, history }) => {
-    // const { value: categories, setValue: setCategories} = useInput([]);
-    // const [ category, setCategory ] = useState("")
     const { value: category, bind: bindCategory } = useInput("")
-
-    // useEffect(() => { 
-    //     try {
-    //         client.query({
-    //             query: GET_ALL_CATEGORIES,
-    //             variables: { page: 0 }
-    //         }).then(res => {
-    //             let categories = []
-    //             res.data.getAllCategories.results.forEach(category => {
-    //                 categories.push({label: category.title, value: category.id})
-    //             });
-    //             setCategories(categories)
-    //         })
-    //     } catch (error) {
-    //         console.log(error)
-    //     }
-    //  }, [client, setCategories]);
-    
-    // useEffect(() => {
-    //     console.log(category)
-    //     // client.mutate({
-    //     //     mutation: CREATE_CATEGORY,
-    //     //     variables: { title: category }
-    //     // })
-    // }, [client, category])
+    const [isLoading, setIsLoading] = useState(false)
 
     const createCategory = async () => {
+        setIsLoading(true)
         await client.mutate({
             mutation: CREATE_CATEGORY,
             variables: { title: category }
@@ -51,7 +28,14 @@ const CreateCategory = ({ client, history }) => {
                 
                 <h2 style={{color: "#6f4685", fontWeight: "700", textAlign: "center"}}>Create Category</h2>
                 <Input placeholder="Category Category" { ...bindCategory }/>
-                <CreateButton onClick={createCategory}>Create Category</CreateButton>
+                <CreateButton onClick={createCategory} disabled ={isLoading} style={isLoading?
+                                                                {border: '3px solid #6f4685', 
+                                                                    background: "#E0E5EC", 
+                                                                    width: '40%'}:
+                                                                {border: '0px'}}>
+
+                    {!isLoading ? 'Create Category' : <BeatLoader color={"#0073cf"} loading={isLoading}/>}
+                </CreateButton>
             </FormContainer>
         </Container>
     )

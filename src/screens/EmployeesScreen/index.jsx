@@ -5,11 +5,13 @@ import { MDBTableBody, MDBTableHead } from "mdbreact";
 // import 'mdbreact/dist/css/style.css';
 import { GET_ALL_EMPLOYEES } from './queries';
 import { withApollo } from 'react-apollo';
+import Loading from '../../components/Loading';
 
 const Employee = ({client, history, match}) => {
     const [employees, setEmployees] = useState([])
     const [employeeCount, setEmployeeCount] = useState(0)
     const [page, setPage] = useState(0)
+    const [isLoading, setIsLoading] = useState(true)
 
     useEffect(() => {
         try {
@@ -17,6 +19,7 @@ const Employee = ({client, history, match}) => {
                 query: GET_ALL_EMPLOYEES,
                 variables: { page }
             }).then(res=>{
+                setIsLoading(false)
                 setEmployees(res.data.getAllEmployees.results)
                 setEmployeeCount(res.data.getAllEmployees.total)
             });
@@ -46,32 +49,35 @@ const Employee = ({client, history, match}) => {
                             <th>Role</th>
                         </tr>
                     </MDBTableHead>
-                    <MDBTableBody>
-                        {employees.map(employee => (
-                            <tr key={employee.id}>
-                                <td>{employee.first_name}</td>
-                                <td>{employee.email}</td>
-                                <td>{employee.address}</td>
-                                <td>{employee.role}</td>
-                            </tr>
-                        ))}
+                    {!isLoading &&
+                        <MDBTableBody>
+                            {employees.map(employee => (
+                                <tr key={employee.id}>
+                                    <td>{employee.first_name}</td>
+                                    <td>{employee.email}</td>
+                                    <td>{employee.address}</td>
+                                    <td>{employee.role}</td>
+                                </tr>
+                            ))}
 
-                        { (page>0 || (page)*11 + employees.length<employeeCount) &&
-                            <tr>
-                                <td></td><td></td><td></td>
-                                <td>
+                            { (page>0 || (page)*11 + employees.length<employeeCount) &&
+                                <tr>
+                                    <td></td><td></td><td></td>
+                                    <td>
 
-                                    <PrevButton onClick={onPrevClicked} disabled={page<=0}>Previous</PrevButton>
-                                    <NextButton onClick={onNextClicked} disabled={(page)*11 + employees.length>=employeeCount}>
-                                        Next
-                                    </NextButton>
+                                        <PrevButton onClick={onPrevClicked} disabled={page<=0}>Previous</PrevButton>
+                                        <NextButton onClick={onNextClicked} disabled={(page)*11 + employees.length>=employeeCount}>
+                                            Next
+                                        </NextButton>
+                                        
+                                    </td>
                                     
-                                </td>
-                                
-                            </tr>
-                        }
-                    </MDBTableBody>
+                                </tr>
+                            }
+                        </MDBTableBody>
+                    }
                 </Table>
+                <Loading isLoading={isLoading}/>
             </TableContainer>
             <ActionContainer>
                 <CreateButton onClick={()=>history.push({pathname: "/employees/create/"})}>Create Employee</CreateButton>

@@ -2,13 +2,12 @@ import styled from "styled-components"
 
 export const Container = styled.div`
     display: grid;
+    border-radius: 10px;
     grid-template-columns: repeat(12, 1fr);
-    grid-template-rows: repeat(6, 1fr);
+    grid-template-rows: repeat(8, 10%);
     margin: 25px;
     cursor: pointer;
     background: #6f4685;
-    border-radius: 10px;
-    cursor: pointer;
     transition: 0.25s;
     :hover {
         background-color:#6f4685;

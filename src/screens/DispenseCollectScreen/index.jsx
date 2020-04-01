@@ -20,6 +20,7 @@ import 'mdbreact/dist/css/style.css';
 import DispenseModal from '../../components/DispenseModal'
 import { GET_ITEM_DETAIL, GET_ITEM_HISTORY } from './queries';
 import CollectModal from '../../components/CollectModal';
+import Loading from '../../components/Loading';
 
 
 
@@ -31,6 +32,7 @@ const DispenseCollect = ({ client, history, match }) => {
     const [historyCount, setHistoryCount] = useState(0)
     const [item, setItem] = useState({})
     const [page, setPage] = useState(0)
+    const [isLoading, setIsLoading] = useState(true)
     
     function openDispenseModal() {
         setDispenseModalIsOpen(true);
@@ -53,6 +55,7 @@ const DispenseCollect = ({ client, history, match }) => {
                 query: GET_ITEM_DETAIL,
                 variables: { id: match.params.itemId }
             }).then(res=>{
+                setIsLoading(false)
                 setItem(res.data.getItem)
                 if(item.id != null){
                     client.query({
@@ -122,6 +125,7 @@ const DispenseCollect = ({ client, history, match }) => {
                             </tr>
                         )}
                     </MDBTableBody>
+                    <Loading isLoading={isLoading}/>
                 </Table>
             </TableContainer>
             <ActionContainer>

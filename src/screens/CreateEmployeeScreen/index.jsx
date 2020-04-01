@@ -1,9 +1,10 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { withApollo } from 'react-apollo'
 import { Container, Input, FormContainer } from "./style";
 import { useInput } from "../../hooks/inputHooks";
 import { CREATE_EMPLOYEE } from "./queries";
 import { CreateButton } from '../EmployeesScreen/style';
+import { BeatLoader } from 'react-spinners';
 
 const CreateEmployee = ({client, history}) => {
     const { value: first_name, bind: bindFirstName } = useInput("")
@@ -12,10 +13,12 @@ const CreateEmployee = ({client, history}) => {
     const { value: phone_number, bind: bindPhone } = useInput("")
     const { value: role, bind: bindRole } = useInput("")
     const { value: address, bind: bindAddress } = useInput("") 
+    const [isLoading, setIsLoading] = useState(false)
 
     const handleSubmit = async () => {
         try {
-            const {data} = await client.mutate({
+            setIsLoading(true)
+            await client.mutate({
                 mutation: CREATE_EMPLOYEE,
                 variables: { 
                     first_name, 
@@ -26,8 +29,6 @@ const CreateEmployee = ({client, history}) => {
                     address
                  }
             });
-            console.log(data)
-            console.log(history)
             history.push({pathname: "/employees/"})
             
         } catch (error) {
@@ -45,7 +46,14 @@ const CreateEmployee = ({client, history}) => {
                 <Input placeholder="Last Name" {...bindLastName} />
                 <Input placeholder="Role" {...bindRole} />
                 <Input placeholder="Address" {...bindAddress} />
-                <CreateButton onClick={handleSubmit}>Submit</CreateButton>
+                <CreateButton onClick={handleSubmit} disabled ={isLoading} style={isLoading?
+                                                                {border: '3px solid #6f4685', 
+                                                                    background: "#E0E5EC", 
+                                                                    width: '40%'}:
+                                                                {border: '0px'}}>
+
+                    {!isLoading ? 'Create Category' : <BeatLoader color={"#0073cf"} loading={isLoading}/>}
+                </CreateButton>
             </FormContainer>
         </Container>
     )
