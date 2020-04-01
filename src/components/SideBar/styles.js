@@ -27,7 +27,7 @@ export const NavLinks = styled.div`
         width: 100%;
         // text-align: center;
         padding: 12px;
-        padding-left: 25px;
+        padding-left: 20px;
         margin: 10px 10px 20px 10px;
         border-radius: 10px;
     }

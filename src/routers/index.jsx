@@ -19,7 +19,9 @@ import CollectDispense from "../screens/DispenseCollect";
 import {
     OrderedListOutlined,
     GroupOutlined,
-    UserOutlined
+    UserOutlined,
+    QuestionOutlined,
+    DashboardTwoTone
   } from '@ant-design/icons';
 
 
@@ -27,6 +29,13 @@ import { Container } from "./styles"
 require('dotenv').config()
 console.log(process.env.NODE_ENV)
 const routes = [
+    {
+        key: "5",
+        name: "Dashboard",
+        to: "/dashboard",
+        icon: <DashboardTwoTone />
+    },
+
     {
         key: "2",
         name: "Categories",
@@ -44,6 +53,12 @@ const routes = [
         name: "Employees",
         to: "/employees",
         icon: <UserOutlined />
+    },
+    {
+        key: "4",
+        name: "Help",
+        to: "/help",
+        icon: <QuestionOutlined />
     }
 ]
 

@@ -22,6 +22,8 @@ const Employee = ({client, history, match}) => {
                 setIsLoading(false)
                 setEmployees(res.data.getAllEmployees.results)
                 setEmployeeCount(res.data.getAllEmployees.total)
+            }).catch(error => {
+                console.log(error)
             });
             
         } catch (error) {

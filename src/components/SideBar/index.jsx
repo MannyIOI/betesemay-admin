@@ -2,7 +2,7 @@ import React, { Component } from "react"
 import { NavLink } from "react-router-dom"
 import { Menu, Button } from 'antd';
 import { FaAngleDoubleRight, FaAngleDoubleLeft } from "react-icons/fa"
-import { Container } from "./styles";
+import { Container, NavContainer, NavLinks } from "./styles";
 export default class NavBar extends Component {
     state = {
         collapsed: false,
@@ -17,7 +17,22 @@ export default class NavBar extends Component {
         return (
 
           <Container>
-            Sidebar
+            <NavContainer>
+              <h1 style={{color: "white", fontWeight: "500", textAlign: "center" ,fontFamily: "Lucida Console"}}>Betesemay</h1>
+              <hr color="white" style={{width: "100%", marginBottom: "50px"}}/>
+              <NavLinks>
+                {this.props.routes.map(item => (
+                  <NavLink
+                  key={item.to}
+                  className={`nav-item`}
+                  activeClassName = "active-nav-item"
+                  to={item.to}>
+                    {item.icon}
+                    <span style={{marginLeft: "30px"}}>{item.name}</span>
+                  </NavLink>
+                ))}
+              </NavLinks>
+            </NavContainer>
           </Container>
 
           // <Menu
@@ -46,14 +61,7 @@ export default class NavBar extends Component {
 
           //       {this.props.routes.map(item => (    
           //         <Menu.Item key={item.key}>
-          //           <NavLink
-          //             key={item.to}
-          //             className={`nav-item`}
-          //             activeClassName = "active-nav-item"
-          //             to={item.to}>
-          //               {item.icon}
-          //             <span>{item.name}</span>
-          //           </NavLink>
+                    
           //         </Menu.Item>
           //       ))} 
           //   </Menu>
