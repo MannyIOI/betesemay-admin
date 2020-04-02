@@ -31,7 +31,17 @@ export const CREATE_ITEM_HISTORY = gql`
         createHistory(data:{ type: $type
                                 item: $item,
                                 to: $to }){
+            id
+            to{
+                id
+                first_name
+                last_name
+                address
+                email
+                role
+            }
             type
+            created_at
         }
     }
 `
