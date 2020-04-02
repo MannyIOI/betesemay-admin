@@ -30,15 +30,6 @@ export const Input = styled.input`
     background: #E0E5EC;
 `
 
-export const NumberInput = styled.input`
-    border: 1px solid #B3CDD1;
-    width: 100%;
-    height: 50px;
-    padding: 10px 20px;
-    margin: 10px 0px;
-    border-radius: 3px;
-`
-
 export const SubmitBtn = styled.button`
 
 `

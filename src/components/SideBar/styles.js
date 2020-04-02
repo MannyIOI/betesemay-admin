@@ -1,12 +1,8 @@
 import styled from "styled-components";
 
 export const Container = styled.div`
-    width: 15%;
+    width: 14%;
     height: 100vh;
-    background: ${props => props.theme.backgroundColor};
-    // border-radius: 40px;
-    // // margin: 10px;
-    // padding: 40px;
 `
 
 export const NavContainer = styled.div`
@@ -43,12 +39,10 @@ export const NavLinks = styled.div`
         opacity: 1;
     }
 
-    // background: #435A6F;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    // height: 95vh;
 `
 
 export const CollapseButton = styled.button`

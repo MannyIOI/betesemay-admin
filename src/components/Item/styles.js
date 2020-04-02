@@ -17,15 +17,15 @@ export const Container = styled.div`
     grid-template-rows: repeat(8, 10%);
     margin: 25px;
     cursor: pointer;
-    background: #6f4685;
+    ${props => props.theme.neumorphic}
+    // background: #6f4685;
     transition: 0.25s;
     &:hover ${ItemActionsContainer} { 
         display: flex;
         justify-content: center;
     }
     :hover {
-        background-color:#6f4685;
-        box-shadow: 9px 9px 16px #6f4685, -9px -9px 16px rgba(255,255,255, 0.5);
+        ${props => props.theme.neumorphicHover}
     }
 `
 
@@ -36,7 +36,6 @@ export const ItemTitleContainer = styled.div`
     text-align: center;
     align-items: center;
     justify-content: center;
-    color: white;
 `
 
 export const ItemDetailContainer = styled.div`
@@ -75,13 +74,13 @@ export const DeleteButton = styled.button`
 `
 
 export const Title = styled.h2`
-    color: white;
+    color: ${props=>props.theme.themeColor1};
     font-weight: 600;
     font-size: 25px;
 `
 
 export const Text = styled.p`
-    color: white;
+    color: ${props=>props.theme.themeColor4};
     font-weight: 100;
     font-size: 16px;
 `
