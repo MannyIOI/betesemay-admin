@@ -25,7 +25,7 @@ import Loading from '../../components/Loading';
 
 
 
-const DispenseCollect = ({ client, history, match }) => {
+const DispenseCollect = ({ client, match }) => {
     const [dispenseModalIsOpen,setDispenseModalIsOpen] = useState(false);
     const [collectModalIsOpen, setCollectModalIsOpen] = useState(false);
     const [histories, setHistories] = useState([])
@@ -46,6 +46,18 @@ const DispenseCollect = ({ client, history, match }) => {
     }
     function closeCollectModal() {
         setCollectModalIsOpen(false)
+    }
+    const addHistory = (history) => {
+        // let newHistories = [history].concat(histories)
+        setHistories([])
+    }
+    function changeItemState(state){
+        // const newItem = {...item}
+        // console.log("1",item)
+        // newItem.state = state
+        // console.log("2",newItem)
+        setItem({})
+        // console.log("3",item)
     }
 
     useEffect(() => {
@@ -100,8 +112,20 @@ const DispenseCollect = ({ client, history, match }) => {
                 </div>
                
                 
-                <DispenseModal isOpen={dispenseModalIsOpen} closeModal = {closeDispenseModal} item={item}/>
-                <CollectModal histories={histories} isOpen={collectModalIsOpen} closeModal = {closeCollectModal} item={item}/>
+                <DispenseModal 
+                    isOpen={dispenseModalIsOpen} 
+                    closeModal = {closeDispenseModal} 
+                    item={item} 
+                    addHistory={addHistory}
+                    changeItemState={changeItemState}/>
+
+                <CollectModal 
+                    histories={histories} 
+                    isOpen={collectModalIsOpen} 
+                    closeModal = {closeCollectModal} 
+                    item={item}
+                    changeItemState={changeItemState}/>
+
             </InfoContainer>
             <TableContainer>
                 <Table bordered hover style={{width: "100%", textAlign: 'center'}}>
@@ -124,9 +148,9 @@ const DispenseCollect = ({ client, history, match }) => {
                                 <td>{new Date(parseInt(history.created_at)).toUTCString()}</td>
                             </tr>
                         )}
-                    </MDBTableBody>
-                    <Loading isLoading={isLoading}/>
+                    </MDBTableBody> 
                 </Table>
+                <Loading isLoading={isLoading}/>
             </TableContainer>
             <ActionContainer>
                 <NextButton onClick={onNextClicked} disabled={(page)*11 + histories.length>=historyCount}>Next</NextButton>

@@ -22,7 +22,7 @@ const customStyles = {
     }
   };
 
-const DispenseModal = ({ client, isOpen, closeModal, item }) => {
+const DispenseModal = ({ client, isOpen, closeModal, item, addHistory, changeItemState }) => {
     const [dispenseDate, setDispenseDate] = useState(new Date())
     const [expectedReturnDate, setExpectedReturnDate] = useState("")
     const [employee, setEmployee] = useState("")
@@ -55,7 +55,7 @@ const DispenseModal = ({ client, isOpen, closeModal, item }) => {
     const dispense = async () => {
         if(validate() && await Dispense()){
             closeModal()
-            window.location.reload(false); 
+            // window.location.reload(false); 
         }
         else if(validate()){
             setModalError("There was an error from the server")
@@ -88,7 +88,7 @@ const DispenseModal = ({ client, isOpen, closeModal, item }) => {
                 variables: { id: item.id, state: "DISPENSED" }
             })
 
-            await client.mutate({
+            const { data } = await client.mutate({
                 mutation: CREATE_ITEM_HISTORY,
                 variables: { 
                     item: item.id, 
@@ -96,7 +96,8 @@ const DispenseModal = ({ client, isOpen, closeModal, item }) => {
                     type: "DISPENSED"
                 }
             })
-
+            await changeItemState("DISPENSED")
+            await addHistory(data.createHistory)
             return true
             
         } catch (error) {

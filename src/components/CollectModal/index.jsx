@@ -18,13 +18,13 @@ const customStyles = {
     }
   };
 
-const CollectModal = ({ client, isOpen, closeModal, item, histories, name }) => {
+const CollectModal = ({ client, isOpen, closeModal, item, histories, addHistory, changeItemState }) => {
 
     Modal.setAppElement('body')
 
     const collect = async () => {
             let retVal = await Collect()
-            if(retVal) { closeModal(); window.location.reload(false); }
+            if(retVal) { closeModal(); }
     }
     
     const Collect = async () => {
@@ -34,7 +34,7 @@ const CollectModal = ({ client, isOpen, closeModal, item, histories, name }) => 
                 variables: { id: item.id, state: "IN_STOCK" }
             })
 
-            await client.mutate({
+            const {data} = await client.mutate({
                 mutation: CREATE_ITEM_HISTORY,
                 variables: { 
                     item: item.id, 
@@ -42,6 +42,9 @@ const CollectModal = ({ client, isOpen, closeModal, item, histories, name }) => 
                     type: "COLLECTED"
                 }
             })
+
+            changeItemState("IN_STOCK")
+            addHistory(data.createHistory)
 
             return true
             
