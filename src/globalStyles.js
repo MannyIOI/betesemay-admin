@@ -17,7 +17,7 @@ export const theme = {
 
     neumorphicHover: {
         backgroundColor: '#E0E5EC',
-        boxShadow: '20px 20px 30px rgb(163,177,198,0.7), -20px -20px 30px rgba(255,255,255, 0.6)',
+        boxShadow: '10px 10px 40px rgb(123,140,256,0.7), -10px -10px 40px rgba(255,255,255, 0.6)',
     },
 
     backgroundColor: "#E0E5EC",
