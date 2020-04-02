@@ -4,7 +4,7 @@ import { Container, SearchInput, AccountContainer, ContentContainer, ActivityCon
 const Dashboard = () => {
     return (
         <Container>
-            <SearchInput placeholder="Search Items, Categories, Employees"/>
+            <SearchInput placeholder="Search Items, Categories, Employees" />
             <AccountContainer>
                 Create Account
             </AccountContainer>
@@ -12,6 +12,7 @@ const Dashboard = () => {
                 <CreateContainer>
                     Create Item, Create Category, Create Employee
                 </CreateContainer>
+                
             </ContentContainer>
             <ActivityContainer  >
                 Activity

@@ -19,7 +19,7 @@ export const ItemDetailContainer = styled.div`
     grid-row: 4/10;
     grid-column: 1/13;
     color: white;
-    border-radius: 40px 40px 8px 8px;
+    border-radius: 40px 0px 8px 8px;
     // background: ${props=>props.theme.backgroundColor};
 `
 
