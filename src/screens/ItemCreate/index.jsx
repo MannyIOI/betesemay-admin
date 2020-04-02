@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import Select from "react-select";
 import { withApollo } from 'react-apollo'
-import { Container, FormContainer, NumberInput } from "./style";
+import { Container, FormContainer } from "./style";
 import { Input } from '../CreateEmployee/style'
 import { CREATE_ITEM } from "./queries";
 import { useInput } from "../../hooks/inputHooks";
@@ -13,7 +13,7 @@ const CreateItem = ({client, history}) => {
     const { value: categories, setValue: setCategories} = useInput([]);
     const [ category, setCategory ] = useState("")
     const { value: title, bind: bindTitle } = useInput("")
-    const { value: description, bind: bindDesc } = useInput("description")
+    const { value: description, bind: bindDesc } = useInput("")
     const { value: dispense_period, bind: bindDispensePeriod } = useInput(2)
     const [isLoading, setIsLoading] = useState(true)
 
@@ -63,7 +63,7 @@ const CreateItem = ({client, history}) => {
                 <Select options={categories} onChange={(e)=>setCategory(e.value)} defaultValue={category}/>
                 <Input placeholder="Title" { ...bindTitle } />
                 <Input placeholder="Description" { ...bindDesc } />
-                <NumberInput placeholder="Dispense Period" type="number" { ...bindDispensePeriod } />
+                <Input placeholder="Dispense Period" type="number" { ...bindDispensePeriod } />
                 <CreateButton onClick={createNewItem} disabled ={isLoading} style={isLoading?
                                                                 {border: '3px solid #6f4685', 
                                                                     background: "#E0E5EC", 

@@ -16,6 +16,9 @@ import CategoryContainer from "../screens/Categories";
 import CreateCategory from "../screens/CategoryCreate";
 
 import CollectDispense from "../screens/DispenseCollect";
+
+import Dashboard from "../screens/Dashboard";
+
 import {
     OrderedListOutlined,
     GroupOutlined,
@@ -81,8 +84,9 @@ const Routes = () => (
                     <Route exact path = "/categories" component = { CategoryContainer } />
                     <Route exact path = "/categories/create" component = { CreateCategory } />
                     <Route exact path = "/categories/:categoryId" component = { ItemsByCategory } />
+
+                    <Route exact path = "/dashboard" component = { Dashboard } />
                 </Switch>
-                {/* <Route /> */}
             </Container>
         </Router>
     </div>
