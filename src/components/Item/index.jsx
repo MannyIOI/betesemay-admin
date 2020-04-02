@@ -9,6 +9,10 @@ import { Container,
             Title,
             Text } from "./styles"
 import { DELETE_ITEM } from './queries'
+import { 
+    FaPen,
+    FaDumpster
+} from 'react-icons/fa'
 
 const Item = (props) => {
     const deleteItem = async () =>{ 
@@ -37,13 +41,17 @@ const Item = (props) => {
 
             <ItemDetailContainer onClick={updateItem}>
                 <Text>{props.item.description}</Text>
-                <Text>D.P {props.item.dispense_period}</Text>
+                {/* <Text>D.P {props.item.dispense_period}</Text> */}
                 <Text>{props.item.state}</Text>
             </ItemDetailContainer>
 
             <ItemActionsContainer>
-                <UpdateButton onClick={()=>props.history.push({pathname: "/items/update/"+props.item.id})}>Update</UpdateButton>
-                <DeleteButton onClick={deleteItem}>Delete</DeleteButton>
+                <UpdateButton onClick={()=>props.history.push({pathname: "/items/update/"+props.item.id})}>
+                    <FaPen color="white"/>
+                </UpdateButton>
+                <DeleteButton onClick={deleteItem}>
+                    <FaDumpster color="white"/>
+                </DeleteButton>
             </ItemActionsContainer>
         </Container>
     )

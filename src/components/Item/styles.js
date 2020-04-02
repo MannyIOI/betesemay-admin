@@ -8,6 +8,20 @@ export const ItemActionsContainer = styled.div`
     grid-column: 8/13;
     margin: 10px;
 `
+export const Title = styled.h2`
+    color: ${props => props.theme.themeColor1};
+    font-weight: 600;
+    font-size: 25px;
+`
+
+export const ItemDetailContainer = styled.div`
+    padding: 20px;
+    grid-row: 4/10;
+    grid-column: 1/13;
+    color: white;
+    border-radius: 40px 40px 8px 8px;
+    // background: ${props=>props.theme.backgroundColor};
+`
 
 export const Container = styled.div`
     // height: 25%;
@@ -18,6 +32,7 @@ export const Container = styled.div`
     margin: 25px;
     cursor: pointer;
     ${props => props.theme.neumorphic}
+    // background: ${props=>props.theme.themeColor1};
     // background: #6f4685;
     transition: 0.25s;
     &:hover ${ItemActionsContainer} { 
@@ -25,7 +40,13 @@ export const Container = styled.div`
         justify-content: center;
     }
     :hover {
-        ${props => props.theme.neumorphicHover}
+        ${props => props.theme.neumorphicHover};
+    }
+    // &:hover ${Title} {
+    //     color: ${props => props.theme.themeColor1};
+    // }
+    &:hover ${ItemDetailContainer} {
+        ${props => props.theme.neumorphic}
     }
 `
 
@@ -38,12 +59,7 @@ export const ItemTitleContainer = styled.div`
     justify-content: center;
 `
 
-export const ItemDetailContainer = styled.div`
-    padding: 20px;
-    grid-row: 3/10;
-    grid-column: 1/13;
-    color: white;
-`
+
 
 export const UpdateButton = styled.button`
     background: #b87333;
@@ -73,11 +89,6 @@ export const DeleteButton = styled.button`
     }
 `
 
-export const Title = styled.h2`
-    color: ${props=>props.theme.themeColor1};
-    font-weight: 600;
-    font-size: 25px;
-`
 
 export const Text = styled.p`
     color: ${props=>props.theme.themeColor4};
