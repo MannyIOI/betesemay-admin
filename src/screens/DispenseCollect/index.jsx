@@ -48,16 +48,13 @@ const DispenseCollect = ({ client, match }) => {
         setCollectModalIsOpen(false)
     }
     const addHistory = (history) => {
-        // let newHistories = [history].concat(histories)
-        setHistories([])
+        let newHistories = [history].concat(histories)
+        setHistories(newHistories)
     }
     function changeItemState(state){
-        // const newItem = {...item}
-        // console.log("1",item)
-        // newItem.state = state
-        // console.log("2",newItem)
-        setItem({})
-        // console.log("3",item)
+        const newItem = {...item}
+        newItem.state = state
+        setItem(newItem)
     }
 
     useEffect(() => {
@@ -69,22 +66,23 @@ const DispenseCollect = ({ client, match }) => {
             }).then(res=>{
                 setIsLoading(false)
                 setItem(res.data.getItem)
-                if(item.id != null){
-                    client.query({
-                        query: GET_ITEM_HISTORY,
-                        variables: { item: item.id, page: page }
-                    }).then(res => {
-                        
-                        setHistories(res.data.getHistoriesByItem.results)
-                        setHistoryCount(res.data.getHistoriesByItem.total)
-                    })
-                }
+
+                client.query({
+                    query: GET_ITEM_HISTORY,
+                    variables: { item: res.data.getItem.id, page: page }
+                }).then(res => {
+                    setHistories(res.data.getHistoriesByItem.results)
+                    setHistoryCount(res.data.getHistoriesByItem.total)
+                }).catch(error => {
+                    console.log(error)
+                })
+                
             });       
             
         } catch (error) {
             console.log(error)
         }
-    }, [client, page, setItem,item, setHistories, match.params.itemId])
+    }, [client, page, setItem, setHistories, match.params.itemId])
 
     const onNextClicked = async () => {
         setPage(page+1)
@@ -124,6 +122,7 @@ const DispenseCollect = ({ client, match }) => {
                     isOpen={collectModalIsOpen} 
                     closeModal = {closeCollectModal} 
                     item={item}
+                    addHistory={addHistory}
                     changeItemState={changeItemState}/>
 
             </InfoContainer>

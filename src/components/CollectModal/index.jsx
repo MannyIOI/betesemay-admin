@@ -42,9 +42,9 @@ const CollectModal = ({ client, isOpen, closeModal, item, histories, addHistory,
                     type: "COLLECTED"
                 }
             })
-
-            changeItemState("IN_STOCK")
-            addHistory(data.createHistory)
+                
+            await changeItemState("IN_STOCK")
+            await addHistory(data.createHistory)
 
             return true
             
