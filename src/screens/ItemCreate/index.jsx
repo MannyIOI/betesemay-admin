@@ -8,9 +8,8 @@ import { GET_ALL_ITEMS } from '../Items/queries';
 import { GET_ITEMS_BY_CATEGORY } from '../ItemsByCategory/queries'
 import { useInput } from "../../hooks/inputHooks";
 import { GET_ALL_CATEGORIES } from '../Categories/queries';
-// import { CreateButton } from '../Employees/style';
 import CreateButton from '../../components/CreateButton'
-// import { BeatLoader } from 'react-spinners';
+import axios from 'axios'
 
 const CreateItem = ({client, history}) => {
     const { value: categories, setValue: setCategories} = useInput([]);
@@ -18,9 +17,9 @@ const CreateItem = ({client, history}) => {
     const { value: title, bind: bindTitle } = useInput("")
     const { value: description, bind: bindDesc } = useInput("")
     const { value: dispense_period, bind: bindDispensePeriod } = useInput(2)
+    const [file, setFile] = useState("")
     const [isLoading, setIsLoading] = useState(true)
     const [error, setError] = useState("")
-
     const validate = () => {
         let val = false
         if ( category === "" ) { setError("* Please select a category")}
@@ -31,13 +30,22 @@ const CreateItem = ({client, history}) => {
         return val
     }
 
-    const submitHandler = () => {
+    const submitHandler = async () => {
         if(validate()){ createNewItem() }
+        
     }
 
     const createNewItem = async () => {
-        console.log("creating new Item")
+        const formdata = new FormData()
+        formdata.append('file', file)
+        formdata.append('upload_preset', process.env.REACT_APP_CLOUDINARY_UPLOAD_PRESET)
         setIsLoading(true)
+        const response = await axios.post(
+            `https://api.cloudinary.com/v1_1/${process.env.REACT_APP_CLOUDINARY_CLOUD_NAME}/image/upload`,
+            formdata
+        )
+        const imageId = response.data.public_id
+        alert(imageId)
         await client.mutate({
             mutation: CREATE_ITEM,
             variables: { category: category,
@@ -52,10 +60,8 @@ const CreateItem = ({client, history}) => {
             
             awaitRefetchQueries: true
         }).then(_ => {
-            console.log("created")
             history.push({pathname: "/items/"})
         }).catch(error => {
-            // setIsLoading(false)
             setError(error)
         })
     }
@@ -87,12 +93,12 @@ const CreateItem = ({client, history}) => {
     return (
         <Container>
             <FormContainer>
-                
-                <h2 style={{color: "#6f4685", fontWeight: "700", textAlign: "center"}}>Create Item</h2>
                 <Select options={categories} onChange={(e)=>setCategory(e.value)} defaultValue={category}/>
                 <Input placeholder="Title" { ...bindTitle } />
                 <Input placeholder="Description" { ...bindDesc } />
                 <Input placeholder="Dispense Period" type="number" { ...bindDispensePeriod } />
+                <Input type="file" onChange={(e) => setFile(e.target.files[0])}/>
+                
                 { error==="" ? "" : <p style={{color: 'red', display: 'inline'}}>
                                         {error} 
                                         { error !== "" && categories.length === 0 ? 
