@@ -87,11 +87,9 @@ export const CreateButton = styled.button`
     margin: 1px;
     padding: 10px;
     font-size: 15px;
+    transition: 0.5s;
     :disabled {
         background: grey;
-    }
-    :active {
-        background: green;
     }
     :hover {
         background: #8f4685;

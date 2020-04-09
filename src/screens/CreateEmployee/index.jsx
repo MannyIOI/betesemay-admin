@@ -3,6 +3,7 @@ import { withApollo } from 'react-apollo'
 import { Container, Input, FormContainer } from "./style";
 import { useInput } from "../../hooks/inputHooks";
 import { CREATE_EMPLOYEE } from "./queries";
+import { GET_ALL_EMPLOYEES } from "../Employees/queries";
 import { CreateButton } from '../Employees/style';
 import { BeatLoader } from 'react-spinners';
 
@@ -14,31 +15,56 @@ const CreateEmployee = ({client, history}) => {
     const { value: role, bind: bindRole } = useInput("")
     const { value: address, bind: bindAddress } = useInput("") 
     const [isLoading, setIsLoading] = useState(false)
+    const [error, setError] = useState("")
+
+    function validateEmail(email) {
+        var re = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+        console.log(re.test(String(email).toLowerCase()))
+        return re.test(String(email).toLowerCase());
+    }
+
+    const validate = () => {
+        let val = false;
+        if(email === "") { setError("* Email is required") }
+        else if (!validateEmail(email)) { setError("* Email is not valid")}
+        else if(first_name === "") { setError("* First name is required") }
+        else if (last_name === "") { setError("* Last name is required") }
+        else if (phone_number === "") { setError("* Phone number is required") }
+        else if (phone_number.length !== 10) { setError("* Please put in the right phone number. Example 0912345678") }
+        else if (address==="") { setError("Invalid address") }
+        else { val = true }
+        return val
+    }
 
     const handleSubmit = async () => {
-        try {
-            setIsLoading(true)
-            await client.mutate({
-                mutation: CREATE_EMPLOYEE,
-                variables: { 
-                    first_name, 
-                    last_name, 
-                    email, 
-                    phone_number, 
-                    role,
-                    address
-                 }
-            });
+        // if( validate() ){ CreateEmployee() }
+        CreateEmployee()
+    }
+
+    const CreateEmployee = async () => {
+        setIsLoading(true)
+        await client.mutate({
+            mutation: CREATE_EMPLOYEE,
+            variables: { 
+                first_name, 
+                last_name, 
+                email, 
+                phone_number, 
+                role,
+                address
+                },
+                refetchQueries: [{ query: GET_ALL_EMPLOYEES, page: 0 }]
+        }).then(_ => {
             history.push({pathname: "/employees/"})
-            
-        } catch (error) {
-            console.log(error)
-        }
+        }).catch(error => {
+            setError(error.message.slice(15, error.message.length))
+            setIsLoading(false)
+        })
     }
 
     return (
         <Container>
-            <FormContainer title="Create Employee" >
+            <FormContainer title="Create Employee">
                 <h2 style={{color: "#6f4685", fontWeight: "700", textAlign: "center"}}>Create Employee</h2>
                 <Input placeholder="Email" {...bindEmail} />
                 <Input placeholder="Phone Number" {...bindPhone} type="number"/>
@@ -46,13 +72,16 @@ const CreateEmployee = ({client, history}) => {
                 <Input placeholder="Last Name" {...bindLastName} />
                 <Input placeholder="Role" {...bindRole} />
                 <Input placeholder="Address" {...bindAddress} />
+                <p style={{color: "red"}}>{error}</p>
                 <CreateButton onClick={handleSubmit} disabled ={isLoading} style={isLoading?
-                                                                {border: '3px solid #6f4685', 
+                                                                {border: '2 px solid #6f4685', 
                                                                     background: "#E0E5EC", 
-                                                                    width: '40%'}:
-                                                                {border: '0px'}}>
+                                                                    alignSelf: "center",
+                                                                    width: '40%'}:{
+                                                                        width: '100%'
+                                                                    }}>
 
-                    {!isLoading ? 'Create Category' : <BeatLoader color={"#0073cf"} loading={isLoading}/>}
+                    {!isLoading ? 'Create Employee' : <BeatLoader color={"#0073cf"} loading={isLoading}/>}
                 </CreateButton>
             </FormContainer>
         </Container>
