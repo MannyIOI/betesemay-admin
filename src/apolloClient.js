@@ -3,19 +3,15 @@ require("dotenv").config()
 console.log(process.env.REACT_APP_SERVER_ADDRESS+'/graphql')
 const defaultOptions = {
   watchQuery: {
-    fetchPolicy: 'no-cache',
+    fetchPolicy: 'cache-and-network',
   },
   query: {
-    fetchPolicy: 'no-cache',
-  },
-  mutate: {
-    fetchPolicy: "network-only",
-    errorPolicy: "all"
+    fetchPolicy: 'cache-and-network',
   }
 };
 
 const client = new ApolloClient({
-  defaultOptions,
+  fetchOptions: defaultOptions,
   uri: process.env.REACT_APP_SERVER_ADDRESS+'/graphql'
 });
 
