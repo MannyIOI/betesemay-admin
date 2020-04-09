@@ -8,6 +8,8 @@ import { useInput } from "../../hooks/inputHooks";
 import { GET_ALL_CATEGORIES } from '../Categories/queries';
 import { CreateButton } from '../Employees/style';
 import { BeatLoader } from 'react-spinners';
+import { GET_ITEMS_BY_CATEGORY } from '../ItemsByCategory/queries';
+import { GET_ALL_ITEMS } from '../Items/queries';
 
 const UpdateItem = ({client, history, match}) => {
     const { value: item_id, bind: bindItemId } = useInput(match.params.itemId)
@@ -29,7 +31,11 @@ const UpdateItem = ({client, history, match}) => {
                              title: title, 
                              desc: description,
                              dispense_period: parseInt(dispense_period)
-                            }
+                            },
+                refetchQueries: [{ query: GET_ALL_ITEMS, 
+                    variables: { page: 0 } }, 
+                { query: GET_ITEMS_BY_CATEGORY, 
+                    variables: { page: 0, category: category } }],
             });
             await history.push({pathname: "/items/"})
         } catch (error) {
