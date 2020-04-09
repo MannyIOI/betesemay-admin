@@ -16,6 +16,7 @@ const CreateItem = ({client, history}) => {
     const { value: description, bind: bindDesc } = useInput("")
     const { value: dispense_period, bind: bindDispensePeriod } = useInput(2)
     const [isLoading, setIsLoading] = useState(true)
+    const [error, setError] = useState("")
 
     const createNewItem = async () => {
         try {
@@ -26,7 +27,7 @@ const CreateItem = ({client, history}) => {
                              title: title, 
                              desc: description,
                              dispense_period: dispense_period
-                            }
+                            },
             });
             await history.push({pathname: "/items/"})
         } catch (error) {
@@ -47,8 +48,13 @@ const CreateItem = ({client, history}) => {
                     categories.push({label: category.title, value: category.id})
                 });
                 setCategories(categories)
-                setCategory(categories[0].value)
-                setIsLoading(false)
+                if(categories.length === 0){
+                    setError("* Please create a category first ")
+                }else{
+                    setCategory(categories[0].value)
+                    setIsLoading(false)
+                }
+                
             })
         } catch (error) {
             console.log(error)
@@ -64,13 +70,28 @@ const CreateItem = ({client, history}) => {
                 <Input placeholder="Title" { ...bindTitle } />
                 <Input placeholder="Description" { ...bindDesc } />
                 <Input placeholder="Dispense Period" type="number" { ...bindDispensePeriod } />
-                <CreateButton onClick={createNewItem} disabled ={isLoading} style={isLoading?
-                                                                {border: '3px solid #6f4685', 
-                                                                    background: "#E0E5EC", 
-                                                                    width: '40%'}:
-                                                                {border: '0px'}}>
+                { error==="" ? "" : <p style={{color: 'red', display: 'inline'}}>
+                                        {error} 
+                                        { error !== "" && categories.length === 0 ? 
+                                            <span onClick={()=> {history.push({pathname: "/categories/create/"})}}
+                                            style={{color: "blue", 
+                                                    cursor: "pointer",
+                                                    display: 'inline'}}>
+                                                Create Category
+                                            </span> : ""}
+                                    </p> }
+                
+                <CreateButton onClick={ createNewItem }
+                                        disabled ={ isLoading } 
+                                        style={ isLoading?{
+                                            border: '3px solid #6f4685', 
+                                            background: "#E0E5EC",
+                                            alignSelf: 'center', 
+                                            width: '40%'} :
+                                            
+                                            { border: '0px'}}>
 
-                    {!isLoading ? 'Create Category' : <BeatLoader color={"#0073cf"} loading={isLoading}/>}
+                    {!isLoading ? 'Create Item' : <BeatLoader color={"#0073cf"} loading={isLoading}/>}
                 </CreateButton>
             </FormContainer>
         </Container>
