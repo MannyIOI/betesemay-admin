@@ -3,6 +3,7 @@ import { withApollo } from 'react-apollo'
 import { Container, FormContainer } from "./style";
 import { useInput } from "../../hooks/inputHooks";
 import { CREATE_CATEGORY } from './queries';
+import { GET_ALL_CATEGORIES } from "../Categories/queries";
 import { CreateButton } from '../Employees/style';
 import { Input } from '../CreateEmployee/style';
 import { useState } from 'react';
@@ -16,7 +17,9 @@ const CreateCategory = ({ client, history }) => {
         setIsLoading(true)
         await client.mutate({
             mutation: CREATE_CATEGORY,
-            variables: { title: category }
+            variables: { title: category },
+            refetchQueries: [ { query: GET_ALL_CATEGORIES, variables: { page: 0 } } ],
+            awaitRefetchQueries: true
         });
 
         history.push({pathname: "/categories"})

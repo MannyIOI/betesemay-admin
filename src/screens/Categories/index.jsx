@@ -17,7 +17,8 @@ const CategoriesPage = (props) => {
         try {
             const { data } = await props.client.query({
                 query: GET_ALL_CATEGORIES,
-                variables: { page }
+                variables: { page },
+                fetchPolicy: 'catch-and-network',
             })
             setIsLoading(false)
             setCategories(data.getAllCategories.results)
