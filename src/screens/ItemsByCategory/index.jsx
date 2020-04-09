@@ -17,7 +17,8 @@ const ItemsPage = (props) => {
         try {
             props.client.query({
                 query: GET_ITEMS_BY_CATEGORY,
-                variables: { page, category: props.match.params.categoryId }
+                variables: { page, category: props.match.params.categoryId },
+                fetchPolicy: 'network-only'
             }).then(res => {
                 setIsLoading(false)
                 setItems(res.data.getItemsByCategory.results)

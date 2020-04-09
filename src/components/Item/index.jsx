@@ -13,16 +13,18 @@ import {
     FaPen,
     FaDumpster
 } from 'react-icons/fa'
-
+import { GET_ALL_ITEMS } from '../../screens/Items/queries';
 const Item = (props) => {
     const deleteItem = async () =>{ 
         let id = props.item.id;
         try {
             await props.client.mutate({
                 mutation: DELETE_ITEM,
-                variables: { id }
+                variables: { id },
+                refetchQueries: [{ query: GET_ALL_ITEMS, variables: { page: 0 }}],
+                awaitRefetchQueries: true
             })
-            props.history.go({pathname: "/items/"})
+            props.history.push({pathname: "/items/"})
         } catch (error) {
             console.log(error)
         }
