@@ -66,14 +66,11 @@ const Employee = ({client, history, match}) => {
                                 <tr>
                                     <td></td><td></td><td></td>
                                     <td>
-
                                         <PrevButton onClick={onPrevClicked} disabled={page<=0}>Previous</PrevButton>
                                         <NextButton onClick={onNextClicked} disabled={(page)*11 + employees.length>=employeeCount}>
                                             Next
                                         </NextButton>
-                                        
                                     </td>
-                                    
                                 </tr>
                             }
                         </MDBTableBody>

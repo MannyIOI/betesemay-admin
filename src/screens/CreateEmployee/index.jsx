@@ -37,8 +37,7 @@ const CreateEmployee = ({client, history}) => {
     }
 
     const handleSubmit = async () => {
-        // if( validate() ){ CreateEmployee() }
-        CreateEmployee()
+        if( validate() ){ CreateEmployee() }
     }
 
     const CreateEmployee = async () => {
@@ -55,6 +54,7 @@ const CreateEmployee = ({client, history}) => {
                 },
                 refetchQueries: [{ query: GET_ALL_EMPLOYEES, page: 0 }]
         }).then(_ => {
+            setError("")
             history.push({pathname: "/employees/"})
         }).catch(error => {
             setError(error.message.slice(15, error.message.length))

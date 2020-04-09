@@ -6,10 +6,9 @@ import { Input } from '../CreateEmployee/style'
 import { UPDATE_ITEM, GET_ITEM } from "./queries";
 import { useInput } from "../../hooks/inputHooks";
 import { GET_ALL_CATEGORIES } from '../Categories/queries';
-import { CreateButton } from '../Employees/style';
-import { BeatLoader } from 'react-spinners';
 import { GET_ITEMS_BY_CATEGORY } from '../ItemsByCategory/queries';
 import { GET_ALL_ITEMS } from '../Items/queries';
+import CreateButton from '../../components/CreateButton';
 
 const UpdateItem = ({client, history, match}) => {
     const { value: item_id, bind: bindItemId } = useInput(match.params.itemId)
@@ -87,15 +86,7 @@ const UpdateItem = ({client, history, match}) => {
                 <Select options={categories} onChange={(e)=>setCategory(e.value)}/>
                 <Input placeholder="Title" {...bindTitle} />
                 <Input placeholder="Description" { ...bindDesc } />
-                {/* Dispense Period <Input placeholder="Dispense Period" type="number" { ...bindDispensePeriod } /> */}
-                <CreateButton onClick={updateItem} disabled ={isLoading} style={isLoading?
-                                                                {border: '3px solid #6f4685', 
-                                                                    background: "#E0E5EC", 
-                                                                    width: '40%'}:
-                                                                {border: '0px'}}>
-
-                    {!isLoading ? 'Create Category' : <BeatLoader color={"#0073cf"} loading={isLoading}/>}
-                </CreateButton>
+                <CreateButton title="Update Item" isLoading={isLoading} onClickHandler={updateItem} />
             </FormContainer>
         </Container>
     )
