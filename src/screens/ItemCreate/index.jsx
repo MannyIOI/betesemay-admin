@@ -45,13 +45,13 @@ const CreateItem = ({client, history}) => {
             formdata
         )
         const imageId = response.data.public_id
-        alert(imageId)
         await client.mutate({
             mutation: CREATE_ITEM,
             variables: { category: category,
                             title: title, 
                             desc: description,
-                            dispense_period: dispense_period
+                            dispense_period: dispense_period,
+                            imageId: imageId
                         },
             refetchQueries: [{ query: GET_ALL_ITEMS, 
                                 variables: { page: 0 } }, 

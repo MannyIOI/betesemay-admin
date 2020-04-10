@@ -57,7 +57,7 @@ const Item = (props) => {
             <Header onClick={onItemClick}>
                 <Image 
                     cloudName={process.env.REACT_APP_CLOUDINARY_CLOUD_NAME} 
-                    publicId='iybjfrukworqecqfoqz1' />
+                    publicId={props.item.imageId} />
             </Header>
             <Body>
                 
