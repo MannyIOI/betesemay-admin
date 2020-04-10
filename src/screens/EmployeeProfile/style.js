@@ -1,7 +1,11 @@
 import styled from 'styled-components'
 export const Container = styled.div`
-    width: 300px;
-    height: 270px;
+    // width: 22%;
+    height: 100vh;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr;
+
 `
 
 
@@ -13,6 +17,7 @@ export const Category = styled.div`
     width: 20%;
     padding: 0 15px;
     background-color: coral;
+    border-radius: 0 40px 0 0;
     color: #fff;
     text-transform: uppercase;
     font-size: 11px;
@@ -38,23 +43,37 @@ export const Header = styled.div`
 `
 
 export const Body = styled.div`
+    z-index: 1;
     position: relative;
     height: 30%;
     padding: 10px;
     -webkit-transition: height 0.5s;
     transition: height 0.5s;
-    background: red;
+`
+
+
+export const Actions = styled.div`
+    display: none;
+    position: absolute;
+    top: 10px;
+    transition: 1s;
+    right: 10px;
+    height: 30px;
+    text-transform: uppercase;
+    font-size: 11px;
+    font-weight: 700;
+    line-height: 25px;
 `
 
 export const Description = styled.div`
     
 `
 
+
 export const CardContainer = styled.div`
     width: 100%;
     height: 100%;
-    background-color: #fff;
-    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
     overflow: hidden;
     transition: 1s;
     &:hover ${Header} { 
@@ -69,5 +88,9 @@ export const CardContainer = styled.div`
 
     &:hover ${Body}{
         height: 65%;
+    }
+
+    &:hover ${Actions}{
+        display: flex;
     }
 `

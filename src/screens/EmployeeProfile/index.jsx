@@ -1,27 +1,17 @@
 import React from 'react'
 import { Image } from 'cloudinary-react'
-import { Container, CardContainer, Header, Body, Category } from './style'
+import { Container, CardContainer, Header, Body, Category, Description, Actions } from './style'
+// import { UpdateButton, DeleteButton } from '../../components/Item/styles'
+import Item from '../../components/Item'
+import { FaPen, FaDumpster } from 'react-icons/fa'
 
 export const EmployeeProfile = () => {
     return (
         <Container>
-            <CardContainer>
-                <Header>
-                    <Image 
-                        cloudName={process.env.REACT_APP_CLOUDINARY_CLOUD_NAME} 
-                        publicId='iybjfrukworqecqfoqz1'
-                        style={{width: "100%", height: "100%"}} />
-                </Header>
-                <Body>
-                    <Category>
-                        Category
-                    </Category>
-                    <h2>Item Title</h2>
-                    <Description>
-                        Description
-                    </Description>
-                </Body>
-            </Description>
+            <Item /><Item /><Item />
+            <Item /><Item /><Item />
+            <Item /><Item /><Item />
+            <Item /><Item /><Item />
         </Container>
     )
 }
