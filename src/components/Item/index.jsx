@@ -54,14 +54,14 @@ const Item = (props) => {
 
     return (
         <Card>
-            <Header>
+            <Header onClick={onItemClick}>
                 <Image 
                     cloudName={process.env.REACT_APP_CLOUDINARY_CLOUD_NAME} 
                     publicId='iybjfrukworqecqfoqz1' />
             </Header>
             <Body>
                 
-                <Category>
+                <Category onClick={onItemClick}>
                     {props.item.category.title}
                 </Category>
                 <Actions>
@@ -73,14 +73,15 @@ const Item = (props) => {
                     }
                 </Actions>
                 {!isDeleting ?
-                    <>
+                    <div onClick={onItemClick}>
                         <h2>{props.item.title}</h2>
                         <Description>
                             <p>{props.item.description}</p>
                             <p>{props.item.state}</p>
                         </Description>
-                    </>:
-
+                        <div/>
+                    </div>
+                    :
                     <DotLoader 
                         css={override}
                         color="red" 
