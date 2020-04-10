@@ -31,10 +31,8 @@ const UpdateItem = ({client, history, match}) => {
                              desc: description,
                              dispense_period: parseInt(dispense_period)
                             },
-                refetchQueries: [{ query: GET_ALL_ITEMS, 
-                    variables: { page: 0 } }, 
-                { query: GET_ITEMS_BY_CATEGORY, 
-                    variables: { page: 0, category: category } }],
+                refetchQueries: [{ query: GET_ITEM, variables: { id: item_id }}],
+                awaitRefetchQueries: true
             });
             await history.push({pathname: "/items/"})
         } catch (error) {
