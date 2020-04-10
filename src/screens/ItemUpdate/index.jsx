@@ -6,8 +6,6 @@ import { Input } from '../CreateEmployee/style'
 import { UPDATE_ITEM, GET_ITEM } from "./queries";
 import { useInput } from "../../hooks/inputHooks";
 import { GET_ALL_CATEGORIES } from '../Categories/queries';
-import { GET_ITEMS_BY_CATEGORY } from '../ItemsByCategory/queries';
-import { GET_ALL_ITEMS } from '../Items/queries';
 import CreateButton from '../../components/CreateButton';
 
 const UpdateItem = ({client, history, match}) => {
