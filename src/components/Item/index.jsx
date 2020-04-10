@@ -1,21 +1,34 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { withApollo } from "react-apollo";
-import { Container, 
-            ItemActionsContainer, 
-            ItemTitleContainer, 
-            ItemDetailContainer, 
-            UpdateButton, 
-            DeleteButton,
-            Title,
-            Text } from "./styles"
+
+import { Image } from 'cloudinary-react'
+import { Card, Header, Body, Category, Description, Actions, UpdateButton, DeleteButton } from './styles'
+
 import { DELETE_ITEM } from './queries'
 import { 
     FaPen,
     FaDumpster
 } from 'react-icons/fa'
 import { GET_ALL_ITEMS } from '../../screens/Items/queries';
+import { DotLoader } from 'react-spinners';
+
+import { css } from "@emotion/core";
+
+const override = css`
+    display: block;
+    margin: 0 auto;
+    border-color: #0073cf;
+    position: absolute;
+    left: 40%;
+    
+`;
+
 const Item = (props) => {
+    const [isDeleting, setIsDeleting] = useState(false)
+    console.log(props.item)
     const deleteItem = async () =>{ 
+        setIsDeleting(true)
+        
         let id = props.item.id;
         try {
             await props.client.mutate({
@@ -24,6 +37,7 @@ const Item = (props) => {
                 refetchQueries: [{ query: GET_ALL_ITEMS, variables: { page: 0 }}],
                 awaitRefetchQueries: true
             })
+
             props.history.push({pathname: "/items/"})
         } catch (error) {
             console.log(error)
@@ -31,31 +45,49 @@ const Item = (props) => {
     }
 
     const updateItem = async () => {
-        props.history.push({pathname: "/items/"+props.item.id})
+        props.history.push({pathname: "/items/update/" + props.item.id})
+    }
+
+    const onItemClick = async () => {
+        props.history.push({pathname: "/items/" + props.item.id})
     }
 
     return (
-        <Container >
-            
-            <ItemTitleContainer onClick={updateItem}>
-                <Title>{props.item.title}</Title>
-            </ItemTitleContainer>
+        <Card>
+            <Header>
+                <Image 
+                    cloudName={process.env.REACT_APP_CLOUDINARY_CLOUD_NAME} 
+                    publicId='iybjfrukworqecqfoqz1' />
+            </Header>
+            <Body>
+                
+                <Category>
+                    {props.item.category.title}
+                </Category>
+                <Actions>
+                    {!isDeleting &&
+                        <> 
+                            <UpdateButton onClick={updateItem}><FaPen color="white"/></UpdateButton>
+                            <DeleteButton onClick={deleteItem}><FaDumpster color="white"/></DeleteButton>
+                        </>
+                    }
+                </Actions>
+                {!isDeleting ?
+                    <>
+                        <h2>{props.item.title}</h2>
+                        <Description>
+                            <p>{props.item.description}</p>
+                            <p>{props.item.state}</p>
+                        </Description>
+                    </>:
 
-            <ItemDetailContainer onClick={updateItem}>
-                <Text>{props.item.description}</Text>
-                {/* <Text>D.P {props.item.dispense_period}</Text> */}
-                <Text>{props.item.state}</Text>
-            </ItemDetailContainer>
-
-            <ItemActionsContainer>
-                <UpdateButton onClick={()=>props.history.push({pathname: "/items/update/"+props.item.id})}>
-                    <FaPen color="white"/>
-                </UpdateButton>
-                <DeleteButton onClick={deleteItem}>
-                    <FaDumpster color="white"/>
-                </DeleteButton>
-            </ItemActionsContainer>
-        </Container>
+                    <DotLoader 
+                        css={override}
+                        color="red" 
+                        size={50} />
+                }
+            </Body>
+        </Card>
     )
 }
 
