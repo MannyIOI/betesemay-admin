@@ -12,6 +12,7 @@ export const GET_ALL_ITEMS = gql`
                     id
                     title
                 }
+                imageId
             }
             total
         }
