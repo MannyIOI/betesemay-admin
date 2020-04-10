@@ -29,6 +29,7 @@ import {
 
 
 import { Container } from "./styles"
+import { EmployeeProfile } from "../screens/EmployeeProfile";
 require('dotenv').config()
 console.log(process.env.NODE_ENV)
 const routes = [
@@ -80,6 +81,7 @@ const Routes = () => (
 
                     <Route exact path = "/employees" component = { EmployeeContainer }/>
                     <Route exact path = "/employees/create" component = { CreateEmployee } />
+                    <Route exact path = "/employees/profile" component = { EmployeeProfile } />
 
                     <Route exact path = "/categories" component = { CategoryContainer } />
                     <Route exact path = "/categories/create" component = { CreateCategory } />
