@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import { Image } from "cloudinary-react";
 import { Container, 
             SearchInput, 
             AccountContainer, 
@@ -7,7 +8,8 @@ import { Container,
             CreateContainer,
             Create, 
             CategoryContainer, 
-            ArrowContainer} from './styles'
+            ArrowContainer,
+            AccountImage} from './styles'
 import Category from "../../components/Category";
 import { FaCross, FaArrowLeft, FaArrowRight, FaPlus, FaArrowCircleLeft, FaArrowCircleRight } from "react-icons/fa";
 
@@ -17,7 +19,14 @@ const Dashboard = ({history}) => {
         <Container>
             <SearchInput placeholder="Search Items, Categories, Employees" />
             <AccountContainer>
-                Create Account
+                <AccountImage>
+                    <Image 
+                        cloudName={process.env.REACT_APP_CLOUDINARY_CLOUD_NAME} 
+                        publicId="msiedvan1380uwvzfhk7"/>
+                </AccountImage>
+                <div>
+                    account details
+                </div>
             </AccountContainer>
             <ContentContainer>
                 <CreateContainer>
