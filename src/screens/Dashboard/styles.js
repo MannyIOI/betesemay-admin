@@ -49,15 +49,46 @@ export const AccountContainer = styled.div`
 export const ContentContainer = styled.div`
     grid-row: 2/3;
     grid-column: 1/3;
-    background: ${props=>props.theme.themeColor2};
+    // background: ${props=>props.theme.themeColor2};
     display: grid;
     grid-template-columns: 4fr 1fr;
     grid-template-rows: 1fr 4fr;
 `
 
 export const CreateContainer = styled.div`
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
     grid-row: 1/2;
     grid-column: 1/3;
-    background: ${props=>props.theme.themeColor3}
 `
 
+export const Create = styled.div`
+    align-self: center;
+    overflow: hidden;
+    justify-self: center;
+    ${props => props.theme.neumorphic};
+    width: 70%;
+    cursor: pointer;
+    height: 40%;
+    padding: 10px;
+    display: grid;
+    grid-template-columns: 1fr 3fr;
+    transition: 1s;
+    border-radius: 20px;
+    p { 
+        align-self: center;
+        color: ${props => props.theme.themeColor4}; 
+        font-weight: 1000;
+        font-size: 20px;
+    }
+    path{
+        color: ${props => props.theme.themeColor4};
+    }
+    :hover{
+        ${props => props.theme.neumorphicConcave}
+    }
+    :active{
+        ${props => props.theme.neumorphicActive}
+    }
+    
+`
