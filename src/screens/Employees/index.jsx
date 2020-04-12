@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { Container, TableContainer, ActionContainer, PrevButton, NextButton, CreateButton, Table } from "./style";
+import { Container, TableContainer, ActionContainer, PrevButton, NextButton, Table } from "./style";
 import { MDBTableBody, MDBTableHead } from "mdbreact";
 // import 'mdbreact/dist/css/mdb.css';
 // import 'mdbreact/dist/css/style.css';

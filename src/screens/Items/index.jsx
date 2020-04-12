@@ -4,7 +4,7 @@ import { withApollo } from 'react-apollo'
 
 import Item from "../../components/Item"
 import { GET_ALL_ITEMS } from "./queries";
-import { PrevButton, NextButton, CreateButton } from '../Employees/style';
+import { PrevButton, NextButton } from '../Employees/style';
 import Loading from '../../components/Loading';
 const ItemsPage = (props) => {
     const [items, setItems] = useState([]);
@@ -14,7 +14,6 @@ const ItemsPage = (props) => {
 
     const setNewItems = async () =>{ 
         try {
-            console.log("here")
             const { data } = await props.client.query({
                 query: GET_ALL_ITEMS,
                 variables: { page }

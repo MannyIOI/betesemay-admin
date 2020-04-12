@@ -48,7 +48,7 @@ export const AccountContainer = styled.div`
     &:hover img {
         opacity: 0.9;
         -webkit-transform: scale(1.2);
-        transform: scale(1.2);
+        transform: scale(1.5);
     }
 `
 
@@ -127,7 +127,7 @@ export const Create = styled.div`
         color: ${props => props.theme.themeColor4};
     }
     :hover {
-        ${props => props.theme.neumorphicConcave}
+        ${props => props.theme.neumorphicConvex}
     }
     :active {
         ${props => props.theme.neumorphicActive}
