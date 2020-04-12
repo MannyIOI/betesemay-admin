@@ -41,9 +41,40 @@ export const SearchInput = styled.input`
 export const AccountContainer = styled.div`
     grid-column: 3/4;
     ${props=>props.theme.gradient2}
+    display: grid;
     border-radius: 10px;
+    grid-template-columns: 1fr 3fr;
+
+    &:hover img {
+        opacity: 0.9;
+        -webkit-transform: scale(1.2);
+        transform: scale(1.2);
+    }
 `
 
+export const AccountImage = styled.div`
+    width: 55px;
+    height: 55px;
+    position: relative;
+    overflow: hidden;
+    border-radius: 50%;
+    display: grid;
+    align-self: center;
+    justify-self: center;
+    
+
+    img {
+        justify-self: center;
+        align-self: center;
+        display: inline;
+        margin: 0 auto;
+        margin-left: -25%; //centers the image
+        height: 100%;
+        width: auto;
+        opacity: 1;
+        transition: opacity 0.5s, transform 0.5s;
+    }
+`
 
 
 export const ContentContainer = styled.div`
