@@ -4,7 +4,7 @@ import { Container, Input, FormContainer } from "./style";
 import { useInput } from "../../hooks/inputHooks";
 import { CREATE_EMPLOYEE } from "./queries";
 import { GET_ALL_EMPLOYEES } from "../Employees/queries";
-import { CreateButton } from '../Employees/style';
+import CreateButton from '../../components/CreateButton'
 import { BeatLoader } from 'react-spinners';
 
 const CreateEmployee = ({client, history}) => {
@@ -73,16 +73,7 @@ const CreateEmployee = ({client, history}) => {
                 <Input placeholder="Role" {...bindRole} />
                 <Input placeholder="Address" {...bindAddress} />
                 <p style={{color: "red"}}>{error}</p>
-                <CreateButton onClick={handleSubmit} disabled ={isLoading} style={isLoading?
-                                                                {border: '2 px solid #6f4685', 
-                                                                    background: "#E0E5EC", 
-                                                                    alignSelf: "center",
-                                                                    width: '40%'}:{
-                                                                        width: '100%'
-                                                                    }}>
-
-                    {!isLoading ? 'Create Employee' : <BeatLoader color={"#0073cf"} loading={isLoading}/>}
-                </CreateButton>
+                <CreateButton onClickHandler={handleSubmit} title="Create Employee" />
             </FormContainer>
         </Container>
     )

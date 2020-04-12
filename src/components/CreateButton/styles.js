@@ -1,6 +1,6 @@
 import styled from 'styled-components'
 export const CreateButton = styled.button`
-    background: #6f4685;
+    background: ${props=>props.theme.themeColor4};
     color: white;
     border: 0px;
     border-radius: 5px;

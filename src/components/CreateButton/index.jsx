@@ -7,7 +7,6 @@ export default ({ title, isLoading, onClickHandler }) => {
         <CreateButton onClick={ onClickHandler }
                         disabled ={ isLoading } 
                         style={ isLoading?{
-                            border: '3px solid #6f4685', 
                             background: "#E0E5EC",
                             alignSelf: 'center', 
                             width: '40%'} :
