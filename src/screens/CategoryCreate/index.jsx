@@ -27,7 +27,7 @@ const CreateCategory = ({ client, history }) => {
         <Container>
             <FormContainer>
                 
-                <h2 style={{color: "#6f4685", fontWeight: "700", textAlign: "center"}}>Create Category</h2>
+                <h2 style={{color: "#1F88A7", fontWeight: "700", textAlign: "center"}}>Create Category</h2>
                 <Input placeholder="Category Category" { ...bindCategory }/>
                 <CreateButton isLoading={isLoading} title="Create Category" onClickHandler={createCategory} />
             </FormContainer>

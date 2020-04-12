@@ -64,7 +64,7 @@ const CreateEmployee = ({client, history}) => {
     return (
         <Container>
             <FormContainer title="Create Employee">
-                <h2 style={{color: "#6f4685", fontWeight: "700", textAlign: "center"}}>Create Employee</h2>
+                <h2 style={{color: "#1F88A7", fontWeight: "700", textAlign: "center"}}>Create Employee</h2>
                 <Input placeholder="Email" {...bindEmail} />
                 <Input placeholder="Phone Number" {...bindPhone} type="number"/>
                 <Input placeholder="First Name" {...bindFirstName} />
