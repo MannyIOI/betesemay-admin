@@ -52,7 +52,7 @@ export const ContentContainer = styled.div`
     // background: ${props=>props.theme.themeColor2};
     display: grid;
     grid-template-columns: 4fr 1fr;
-    grid-template-rows: 1fr 4fr;
+    grid-template-rows: 1fr 2fr 2fr;
 `
 
 export const CreateContainer = styled.div`
@@ -62,6 +62,17 @@ export const CreateContainer = styled.div`
     grid-column: 1/3;
 `
 
+
+export const CategoryContainer = styled.div`
+    grid-row: 2/3;
+    grid-column: 1/3;
+    display: grid;
+    grid-template-columns: 1fr 25fr 1fr;
+    grid-template-rows: 1fr;
+    overflow-x: hiden;
+    overflow-y: hidden;
+    padding: 20px;
+`
 export const Create = styled.div`
     align-self: center;
     overflow: hidden;
@@ -81,14 +92,30 @@ export const Create = styled.div`
         font-weight: 1000;
         font-size: 20px;
     }
-    path{
+    path {
         color: ${props => props.theme.themeColor4};
     }
-    :hover{
+    :hover {
         ${props => props.theme.neumorphicConcave}
     }
-    :active{
+    :active {
         ${props => props.theme.neumorphicActive}
     }
     
+`
+
+export const ArrowContainer = styled.div`
+    height: 20%;
+    border-radius: 10px;
+    align-self: center;
+    display: grid;
+    cursor: pointer;
+    ${props => props.theme.neumorphic};
+    color: ${props => props.theme.themeColor4};
+    :hover {
+        ${props => props.theme.neumorphicConcave};
+    }
+    :active {
+        ${props => props.theme.neumorphicActive};
+    }
 `
