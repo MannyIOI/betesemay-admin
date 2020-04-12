@@ -49,7 +49,6 @@ const CategoriesPage = (props) => {
             <NavigationContainer> 
                 
                 <PrevButton onClick={onPrevClicked} disabled={page<=0}>Previous</PrevButton>
-                <CreateButton onClick={()=>props.history.push({pathname: "/categories/create/"})}>Create</CreateButton>
                 <NextButton onClick={onNextClicked} disabled={(page)*11 + categories.length>=itemCount}>Next</NextButton>
                 <Loading isLoading={isLoading}/>
             </NavigationContainer>

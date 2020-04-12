@@ -79,7 +79,6 @@ const Employee = ({client, history, match}) => {
                 <Loading isLoading={isLoading}/>
             </TableContainer>
             <ActionContainer>
-                <CreateButton onClick={()=>history.push({pathname: "/employees/create/"})}>Create Employee</CreateButton>
             </ActionContainer>
         </Container>
     )
