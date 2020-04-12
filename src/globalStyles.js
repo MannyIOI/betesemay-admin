@@ -20,6 +20,16 @@ export const theme = {
         boxShadow: '10px 10px 40px rgb(123,140,256,0.7), -10px -10px 40px rgba(255,255,255, 0.6)',
     },
 
+    neumorphicConcave: {
+        background: 'linear-gradient(340deg, rgba(0,0,0,0.1), rgba(255,255,255,1))',
+        // 
+    },
+
+    neumorphicActive: {
+        backgroundColor: '#E0E5EC',
+        boxShadow: 'inset 6px 6px 6px 0 rgba(0, 0, 0, 0.2), inset -6px -6px 6px 0 rgba(255, 255, 255, 0.5)'
+    },
+
     backgroundColor: "#E0E5EC",
     themeColor1: "#8C1071",
     themeColor2: "#587AAA",
