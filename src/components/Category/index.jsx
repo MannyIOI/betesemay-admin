@@ -2,11 +2,11 @@ import React from 'react'
 import { withApollo } from "react-apollo";
 import { Container, CategoryTitleContainer, Title } from "./styles"
 
-const Category = (props) => {
+const Category = ({ history, category }) => {
     return (
-        <Container onClick={()=>props.history.push({pathname: "/categories/"+props.category.id})}>
+        <Container onClick={()=>history.push({pathname: "/categories/"+category.id})}>
             <CategoryTitleContainer>
-                <Title>{props.category.title}</Title>
+                <Title>{category.title}</Title>
             </CategoryTitleContainer>
         </Container>
     )
