@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { Image } from "cloudinary-react";
 import { Container, 
             SearchInput, 
@@ -11,10 +11,42 @@ import { Container,
             ArrowContainer,
             AccountImage} from './styles'
 import Category from "../../components/Category";
-import { FaCross, FaArrowLeft, FaArrowRight, FaPlus, FaArrowCircleLeft, FaArrowCircleRight } from "react-icons/fa";
+import { FaArrowLeft, FaArrowRight, FaPlus } from "react-icons/fa";
+import { GET_ALL_CATEGORIES } from './queries';
+import { withApollo } from 'react-apollo';
 
-const Dashboard = ({history}) => {
-    // const [categories, setCategories] = useState([{},{},{},{}])
+const Dashboard = ({client, history}) => {
+    const [categories, setCategories] = useState([]);
+    const [page, setPage] = useState(0);
+    const [categoryCount, setCategoryCount] = useState(0);
+    const [isLoading, setIsLoading] = useState(true)
+    
+    const setNewCategories = async () =>{ 
+        try {
+            const { data } = await client.query({
+                query: GET_ALL_CATEGORIES,
+                variables: { page },
+                fetchPolicy: 'catch-and-network',
+            })
+            setIsLoading(false)
+            setCategories(data.getAllCategories.results)
+            setCategoryCount(data.getAllCategories.total)
+        } catch (error) {
+            console.log(error)
+        }
+    }
+
+    useEffect   (() =>{ setNewCategories() });
+
+    const onNextClicked = async () => {
+        setIsLoading(true)
+        setPage(page+1)
+    }
+    const onPrevClicked = async () => {
+        setIsLoading(true)
+        setPage(page-1)
+    }
+
     return (
         <Container>
             <SearchInput placeholder="Search Items, Categories, Employees" />
@@ -25,7 +57,8 @@ const Dashboard = ({history}) => {
                         publicId="msiedvan1380uwvzfhk7"/>
                 </AccountImage>
                 <div>
-                    account details
+                    <h3 style={{marginBottom: 0, fontWeight: 700, color: "white"}}>Samuel Tamirat</h3>
+                    <a style={{color: "red", textDecoration: "underline"}} href="./employees">Log out</a>
                 </div>
             </AccountContainer>
             <ContentContainer>
@@ -48,11 +81,10 @@ const Dashboard = ({history}) => {
                         <FaArrowLeft size="30" style={{alignSelf: "center", justifySelf: "center"}}/>
                     </ArrowContainer>
                     <div style={{display: "grid", gridTemplateColumns: "1fr 1fr 1fr 1fr 1fr"}}>
-                        <Category category={{title: "1"}}/>
-                        <Category category={{title: "2"}}/>
-                        <Category category={{title: "1"}}/>
-                        <Category category={{title: "2"}}/>
-                        <Category category={{title: "1"}}/>
+                        { categories.map(category => (<Category key = { category.id } 
+                                                    category = { category } 
+                                                    refreshCategories = { setNewCategories } 
+                                                    history = { history } />)) }
                     </div>
                     <ArrowContainer>
                         <FaArrowRight size="30" style={{alignSelf: "center", justifySelf: "center"}}/>
@@ -66,4 +98,4 @@ const Dashboard = ({history}) => {
     )
 }
 
-export default Dashboard
+export default withApollo(Dashboard)

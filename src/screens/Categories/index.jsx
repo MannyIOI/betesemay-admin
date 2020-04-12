@@ -4,12 +4,12 @@ import { withApollo } from 'react-apollo'
 
 import Category from "../../components/Category"
 import { GET_ALL_CATEGORIES } from "./queries";
-import { PrevButton, NextButton, CreateButton } from '../Employees/style';
+import { PrevButton, NextButton } from '../Employees/style';
 import Loading from '../../components/Loading';
 
 const CategoriesPage = (props) => {
     const [categories, setCategories] = useState([]);
-    const [page, setPage] = useState(0)
+    const [page, setPage] = useState(0);
     const [itemCount, setCategoryCount] = useState(0);
     const [isLoading, setIsLoading] = useState(true)
 

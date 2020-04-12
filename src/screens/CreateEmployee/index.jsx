@@ -5,7 +5,6 @@ import { useInput } from "../../hooks/inputHooks";
 import { CREATE_EMPLOYEE } from "./queries";
 import { GET_ALL_EMPLOYEES } from "../Employees/queries";
 import CreateButton from '../../components/CreateButton'
-import { BeatLoader } from 'react-spinners';
 
 const CreateEmployee = ({client, history}) => {
     const { value: first_name, bind: bindFirstName } = useInput("")
@@ -73,7 +72,7 @@ const CreateEmployee = ({client, history}) => {
                 <Input placeholder="Role" {...bindRole} />
                 <Input placeholder="Address" {...bindAddress} />
                 <p style={{color: "red"}}>{error}</p>
-                <CreateButton onClickHandler={handleSubmit} title="Create Employee" />
+                <CreateButton onClickHandler={handleSubmit} title="Create Employee" isLoading={isLoading} />
             </FormContainer>
         </Container>
     )
