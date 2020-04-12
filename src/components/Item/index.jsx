@@ -25,7 +25,6 @@ const override = css`
 
 const Item = (props) => {
     const [isDeleting, setIsDeleting] = useState(false)
-    console.log(props.item)
     const deleteItem = async () =>{ 
         setIsDeleting(true)
         

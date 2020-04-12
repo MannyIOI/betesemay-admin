@@ -22,7 +22,9 @@ export const theme = {
 
     neumorphicConcave: {
         background: 'linear-gradient(340deg, rgba(0,0,0,0.1), rgba(255,255,255,1))',
-        // 
+    },
+    neumorphicConvex: {
+        background: 'linear-gradient(135deg, rgba(0,0,0,0.05), rgba(255,255,255,0.5));'
     },
 
     neumorphicActive: {
@@ -35,6 +37,7 @@ export const theme = {
     themeColor2: "#587AAA",
     themeColor3: "#23CABE",
     themeColor4: "#1F88A7",
+    themeColor4Light: "1F88A7",
     themeColor5: ""
 }
 

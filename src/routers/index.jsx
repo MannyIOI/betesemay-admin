@@ -20,7 +20,6 @@ import CollectDispense from "../screens/DispenseCollect";
 import Dashboard from "../screens/Dashboard";
 
 import {
-    OrderedListOutlined,
     GroupOutlined,
     UserOutlined,
     QuestionOutlined,
@@ -31,7 +30,6 @@ import {
 import { Container } from "./styles"
 import { EmployeeProfile } from "../screens/EmployeeProfile";
 require('dotenv').config()
-console.log(process.env.NODE_ENV)
 const routes = [
     {
         key: "5",
@@ -40,12 +38,6 @@ const routes = [
         icon: <AppstoreOutlined />
     },
 
-    {
-        key: "2",
-        name: "Categories",
-        to: "/categories",
-        icon: <OrderedListOutlined />
-    },
     {
         key: "1",
         name: "Items",
