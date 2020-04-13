@@ -2,22 +2,26 @@ import React from "react"
 import SideBar from "../components/SideBar"
 import { BrowserRouter as Router, Route, Redirect, Switch } from "react-router-dom"
 
-import EmployeeContainer from "../screens/Employees";
+
 
 import ItemsContainer from "../screens/Items";
 import CreateItem from "../screens/CreateItem";
 import UpdateItem from "../screens/UpdateItem";
-
 import ItemsByCategory from "../screens/ItemsByCategory";
+import CollectDispense from "../screens/DispenseCollect";
 
+import EmployeeContainer from "../screens/Employees";
 import CreateEmployee from "../screens/CreateEmployee";
+import UpdateEmployee from "../screens/UpdateEmployee";
+import EmployeeProfile from "../screens/EmployeeProfile";
 
 import CategoryContainer from "../screens/Categories";
 import CreateCategory from "../screens/CategoryCreate";
 
-import CollectDispense from "../screens/DispenseCollect";
+
 
 import Dashboard from "../screens/Dashboard";
+
 
 import { SearchBar } from "../components/SearchBar";
 
@@ -30,7 +34,6 @@ import {
 
 
 import { Container } from "./styles"
-import { EmployeeProfile } from "../screens/EmployeeProfile";
 require('dotenv').config()
 const routes = [
     {
@@ -78,6 +81,7 @@ const Routes = () => (
 
                         <Route exact path = "/employees" component = { EmployeeContainer }/>
                         <Route exact path = "/employees/create" component = { CreateEmployee } />
+                        <Route exact path = "/employees/update/:employeeId" component = { UpdateEmployee } />
                         <Route exact path = "/employees/profile" component = { EmployeeProfile } />
 
                         <Route exact path = "/categories" component = { CategoryContainer } />
