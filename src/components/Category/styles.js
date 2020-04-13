@@ -5,7 +5,7 @@ export const Container = styled.div`
     border-radius: 10px;
     grid-template-columns: repeat(12, 1fr);
     grid-template-rows: repeat(8, 10%);
-    margin: 25px;
+    margin: 10px;
     cursor: pointer;
     background: #6f4685;
     transition: 0.25s;

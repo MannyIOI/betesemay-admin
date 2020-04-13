@@ -5,7 +5,8 @@ export const Container = styled.div`
     display: grid;
     grid-template-columns: 1fr 5fr 1fr;
     grid-template-rows: 1fr 5fr 1fr;
-    width: 100%;
+    // width: 100%;
+    height: 100%;
     background-color:#E0E5EC;
 `
 

@@ -2,10 +2,9 @@ import styled from "styled-components";
 
 export const Container = styled.div`
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
-    grid-template-rows: 1fr 1fr 2fr;
-    width: 100%;
-    height: 100vh;
+    grid-template-columns: 2fr 1fr 2fr;
+    grid-template-rows: 1fr 2fr;
+    height: 100%;
     background-color:#E0E5EC;
 `
 
@@ -14,7 +13,7 @@ export const FormContainer = styled.div`
     flex-direction: column;
     width: 100%;
     grid-column: 2/3;
-    grid-row: 2/3;
+    grid-row: 1/2;
     justify-content: center;
     padding: 30px;
     border-radius: 10px;
