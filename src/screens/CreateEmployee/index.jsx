@@ -5,6 +5,7 @@ import { useInput } from "../../hooks/inputHooks";
 import { CREATE_EMPLOYEE } from "./queries";
 import { GET_ALL_EMPLOYEES } from "../Employees/queries";
 import CreateButton from '../../components/CreateButton'
+import axios from "axios"
 
 const CreateEmployee = ({client, history}) => {
     const { value: first_name, bind: bindFirstName } = useInput("")
@@ -15,6 +16,7 @@ const CreateEmployee = ({client, history}) => {
     const { value: address, bind: bindAddress } = useInput("") 
     const [isLoading, setIsLoading] = useState(false)
     const [error, setError] = useState("")
+    const [file, setFile] = useState("")
 
     function validateEmail(email) {
         var re = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
@@ -31,6 +33,7 @@ const CreateEmployee = ({client, history}) => {
         else if (phone_number === "") { setError("* Phone number is required") }
         else if (phone_number.length !== 10) { setError("* Please put in the right phone number. Example 0912345678") }
         else if (address==="") { setError("Invalid address") }
+        else if (file === "") { setError("Please input employee profile image") }
         else { val = true }
         return val
     }
@@ -40,16 +43,27 @@ const CreateEmployee = ({client, history}) => {
     }
 
     const CreateEmployee = async () => {
+        const formdata = new FormData()
+        formdata.append('file', file)
+        formdata.append('upload_preset', process.env.REACT_APP_CLOUDINARY_UPLOAD_PRESET)
+        setIsLoading(true)
+        const response = await axios.post(
+            `https://api.cloudinary.com/v1_1/${process.env.REACT_APP_CLOUDINARY_CLOUD_NAME}/image/upload`,
+            formdata
+        );
+        const imageId = response.data.public_id
+
         setIsLoading(true)
         await client.mutate({
             mutation: CREATE_EMPLOYEE,
             variables: { 
-                first_name, 
-                last_name, 
-                email, 
-                phone_number, 
-                role,
-                address
+                    first_name, 
+                    last_name, 
+                    email, 
+                    phone_number, 
+                    role,
+                    address,
+                    imageId
                 },
                 refetchQueries: [{ query: GET_ALL_EMPLOYEES, page: 0 }],
                 awaitRefetchQuery: true
@@ -72,6 +86,7 @@ const CreateEmployee = ({client, history}) => {
                 <Input placeholder="Last Name" {...bindLastName} />
                 <Input placeholder="Role" {...bindRole} />
                 <Input placeholder="Address" {...bindAddress} />
+                <Input type="file" onChange={(e) => setFile(e.target.files[0])}/>
                 <p style={{color: "red"}}>{error}</p>
                 <CreateButton onClickHandler={handleSubmit} title="Create Employee" isLoading={isLoading} />
             </FormContainer>
