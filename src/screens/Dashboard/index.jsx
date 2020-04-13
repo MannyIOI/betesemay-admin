@@ -1,16 +1,12 @@
-import React, { useState, useEffect } from 'react'
-import { Image } from "cloudinary-react";
-import Timeline from 'react-time-line'
+import React, { useState, useEffect } from 'react';
+import Timeline from 'react-time-line';
 import { Container, 
-            SearchInput, 
-            AccountContainer, 
             ContentContainer, 
             ActivityContainer, 
             CreateContainer,
             Create, 
             CategoryContainer, 
-            ArrowContainer,
-            AccountImage} from './styles'
+            ArrowContainer } from './styles'
 import Category from "../../components/Category";
 import { FaArrowLeft, FaArrowRight, FaPlus } from "react-icons/fa";
 import { GET_ALL_CATEGORIES, GET_All_HISTORY } from './queries';
@@ -65,19 +61,6 @@ const Dashboard = ({client, history}) => {
 
     return (
         <Container>
-            <SearchInput placeholder="Search Items, Categories, Employees" />
-            <AccountContainer>
-                <AccountImage>
-                    <Image 
-                        cloudName={process.env.REACT_APP_CLOUDINARY_CLOUD_NAME} 
-                        publicId="msiedvan1380uwvzfhk7"/>
-                </AccountImage>
-                <div>
-                    <h3 style={{marginBottom: 0, fontWeight: 700, color: "white"}}>Samuel Tamirat</h3>
-                    <a style={{color: "red", textDecoration: "underline"}} href="./employees">Log out</a>
-                </div>
-            </AccountContainer>
-            <ContentContainer>
                 <CreateContainer>
                     <Create onClick={()=>history.push({pathname: "/items/create/"})}>
                         <FaPlus style={{alignSelf: "center", justifySelf: "center"}}/>
@@ -92,6 +75,7 @@ const Dashboard = ({client, history}) => {
                         <p>Create Employee</p>
                     </Create>
                 </CreateContainer>
+
                 <CategoryContainer>
                     <ArrowContainer onClick={onPrevClicked}>
                         <FaArrowLeft size="30" style={{alignSelf: "center", justifySelf: "center"}}/>
@@ -106,10 +90,6 @@ const Dashboard = ({client, history}) => {
                         <FaArrowRight size="30" style={{alignSelf: "center", justifySelf: "center"}}/>
                     </ArrowContainer>
                 </CategoryContainer>
-                <div>
-                    
-                </div>
-            </ContentContainer>
             <ActivityContainer>
                 <p>Activity</p>
                 <Timeline items={events}/>
