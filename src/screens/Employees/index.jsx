@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react'
-import { Container, TableContainer, ActionContainer, PrevButton, NextButton, Table } from "./style";
+import { Image } from "cloudinary-react";
+import { Container, TableContainer, ActionContainer, PrevButton, NextButton, Table, Td, Tr } from "./style";
 import { MDBTableBody, MDBTableHead } from "mdbreact";
 // import 'mdbreact/dist/css/mdb.css';
 // import 'mdbreact/dist/css/style.css';
@@ -45,6 +46,7 @@ const Employee = ({client, history, match}) => {
                 <Table hover>
                     <MDBTableHead style={{background: "#8f4685", color: "white"}} textWhite>
                         <tr>
+                            <th>Profile</th>
                             <th>Full Name</th>
                             <th>Email</th>
                             <th>Address</th>
@@ -54,12 +56,19 @@ const Employee = ({client, history, match}) => {
                     {!isLoading &&
                         <MDBTableBody>
                             {employees.map(employee => (
-                                <tr key={employee.id}>
+                                <Tr key={employee.id}>
+                                    <td style={{display: "grid", justifyContent: "center"}}>
+                                        <Td>
+                                            <Image 
+                                                cloudName={process.env.REACT_APP_CLOUDINARY_CLOUD_NAME} 
+                                                publicId={employee.imageId}/>
+                                        </Td>
+                                    </td>
                                     <td>{employee.first_name}</td>
                                     <td>{employee.email}</td>
                                     <td>{employee.address}</td>
                                     <td>{employee.role}</td>
-                                </tr>
+                                </Tr>
                             ))}
 
                             { (page>0 || (page)*11 + employees.length<employeeCount) &&

@@ -11,6 +11,7 @@ export const GET_ALL_EMPLOYEES = gql`
                 address
                 phone_number
                 role
+                imageId
             }
             total
         }

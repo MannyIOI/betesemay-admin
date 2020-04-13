@@ -96,3 +96,30 @@ export const CreateButton = styled.button`
         cursor: pointer;
     }
 `
+
+export const Tr = styled.tr`
+    &:hover img {
+        opacity: 0.9;
+        -webkit-transform: scale(1.2);
+        transform: scale(1.1);
+    }
+`
+
+
+export const Td = styled.div`
+    width: 55px;
+    height: 55px;
+    position: relative;
+    overflow: hidden;
+    border-radius: 50%;
+
+    img {
+        display: inline;
+        margin: 0 auto;
+        margin-left: -10%; //centers the image
+        height: 100%;
+        width: auto;
+        opacity: 1;
+        transition: opacity 0.5s, transform 0.5s;
+    }
+`
