@@ -1,8 +1,9 @@
 import styled from "styled-components";
 
 export const Container = styled.div`
-    width: 14%;
-    height: 100vh;
+    // height: 100vh;
+    grid-column: 1/2;
+    grid-row: 1/3;
 `
 
 export const NavContainer = styled.div`

@@ -19,6 +19,8 @@ import CollectDispense from "../screens/DispenseCollect";
 
 import Dashboard from "../screens/Dashboard";
 
+import { SearchBar } from "../components/SearchBar";
+
 import {
     GroupOutlined,
     UserOutlined,
@@ -63,25 +65,28 @@ const Routes = () => (
         <Router>
             <Container>
                 <SideBar routes = {routes}/>
-                <Switch>
-                    <Route exact path = "/" render={() => <Redirect to="/items"/>} />
-                    
-                    <Route exact path = "/items" component = { ItemsContainer }/>
-                    <Route exact path = "/items/create" component = { CreateItem }/>
-                    <Route exact path = "/items/update/:itemId" component = { UpdateItem } />
-                    <Route exact path = "/items/:itemId" component = { CollectDispense } />
+                <SearchBar />
+                
+                <div style={{ gridRow: "2/3", gridColumn: "2/3", height: "88vh"}}>
+                    <Switch >
+                        <Route exact path = "/" render={() => <Redirect to="/items"/>} />
+                        
+                        <Route exact path = "/items" component = { ItemsContainer }/>
+                        <Route exact path = "/items/create" component = { CreateItem }/>
+                        <Route exact path = "/items/update/:itemId" component = { UpdateItem } />
+                        <Route exact path = "/items/:itemId" component = { CollectDispense } />
 
-                    <Route exact path = "/employees" component = { EmployeeContainer }/>
-                    <Route exact path = "/employees/create" component = { CreateEmployee } />
-                    {/* <Route exact path = "/employees/update/:employeeId" component = { } /> */}
-                    <Route exact path = "/employees/profile" component = { EmployeeProfile } />
+                        <Route exact path = "/employees" component = { EmployeeContainer }/>
+                        <Route exact path = "/employees/create" component = { CreateEmployee } />
+                        <Route exact path = "/employees/profile" component = { EmployeeProfile } />
 
-                    <Route exact path = "/categories" component = { CategoryContainer } />
-                    <Route exact path = "/categories/create" component = { CreateCategory } />
-                    <Route exact path = "/categories/:categoryId" component = { ItemsByCategory } />
+                        <Route exact path = "/categories" component = { CategoryContainer } />
+                        <Route exact path = "/categories/create" component = { CreateCategory } />
+                        <Route exact path = "/categories/:categoryId" component = { ItemsByCategory } />
 
-                    <Route exact path = "/dashboard" component = { Dashboard } />
-                </Switch>
+                        <Route exact path = "/dashboard" component = { Dashboard } />
+                    </Switch>
+                </div>
             </Container>
         </Router>
     </div>
