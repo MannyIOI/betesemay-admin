@@ -12,7 +12,6 @@ export const Container = styled.div`
 export const ActivityContainer = styled.div`
     grid-column: 3/4;
     grid-row: 2/3;
-    background: ${props=>props.theme.themeColor3};
     border-radius: 30px;
     margin: 10px;
     padding: 20px;

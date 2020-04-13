@@ -24,30 +24,24 @@ const Dashboard = ({client, history}) => {
     const [isLoading, setIsLoading] = useState(true)
     const [events, setEvents] = useState([])
     
-    const setNewCategories = async () =>{ 
-        try {
-            const { data } = await client.query({
-                query: GET_ALL_CATEGORIES,
-                variables: { page },
-            })
+    useEffect(() =>{
+        client.query({
+            query: GET_ALL_CATEGORIES,
+            variables: { page },
+        }).then(res => {
             setIsLoading(false)
-            setCategories(data.getAllCategories.results)
-            setCategoryCount(data.getAllCategories.total)
-        } catch (error) {
-            console.log(error)
-        }
-    }
+            setCategories(res.data.getAllCategories.results)
+            setCategoryCount(res.data.getAllCategories.total)
+        })
 
-    const getHistory = async () => {
-        await client.query({
+        client.query({
             query: GET_All_HISTORY,
             variables: { page: 0 },
         }).then(res => {
             let events = []
             res.data.getAllHistory.results.forEach((element)=>{
-                let text = ""
-                console.log("-")    
-                if(element.type == "COLLECTED"){ text = element.item.title + " collected from " }
+                let text = ""  
+                if(element.type === "COLLECTED"){ text = element.item.title + " collected from " }
                 else { text = element.item.title + " dispensed to " }
                 text += element.to.first_name
                 let date = new Date(parseInt(element.created_at)).toISOString()
@@ -57,15 +51,8 @@ const Dashboard = ({client, history}) => {
         }).catch(error => {
             console.log(error)
         })
-    }
-
-    useEffect(() =>{ 
-        setNewCategories();
-     }, [categories]);
-
-    useEffect(() => {
-        getHistory();   
-    }, []);
+        
+     }, [categories, client, page]);
 
     const onNextClicked = async () => {
         setIsLoading(true)
@@ -112,8 +99,7 @@ const Dashboard = ({client, history}) => {
                     <div style={{display: "grid", gridTemplateColumns: "1fr 1fr 1fr 1fr 1fr"}}>
                         { isLoading && <Loading />}
                         { categories.map(category => (<Category key = { category.id } 
-                                                    category = { category } 
-                                                    refreshCategories = { setNewCategories } 
+                                                    category = { category }
                                                     history = { history } />)) }
                     </div>
                     <ArrowContainer onClick={onNextClicked}>
