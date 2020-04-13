@@ -12,7 +12,7 @@ export const Container = styled.div`
 
 export const TableContainer = styled.div`
     grid-column: 2/3;
-    grid-row: 2/3;
+    grid-row: 1/3;
 `
 
 export const Table = styled(MDBTable)`

@@ -4,9 +4,9 @@ export const Container = styled.div`
     grid-column: 2/3;
     grid-row: 1/2;
     display: grid;
-    grid-template-columns: 3fr 1fr;
+    grid-template-columns: 4fr 1fr;
     margin: 10px;
-    padding: 10px;
+    padding: 0px 0px;
 `
 
 export const SearchInput = styled.input`

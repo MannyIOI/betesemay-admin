@@ -5,6 +5,6 @@ export const Container = styled.div`
     // grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
     display: grid;
     grid-template-columns: 1fr 7fr;
-    grid-template-rows: 1fr 7fr; 
+    grid-template-rows: 1fr 10fr; 
     height: 100vh;
 `
