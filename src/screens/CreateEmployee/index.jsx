@@ -14,6 +14,7 @@ const CreateEmployee = ({client, history}) => {
     const { value: phone_number, bind: bindPhone } = useInput("")
     const { value: role, bind: bindRole } = useInput("")
     const { value: address, bind: bindAddress } = useInput("") 
+    const [imageId, setImageId] = useState("")
     const [isLoading, setIsLoading] = useState(false)
     const [error, setError] = useState("")
     const [file, setFile] = useState("")
@@ -43,15 +44,17 @@ const CreateEmployee = ({client, history}) => {
     }
 
     const CreateEmployee = async () => {
-        const formdata = new FormData()
-        formdata.append('file', file)
-        formdata.append('upload_preset', process.env.REACT_APP_CLOUDINARY_UPLOAD_PRESET)
-        setIsLoading(true)
-        const response = await axios.post(
-            `https://api.cloudinary.com/v1_1/${process.env.REACT_APP_CLOUDINARY_CLOUD_NAME}/image/upload`,
-            formdata
-        );
-        const imageId = response.data.public_id
+        if(imageId === ""){
+            const formdata = new FormData()
+            formdata.append('file', file)
+            formdata.append('upload_preset', process.env.REACT_APP_CLOUDINARY_UPLOAD_PRESET)
+            setIsLoading(true)
+            const response = await axios.post(
+                `https://api.cloudinary.com/v1_1/${process.env.REACT_APP_CLOUDINARY_CLOUD_NAME}/image/upload`,
+                formdata
+            );
+            setImageId(response.data.public_id)
+        }
 
         setIsLoading(true)
         await client.mutate({
