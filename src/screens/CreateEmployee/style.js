@@ -3,7 +3,7 @@ import styled from "styled-components";
 export const Container = styled.div`
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
-    grid-template-rows: 1fr 5fr 1fr;
+    grid-template-rows: 5fr 1fr;
     width: 100%;
 
     background-color:#E0E5EC;
@@ -42,7 +42,7 @@ export const FormContainer = styled.div`
     flex-direction: column;
 
     grid-column: 2/3;
-    grid-row: 2/3;
+    grid-row: 1/2;
     justify-content: center;
     padding: 20px;
     border-radius: 10px;
