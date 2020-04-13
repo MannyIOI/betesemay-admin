@@ -5,8 +5,8 @@ import { BrowserRouter as Router, Route, Redirect, Switch } from "react-router-d
 import EmployeeContainer from "../screens/Employees";
 
 import ItemsContainer from "../screens/Items";
-import CreateItem from "../screens/ItemCreate";
-import UpdateItem from "../screens/ItemUpdate";
+import CreateItem from "../screens/CreateItem";
+import UpdateItem from "../screens/UpdateItem";
 
 import ItemsByCategory from "../screens/ItemsByCategory";
 
@@ -73,6 +73,7 @@ const Routes = () => (
 
                     <Route exact path = "/employees" component = { EmployeeContainer }/>
                     <Route exact path = "/employees/create" component = { CreateEmployee } />
+                    {/* <Route exact path = "/employees/update/:employeeId" component = { } /> */}
                     <Route exact path = "/employees/profile" component = { EmployeeProfile } />
 
                     <Route exact path = "/categories" component = { CategoryContainer } />
