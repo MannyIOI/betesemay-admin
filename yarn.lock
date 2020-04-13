@@ -7530,7 +7530,7 @@ mkdirp@^0.5.0:
   dependencies:
     minimist "^1.2.5"
 
-moment@2.24.0, moment@^2.10.2, moment@^2.24.0:
+moment@2.24.0, moment@^2.10.2, moment@^2.18.1, moment@^2.24.0:
   version "2.24.0"
   resolved "https://registry.yarnpkg.com/moment/-/moment-2.24.0.tgz#0d055d53f5052aa653c9f6eb68bb5d12bf5c2b5b"
   integrity sha512-bV7f+6l2QigeBBZSM/6yTNq4P2fNpSWj/0e7jQcy87A8e7o2nAfP/34/2ky5Vw4B9S446EtIhodAzkFCcR4dQg==
@@ -9926,6 +9926,14 @@ react-text-mask@^5.4.3:
   integrity sha1-mR77QpnjDC5sLEbRP2FxaUY+DS0=
   dependencies:
     prop-types "^15.5.6"
+
+react-time-line@^0.2.0:
+  version "0.2.0"
+  resolved "https://registry.yarnpkg.com/react-time-line/-/react-time-line-0.2.0.tgz#e8f84728a9b4fe75b317dfbf4abc8554cdabe13e"
+  integrity sha512-d47y7ATMj9r4Kn+OPZfZgz6uQAZGHbV2Z45qbu9XXF23QvoU1rABy+bKOsDgCZCeCJTKtWS37NgTKifqd+hrLw==
+  dependencies:
+    moment "^2.18.1"
+    prop-types "^15.5.10"
 
 react-toastify@5.5.0:
   version "5.5.0"
