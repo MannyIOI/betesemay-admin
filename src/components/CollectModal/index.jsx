@@ -3,6 +3,7 @@ import Modal from "react-modal"
 import "react-datepicker/dist/react-datepicker.css";
 import { withApollo } from 'react-apollo';
 import { DISPENSE_COLLECT_ITEM, CREATE_ITEM_HISTORY } from '../DispenseModal/queries';
+import { GET_All_HISTORY } from '../../screens/Dashboard/queries';
 
 const customStyles = {
     content : {
@@ -31,7 +32,8 @@ const CollectModal = ({ client, isOpen, closeModal, item, histories, addHistory,
         try {
             await client.mutate({
                 mutation: DISPENSE_COLLECT_ITEM,
-                variables: { id: item.id, state: "IN_STOCK" }
+                variables: { id: item.id, state: "IN_STOCK" },
+                refetchQueries: { query: GET_All_HISTORY, variables: { page: 0 } }
             })
 
             const {data} = await client.mutate({

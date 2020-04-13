@@ -51,7 +51,8 @@ const CreateEmployee = ({client, history}) => {
                 role,
                 address
                 },
-                refetchQueries: [{ query: GET_ALL_EMPLOYEES, page: 0 }]
+                refetchQueries: [{ query: GET_ALL_EMPLOYEES, page: 0 }],
+                awaitRefetchQuery: true
         }).then(_ => {
             setError("")
             history.push({pathname: "/employees/"})

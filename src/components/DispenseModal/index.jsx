@@ -6,6 +6,7 @@ import "react-datepicker/dist/react-datepicker.css";
 import { withApollo } from 'react-apollo';
 import { GET_ALL_EMPLOYEES, DISPENSE_COLLECT_ITEM, CREATE_ITEM_HISTORY } from './queries';
 import { DispenseButton } from '../../screens/DispenseCollect/style';
+import { GET_All_HISTORY } from '../../screens/Dashboard/queries';
 
 const customStyles = {
     content : {
@@ -15,7 +16,6 @@ const customStyles = {
       bottom                : 'auto',
       width                 : '50%',
       height                : '50%',
-    //   marginRight           : '-50%',
       padding               : '5%',
       transform             : 'translate(-50%, -50%)',
       backdrop              : 'black'
@@ -85,7 +85,9 @@ const DispenseModal = ({ client, isOpen, closeModal, item, addHistory, changeIte
         try {
             await client.mutate({
                 mutation: DISPENSE_COLLECT_ITEM,
-                variables: { id: item.id, state: "DISPENSED" }
+                variables: { id: item.id, state: "DISPENSED" },
+                refetchQueries: { query: GET_All_HISTORY, variables: { page: 0 } },
+                awaitRefetchQuery: true
             })
 
             const { data } = await client.mutate({
