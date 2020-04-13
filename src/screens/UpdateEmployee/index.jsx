@@ -2,10 +2,8 @@ import React, { useState } from 'react'
 import { withApollo } from 'react-apollo'
 import { Container, Input, FormContainer } from "./style";
 import { useInput } from "../../hooks/inputHooks";
-import { CREATE_EMPLOYEE } from "./queries";
 import { GET_ALL_EMPLOYEES } from "../Employees/queries";
-import CreateButton from '../../components/CreateButton'
-import axios from "axios"
+import CreateButton from '../../components/CreateButton';
 import { UPDATE_ITEM } from '../UpdateItem/queries';
 
 const CreateEmployee = ({client, history}) => {
