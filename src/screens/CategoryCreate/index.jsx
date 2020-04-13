@@ -17,10 +17,11 @@ const CreateCategory = ({ client, history }) => {
         await client.mutate({
             mutation: CREATE_CATEGORY,
             variables: { title: category },
-            refetchQueries: [ { query: GET_ALL_CATEGORIES, variables: { page: 0 } } ]
+            refetchQueries: [ { query: GET_ALL_CATEGORIES, variables: { page: 0 } } ],
+            awaitRefetchQueries: true
         });
 
-        history.push({pathname: "/categories"})
+        history.push({pathname: "/dashboard"})
     }
 
     return (
