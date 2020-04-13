@@ -5,8 +5,7 @@ export const Category = styled.div`
     top: -30px;
     left: 0;
     height: 30px;
-    width: 20%;
-    padding: 0 15px;
+    padding: 0px 20px 0px 10px;
     background-color: coral;
     border-radius: 0 40px 0 0;
     color: #fff;
@@ -14,6 +13,7 @@ export const Category = styled.div`
     font-size: 11px;
     font-weight: 700;
     line-height: 25px;
+    overflow: hidden;
 `
 
 export const Header = styled.div`

@@ -3,28 +3,30 @@ import styled from "styled-components"
 export const Container = styled.div`
     display: grid;
     border-radius: 10px;
-    grid-template-columns: repeat(12, 1fr);
-    grid-template-rows: repeat(8, 10%);
+    grid-template-columns: 1fr 3fr 1fr;
+    grid-template-rows: 1fr 3fr 1fr;
+    display: grid;
     margin: 10px;
     cursor: pointer;
-    background: #6f4685;
+    ${props => props.theme.neumorphic};
+    // background: #6f4685;
     transition: 0.25s;
-    :hover {
-        background-color:#6f4685;
-        box-shadow: 9px 9px 16px #6f4685, -9px -9px 16px rgba(255,255,255, 0.5);
-    }
+    // :hover {
+    //     background-color:#6f4685;
+    //     box-shadow: 9px 9px 16px #6f4685, -9px -9px 16px rgba(255,255,255, 0.5);
+    // }
 `
 
 export const CategoryInfoContainer = styled.div`
-    grid-column: 1/12;
-    grid-row: 1/10
+    grid-column: 1/2;
+    grid-row: 1/2;
     width:100%;
     color: white;
 `
 
 export const CategoryTitleContainer = styled.div`
     grid-row: 2/3;
-    grid-column: 2/12;
+    grid-column: 2/3;
     display: flex;
     justify-content: center;
 `
@@ -34,7 +36,7 @@ export const CategoryDetailContainer = styled.div`
 `
 
 export const Title = styled.h2`
-    color: white;
+    color: ${props=>props.theme.themeColor4};
     font-weight: 500;
     font-size: 25px;
     align-self: center;
