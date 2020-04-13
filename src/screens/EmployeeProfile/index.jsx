@@ -2,7 +2,7 @@ import React from 'react'
 import { Container } from './style'
 import Item from '../../components/Item'
 
-export const EmployeeProfile = () => {
+const EmployeeProfile = () => {
     return (
         <Container>
             <Item /><Item /><Item />
@@ -12,3 +12,5 @@ export const EmployeeProfile = () => {
         </Container>
     )
 }
+
+export default EmployeeProfile

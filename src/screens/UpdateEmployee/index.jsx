@@ -6,6 +6,7 @@ import { CREATE_EMPLOYEE } from "./queries";
 import { GET_ALL_EMPLOYEES } from "../Employees/queries";
 import CreateButton from '../../components/CreateButton'
 import axios from "axios"
+import { UPDATE_ITEM } from '../UpdateItem/queries';
 
 const CreateEmployee = ({client, history}) => {
     const { value: first_name, bind: bindFirstName } = useInput("")
@@ -43,7 +44,7 @@ const CreateEmployee = ({client, history}) => {
     const UpdateEmployee = async () => {
         setIsLoading(true)
         await client.mutate({
-            mutation: CREATE_EMPLOYEE,
+            mutation: UPDATE_ITEM,
             variables: { 
                     first_name, 
                     last_name, 
