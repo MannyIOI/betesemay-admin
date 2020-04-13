@@ -97,16 +97,28 @@ export const CreateButton = styled.button`
     }
 `
 
+export const Actions = styled.div`
+    // display: None;
+    visibility: hidden;
+    align-self: center;
+    justify-self: center;
+`
+
 export const Tr = styled.tr`
     &:hover img {
         opacity: 0.9;
         -webkit-transform: scale(1.2);
         transform: scale(1.1);
     }
+
+    &:hover ${Actions}{
+        // display: grid;
+        visibility: visible;
+    }
 `
 
 
-export const Td = styled.div`
+export const Profile = styled.div`
     width: 55px;
     height: 55px;
     position: relative;
@@ -123,3 +135,4 @@ export const Td = styled.div`
         transition: opacity 0.5s, transform 0.5s;
     }
 `
+

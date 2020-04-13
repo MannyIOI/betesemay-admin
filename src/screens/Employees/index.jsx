@@ -1,12 +1,14 @@
 import React, { useEffect, useState } from 'react'
 import { Image } from "cloudinary-react";
-import { Container, TableContainer, ActionContainer, PrevButton, NextButton, Table, Td, Tr } from "./style";
+import { Container, TableContainer, ActionContainer, PrevButton, NextButton, Table, Profile, Tr, Actions } from "./style";
 import { MDBTableBody, MDBTableHead } from "mdbreact";
 // import 'mdbreact/dist/css/mdb.css';
 // import 'mdbreact/dist/css/style.css';
 import { GET_ALL_EMPLOYEES } from './queries';
 import { withApollo } from 'react-apollo';
 import Loading from '../../components/Loading';
+import { UpdateButton, DeleteButton } from '../../components/Item/styles';
+import { FaPen, FaDumpster } from 'react-icons/fa';
 
 const Employee = ({client, history, match}) => {
     const [employees, setEmployees] = useState([])
@@ -51,6 +53,7 @@ const Employee = ({client, history, match}) => {
                             <th>Email</th>
                             <th>Address</th>
                             <th>Role</th>
+                            <th>Action</th>
                         </tr>
                     </MDBTableHead>
                     {!isLoading &&
@@ -58,16 +61,22 @@ const Employee = ({client, history, match}) => {
                             {employees.map(employee => (
                                 <Tr key={employee.id}>
                                     <td style={{display: "grid", justifyContent: "center"}}>
-                                        <Td>
+                                        <Profile>
                                             <Image 
                                                 cloudName={process.env.REACT_APP_CLOUDINARY_CLOUD_NAME} 
                                                 publicId={employee.imageId}/>
-                                        </Td>
+                                        </Profile>
                                     </td>
                                     <td>{employee.first_name}</td>
                                     <td>{employee.email}</td>
                                     <td>{employee.address}</td>
                                     <td>{employee.role}</td>
+                                    <td>
+                                        <Actions>
+                                            <UpdateButton style={{height: "25px", width: "30px"}}><FaPen color="white"/></UpdateButton>
+                                            <DeleteButton style={{height: "25px", width: "30px"}}><FaDumpster color="white"/></DeleteButton>
+                                        </Actions>
+                                    </td>
                                 </Tr>
                             ))}
 
