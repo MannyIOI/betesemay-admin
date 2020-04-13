@@ -15,7 +15,7 @@ export const ActivityContainer = styled.div`
     background: ${props=>props.theme.themeColor3};
     border-radius: 30px;
     margin: 10px;
-    padding: 30px;
+    padding: 20px;
 `
 
 export const SearchInput = styled.input`

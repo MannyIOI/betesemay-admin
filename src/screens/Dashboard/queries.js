@@ -11,3 +11,27 @@ export const GET_ALL_CATEGORIES = gql`
         }
     }
 `
+
+export const GET_All_HISTORY = gql`
+    query get_all_history($page: Int!) {
+        getAllHistory(page: $page){
+            results{
+                id
+                to{
+                    id
+                    first_name
+                    last_name
+                    address
+                    email
+                    role
+                }
+                item{
+                    title
+                }
+                type
+                created_at
+            }
+            total
+        }
+    }
+`

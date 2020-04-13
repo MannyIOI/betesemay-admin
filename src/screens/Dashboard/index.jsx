@@ -121,7 +121,7 @@ const Dashboard = ({client, history}) => {
                     </ArrowContainer>
                 </CategoryContainer>
                 <div>
-                    Overdue Items
+                    
                 </div>
             </ContentContainer>
             <ActivityContainer>
