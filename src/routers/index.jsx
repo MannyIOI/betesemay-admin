@@ -34,6 +34,7 @@ import {
 
 
 import { Container } from "./styles"
+import Search from "../screens/Search";
 require('dotenv').config()
 const routes = [
     {
@@ -89,6 +90,7 @@ const Routes = () => (
                         <Route exact path = "/categories/:categoryId" component = { ItemsByCategory } />
 
                         <Route exact path = "/dashboard" component = { Dashboard } />
+                        <Route exact path = "/search/:search" component = {Search} />
                     </Switch>
                 </div>
             </Container>
