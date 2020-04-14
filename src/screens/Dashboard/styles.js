@@ -46,6 +46,26 @@ export const CategoryContainer = styled.div`
     overflow-y: hidden;
     padding: 20px;
 `
+
+export const OverdueContainer = styled.div`
+    grid-row: 3/4;
+    grid-column: 1/3;
+    display: grid;
+    grid-template-rows: 1fr 3fr;
+    // overflow-x: hiden;
+    overflow-y: hidden;
+    // padding: 20px;
+    height: 100%;
+`
+
+export const OverdueItems = styled.div`
+    grid-row: 2/3;
+    height: 100%;
+    overflow-y: hidden;
+    grid-template-columns: 1fr 10fr 10fr 10fr 1fr;
+    display: grid;
+`
+
 export const Create = styled.div`
     align-self: center;
     overflow: hidden;
