@@ -12,10 +12,12 @@ export const Container = styled.div`
 export const SearchInput = styled.input`
     grid-column: 1/2;
     width: 40%;
-    padding: 12px 40px;
+    padding: 5px 30px;
     // margin: 12px 0;
     box-sizing: border-box;
     border-radius: 5px;
+    line-height: 30px;
+    font-size: 17px;
     border: 1px solid #dae4ee;
     transition: 0.4s;
     :hover{

@@ -11,10 +11,9 @@ export const Container = styled.div`
     ${props => props.theme.neumorphic};
     // background: #6f4685;
     transition: 0.25s;
-    // :hover {
-    //     background-color:#6f4685;
-    //     box-shadow: 9px 9px 16px #6f4685, -9px -9px 16px rgba(255,255,255, 0.5);
-    // }
+    :hover {
+        ${props => props.theme.neumorphicHover};
+    }
 `
 
 export const CategoryInfoContainer = styled.div`
