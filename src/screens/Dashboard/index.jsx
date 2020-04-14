@@ -5,8 +5,11 @@ import { Container,
             CreateContainer,
             Create, 
             CategoryContainer, 
-            ArrowContainer } from './styles'
+            ArrowContainer, 
+            OverdueContainer,
+            OverdueItems } from './styles'
 import Category from "../../components/Category";
+import Item from "../../components/Item";
 import { FaArrowLeft, FaArrowRight, FaPlus } from "react-icons/fa";
 import { GET_ALL_CATEGORIES, GET_All_HISTORY } from './queries';
 import { withApollo } from 'react-apollo';
@@ -89,6 +92,24 @@ const Dashboard = ({client, history}) => {
                         <FaArrowRight size="30" style={{alignSelf: "center", justifySelf: "center"}}/>
                     </ArrowContainer>
                 </CategoryContainer>
+                <OverdueContainer>
+                    <div style={{gridRow: "1/2"}}>
+                        Overdue Items
+                    </div>
+                    <OverdueItems>
+                        <ArrowContainer onClick={onPrevClicked}>
+                            <FaArrowLeft size="30" style={{alignSelf: "center", justifySelf: "center"}}/>
+                        </ArrowContainer>
+
+                        <Item item={{title: "title", imageId: "msiedvan1380uwvzfhk7", description: "description", state: "IN_STOCK", category: { title: "category long" }}}/>
+                        <Item item={{title: "title", imageId: "msiedvan1380uwvzfhk7", description: "description", state: "IN_STOCK", category: { title: "category" }}}/>
+                        <Item item={{title: "title", imageId: "msiedvan1380uwvzfhk7", description: "description", state: "IN_STOCK", category: { title: "short" }}}/>
+                        
+                        <ArrowContainer onClick={onNextClicked}>
+                            <FaArrowRight size="30" style={{alignSelf: "center", justifySelf: "center"}}/>
+                        </ArrowContainer>
+                    </OverdueItems>
+                </OverdueContainer>
             <ActivityContainer>
                 <p>Activity</p>
                 <Timeline items={events}/>
