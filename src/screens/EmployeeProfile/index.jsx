@@ -4,13 +4,22 @@ import Timeline from 'react-time-line'
 import { Image } from 'cloudinary-react'
 import { Container, ActivityContainer, ImageContainer, InfoContainer } from './style'
 import { GET_All_HISTORY } from '../Dashboard/queries'
+import { GET_EMPLOYEE } from './queries'
 
 
-const EmployeeProfile = ({ client }) => {
+const EmployeeProfile = ({ client, match }) => {
     const [events, setEvents] = useState([])
+    const [employee, setEmployee] = useState({})
 
     useEffect(() =>{
-        // client.q
+        client.query({
+            query: GET_EMPLOYEE,
+            variables: { id: match.params.employeeId }
+        }).then(res => {
+            setEmployee(res.data.getEmployee)
+        }).catch(error => {
+            console.log(error)
+        })
 
         client.query({
             query: GET_All_HISTORY,
@@ -19,9 +28,12 @@ const EmployeeProfile = ({ client }) => {
             let events = []
             res.data.getAllHistory.results.forEach((element)=>{
                 let text = ""  
-                if(element.type === "COLLECTED"){ text = element.item.title + " collected from " }
-                else { text = element.item.title + " dispensed to " }
-                text += element.to.first_name
+                if(element.type === "COLLECTED"){ 
+                    text = element.item.title + " collected from " 
+                } else { 
+                    text = element.item.title + " dispensed to " 
+                }
+                text = text + element.to.first_name
                 let date = new Date(parseInt(element.created_at)).toISOString()
                 events.push({ts: date, text: text })
             })
@@ -30,17 +42,23 @@ const EmployeeProfile = ({ client }) => {
             console.log(error)
         })
         
-     }, [client]);
+     }, [client, match.params.employeeId]);
 
     return (
         <Container>
             <ImageContainer>
                 <Image 
                     cloudName={process.env.REACT_APP_CLOUDINARY_CLOUD_NAME} 
-                    publicId="msiedvan1380uwvzfhk7"/>
+                    publicId={employee.imageId}/>
             </ImageContainer>
             <InfoContainer>
-                Employee Detail info
+                <p>{employee.id}</p>
+                <p>{employee.first_name}</p>
+                <p>{employee.last_name}</p>
+                <p>{employee.email}</p>
+                <p>{employee.phone_number}</p>
+                <p>{employee.role}</p>
+                <p>{employee.created_at}</p>
             </InfoContainer>
             <ActivityContainer>
                 <Timeline items={events} />

@@ -9,17 +9,14 @@ export const Container = styled.div`
 
 export const ImageContainer = styled.div`
     grid-column: 1/2;
-    background: green;
     overflow-x: hidden;
     overflow-y: hidden;
     border-radius: 15px;
     img {
-        // width: 100%;
-        height: 100%;
-        margin-left: -25%;
+        border-radius: 15px;
+        width: 100%;
         opacity: 1;
         overflow: hidden;
-        // height: 100%;
         transition: opacity 0.5s, transform 0.5s;
     }
 `

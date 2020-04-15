@@ -1,6 +1,6 @@
 import gql from "graphql-tag";
 
-const GET_EMPLOYEE = gql`
+export const GET_EMPLOYEE = gql`
     query get_employee($id: ID!){
         getEmployee(id: $id){
             id
