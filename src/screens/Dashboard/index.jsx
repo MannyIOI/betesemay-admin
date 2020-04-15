@@ -30,6 +30,8 @@ const Dashboard = ({client, history}) => {
             setIsLoading(false)
             setCategories(res.data.getAllCategories.results)
             setCategoryCount(res.data.getAllCategories.total)
+        }).catch(error => {
+            console.log(error)
         })
 
         client.query({

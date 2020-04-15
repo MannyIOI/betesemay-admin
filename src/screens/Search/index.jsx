@@ -1,10 +1,17 @@
 import React from 'react'
-import { Container } from './style'
+import { Container, FilterContainer, ResultContainer } from './style'
 
-const Search = ({  }) => {
+const Search = ({ match }) => {
+    console.log(match.params.search)
     return (
         <Container>
-            Search Screen
+            <FilterContainer>
+                Filter
+            </FilterContainer>
+
+            <ResultContainer>
+                Results
+            </ResultContainer>
         </Container>
     )
 }

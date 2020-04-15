@@ -18,6 +18,7 @@ const CreateItem = ({client, history}) => {
     const { value: description, bind: bindDesc } = useInput("")
     const { value: dispense_period, bind: bindDispensePeriod } = useInput(2)
     const [file, setFile] = useState("")
+    const [imageId, setImageId] = useState("")
     const [isLoading, setIsLoading] = useState(true)
     const [error, setError] = useState("")
     const validate = () => {
@@ -26,6 +27,7 @@ const CreateItem = ({client, history}) => {
         else if(title === "") { setError("* Item title can not be empty") }
         else if ( description === "" ) { setError("( Item description can not be empty") }
         else if ( dispense_period === 0 ) { setError("* Dispense Period should be greater than 0") }
+        else if ( file === "" ) { setError("Please select image file for the item") }
         else { val = true }
         return val
     }
@@ -36,15 +38,17 @@ const CreateItem = ({client, history}) => {
     }
 
     const createNewItem = async () => {
-        const formdata = new FormData()
-        formdata.append('file', file)
-        formdata.append('upload_preset', process.env.REACT_APP_CLOUDINARY_UPLOAD_PRESET)
-        setIsLoading(true)
-        const response = await axios.post(
-            `https://api.cloudinary.com/v1_1/${process.env.REACT_APP_CLOUDINARY_CLOUD_NAME}/image/upload`,
-            formdata
-        )
-        const imageId = response.data.public_id
+        if(imageId === ""){
+            const formdata = new FormData()
+            formdata.append('file', file)
+            formdata.append('upload_preset', process.env.REACT_APP_CLOUDINARY_UPLOAD_PRESET)
+            setIsLoading(true)
+            const response = await axios.post(
+                `https://api.cloudinary.com/v1_1/${process.env.REACT_APP_CLOUDINARY_CLOUD_NAME}/image/upload`,
+                formdata
+            )
+            setImageId(response.data.public_id)
+        }
         await client.mutate({
             mutation: CREATE_ITEM,
             variables: { category: category,
