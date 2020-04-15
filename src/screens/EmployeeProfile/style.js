@@ -21,5 +21,5 @@ export const InfoContainer = styled.div`
 export const ActivityContainer = styled.div`
     grid-column: 5/6;
     grid-row: 1/4;
-    background: green;
+    // background: green;
 `
