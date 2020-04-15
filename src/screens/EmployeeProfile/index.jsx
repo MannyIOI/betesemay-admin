@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from 'react'
 import { withApollo } from 'react-apollo'
-import { Container, ActivityContainer, ImageContainer, InfoContainer } from './style'
 import Timeline from 'react-time-line'
+import { Image } from 'cloudinary-react'
+import { Container, ActivityContainer, ImageContainer, InfoContainer } from './style'
 import { GET_All_HISTORY } from '../Dashboard/queries'
 
 
@@ -9,6 +10,7 @@ const EmployeeProfile = ({ client }) => {
     const [events, setEvents] = useState([])
 
     useEffect(() =>{
+        // client.q
 
         client.query({
             query: GET_All_HISTORY,
@@ -33,9 +35,13 @@ const EmployeeProfile = ({ client }) => {
     return (
         <Container>
             <ImageContainer>
-                
+                <Image 
+                    cloudName={process.env.REACT_APP_CLOUDINARY_CLOUD_NAME} 
+                    publicId="msiedvan1380uwvzfhk7"/>
             </ImageContainer>
-            <InfoContainer />
+            <InfoContainer>
+                Employee Detail info
+            </InfoContainer>
             <ActivityContainer>
                 <Timeline items={events} />
             </ActivityContainer>
