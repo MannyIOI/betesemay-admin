@@ -9,9 +9,24 @@ export const Container = styled.div`
 export const FilterContainer = styled.div`
     grid-row: 1/2;
     background: ${props=>props.theme.themeColor2};
+    
+    display: grid;
+    grid-template-columns: 1fr 1fr 8fr;
 `
 
 export const ResultContainer = styled.div`
     grid-row: 2/3;
     background: ${props=>props.theme.themeColor3};
+`
+
+export const ItemsContainer = styled.div`
+
+`
+
+export const CategoriesContainer = styled.div`
+
+`
+
+export const EmployeesContainer = styled.div`
+
 `
