@@ -46,7 +46,7 @@ const Employee = ({client, history, match}) => {
         <Container>
             <TableContainer>
                 <Table hover>
-                    <MDBTableHead style={{background: "#8f4685", color: "white"}} textWhite>
+                    <MDBTableHead style={{background: "#587AAA", color: "white"}} textWhite>
                         <tr>
                             <th>Profile</th>
                             <th>Full Name</th>
@@ -60,17 +60,17 @@ const Employee = ({client, history, match}) => {
                         <MDBTableBody>
                             {employees.map(employee => (
                                 <Tr key={employee.id}>
-                                    <td style={{display: "grid", justifyContent: "center"}}>
+                                    <td style={{display: "grid", justifyContent: "center"}} onClick={()=>{history.push("employees/"+employee.id)}}>
                                         <Profile>
                                             <Image 
                                                 cloudName={process.env.REACT_APP_CLOUDINARY_CLOUD_NAME} 
                                                 publicId={employee.imageId}/>
                                         </Profile>
                                     </td>
-                                    <td>{employee.first_name}</td>
-                                    <td>{employee.email}</td>
-                                    <td>{employee.address}</td>
-                                    <td>{employee.role}</td>
+                                    <td onClick={()=>{history.push("employees/"+employee.id)}}>{employee.first_name}</td>
+                                    <td onClick={()=>{history.push("employees/"+employee.id)}}>{employee.email}</td>
+                                    <td onClick={()=>{history.push("employees/"+employee.id)}}>{employee.address}</td>
+                                    <td onClick={()=>{history.push("employees/"+employee.id)}}>{employee.role}</td>
                                     <td>
                                         <Actions>
                                             <UpdateButton 

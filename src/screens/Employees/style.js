@@ -106,6 +106,7 @@ export const Actions = styled.div`
 `
 
 export const Tr = styled.tr`
+    cursor: pointer;
     &:hover img {
         opacity: 0.9;
         -webkit-transform: scale(1.2);
