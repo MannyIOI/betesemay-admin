@@ -17,13 +17,12 @@ import EmployeeProfile from "../screens/EmployeeProfile";
 
 import CategoryContainer from "../screens/Categories";
 import CreateCategory from "../screens/CategoryCreate";
-
-
+import Search from "../screens/Search";
 
 import Dashboard from "../screens/Dashboard";
 
 
-import { SearchBar } from "../components/SearchBar";
+import SearchBar from "../components/SearchBar";
 
 import {
     GroupOutlined,
@@ -34,7 +33,7 @@ import {
 
 
 import { Container } from "./styles"
-import Search from "../screens/Search";
+
 require('dotenv').config()
 const routes = [
     {

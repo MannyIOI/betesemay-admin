@@ -1,11 +1,21 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { Image } from 'cloudinary-react'
 import { SearchInput, AccountImage, AccountContainer, Container } from './styles'
+import { withRouter } from 'react-router-dom';
 
-export const SearchBar = () => {
+const SearchBar = ({ history }) => {
+    const [search, setSearch] = useState("")
+    const onSearch = (e) => {
+        if(e.keyCode === 13){
+            // ENTER Clicked
+            console.log(history)
+            history.push("/search/"+search)
+        }
+    }
+
     return (
         <Container>
-            <SearchInput placeholder="Search Items, Categories, Employees" />
+            <SearchInput placeholder="Search Items, Categories, Employees" onKeyUp={onSearch} onChange={(e)=>{setSearch(e.target.value)}} />
             <AccountContainer>
                 <AccountImage>
                     <Image 
@@ -20,3 +30,5 @@ export const SearchBar = () => {
         </Container>
     )
 }
+
+export default withRouter(SearchBar)
