@@ -83,7 +83,7 @@ const Routes = () => (
                         <Route exact path = "/employees" component = { EmployeeContainer }/>
                         <Route exact path = "/employees/create" component = { CreateEmployee } />
                         <Route exact path = "/employees/update/:employeeId" component = { UpdateEmployee } />
-                        <Route exact path = "/employees/profile" component = { EmployeeProfile } />
+                        <Route exact path = "/employees/:employeeId" component = { EmployeeProfile } />
 
                         <Route exact path = "/categories" component = { CategoryContainer } />
                         <Route exact path = "/categories/create" component = { CreateCategory } />

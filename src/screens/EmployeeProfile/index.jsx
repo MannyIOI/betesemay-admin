@@ -1,16 +1,20 @@
 import React from 'react'
-import { Container } from './style'
-import Item from '../../components/Item'
+import { withApollo } from 'react-apollo'
+import { Container, ActivityContainer, ImageContainer, InfoContainer } from './style'
+
 
 const EmployeeProfile = () => {
     return (
         <Container>
-            <Item /><Item /><Item />
-            <Item /><Item /><Item />
-            <Item /><Item /><Item />
-            <Item /><Item /><Item />
+            <ImageContainer />
+            <InfoContainer />
+            <ActivityContainer>
+                
+            </ActivityContainer>
+            
+
         </Container>
     )
 }
 
-export default EmployeeProfile
+export default withApollo(EmployeeProfile)
