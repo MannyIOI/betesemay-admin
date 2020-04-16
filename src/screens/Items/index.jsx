@@ -16,7 +16,7 @@ const ItemsPage = (props) => {
         try {
             const { data } = await props.client.query({
                 query: GET_ALL_ITEMS,
-                variables: { page }
+                variables: { page, limit: 10 }
             })
             setItems(data.getAllItems.results)
             setItemCount(data.getAllItems.total)

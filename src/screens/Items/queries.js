@@ -1,8 +1,8 @@
 import gql from "graphql-tag";
 
 export const GET_ALL_ITEMS = gql`
-    query get_all_items ($page: Int) {
-        getAllItems(page: $page){
+    query get_all_items ($page: Int, $limit: Int!) {
+        getAllItems(page: $page, limit: $limit){
             results {
                 id
                 title
