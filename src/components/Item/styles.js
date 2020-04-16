@@ -84,6 +84,9 @@ export const Card = styled.div`
     &:hover ${Actions}{
         display: flex;
     }
+    h1 {
+        color: ${props => props.theme.themeColor2};
+    }
 `
 
 export const UpdateButton = styled.button`

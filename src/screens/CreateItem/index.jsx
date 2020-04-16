@@ -16,7 +16,7 @@ const CreateItem = ({client, history}) => {
     const [ category, setCategory ] = useState("")
     const { value: title, bind: bindTitle } = useInput("")
     const { value: description, bind: bindDesc } = useInput("")
-    const { value: dispense_period, bind: bindDispensePeriod } = useInput(2)
+    const { value: dispense_period, bind: bindDispensePeriod } = useInput(0)
     const [file, setFile] = useState("")
     const [imageId, setImageId] = useState("")
     const [isLoading, setIsLoading] = useState(true)
@@ -54,11 +54,11 @@ const CreateItem = ({client, history}) => {
             variables: { category: category,
                             title: title, 
                             desc: description,
-                            dispense_period: dispense_period,
+                            dispense_period: parseInt(dispense_period),
                             imageId: imageId
                         },
             refetchQueries: [{ query: GET_ALL_ITEMS, 
-                                variables: { page: 0 } }, 
+                                variables: { page: 0, limit: 10 } }, 
                             { query: GET_ITEMS_BY_CATEGORY, 
                                 variables: { page: 0, category: category } }],
             

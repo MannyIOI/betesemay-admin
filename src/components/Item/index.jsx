@@ -33,7 +33,7 @@ const Item = (props) => {
             await props.client.mutate({
                 mutation: DELETE_ITEM,
                 variables: { id },
-                refetchQueries: [{ query: GET_ALL_ITEMS, variables: { page: 0 }}],
+                refetchQueries: [{ query: GET_ALL_ITEMS, variables: { page: 0, limit: 10 }}],
                 awaitRefetchQueries: true
             })
 
