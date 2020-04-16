@@ -14,7 +14,7 @@ const CreateEmployee = ({client, history}) => {
     const { value: phone_number, bind: bindPhone } = useInput("")
     const { value: role, bind: bindRole } = useInput("")
     const { value: address, bind: bindAddress } = useInput("") 
-    const [imageId, setImageId] = useState("")
+    let imageId = ""
     const [isLoading, setIsLoading] = useState(false)
     const [error, setError] = useState("")
     const [file, setFile] = useState("")
@@ -53,7 +53,7 @@ const CreateEmployee = ({client, history}) => {
                 `https://api.cloudinary.com/v1_1/${process.env.REACT_APP_CLOUDINARY_CLOUD_NAME}/image/upload`,
                 formdata
             );
-            setImageId(response.data.public_id)
+            imageId = response.data.public_id;
         }
 
         setIsLoading(true)
