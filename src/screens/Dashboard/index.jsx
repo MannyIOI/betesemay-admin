@@ -21,11 +21,12 @@ const Dashboard = ({client, history}) => {
     const [categoryCount, setCategoryCount] = useState(0);
     const [isLoading, setIsLoading] = useState(true)
     const [events, setEvents] = useState([])
+    const categoryLimit = 5;
     
     useEffect(() =>{
         client.query({
             query: GET_ALL_CATEGORIES,
-            variables: { page },
+            variables: { page, limit: categoryLimit },
         }).then(res => {
             setIsLoading(false)
             setCategories(res.data.getAllCategories.results)
@@ -81,18 +82,20 @@ const Dashboard = ({client, history}) => {
                 </CreateContainer>
 
                 <CategoryContainer>
-                    <ArrowContainer onClick={onPrevClicked}>
-                        <FaArrowLeft size="30" style={{alignSelf: "center", justifySelf: "center"}}/>
-                    </ArrowContainer>
+                    { page <= 0 ? <div></div> : 
+                        <ArrowContainer onClick={onPrevClicked}>
+                            <FaArrowLeft size="30" style={{alignSelf: "center", justifySelf: "center"}}/>
+                        </ArrowContainer> }
                     <div style={{display: "grid", gridTemplateColumns: "1fr 1fr 1fr 1fr 1fr"}}>
                         { isLoading && <Loading />}
                         { categories.map(category => (<Category key = { category.id } 
                                                     category = { category }
                                                     history = { history } />)) }
                     </div>
-                    <ArrowContainer onClick={onNextClicked}>
-                        <FaArrowRight size="30" style={{alignSelf: "center", justifySelf: "center"}}/>
-                    </ArrowContainer>
+                    { (page)*categoryLimit + categories.length>=categoryCount ? <div></div> :
+                        <ArrowContainer onClick={onNextClicked}>
+                            <FaArrowRight size="30" style={{alignSelf: "center", justifySelf: "center"}}/>
+                        </ArrowContainer> }
                 </CategoryContainer>
                 <OverdueContainer>
                     <div style={{gridRow: "1/2"}}>
