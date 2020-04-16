@@ -57,20 +57,18 @@ const UpdateItem = ({client, history, match}) => {
      }, [client, match, setCategory, setTitle, setDescription, setDispensePeriod, setIsLoading])
 
     useEffect(() => { 
-        try {
-            client.query({
-                query: GET_ALL_CATEGORIES,
-                variables: { page: 0 }
-            }).then(res => {
-                let categories = []
-                res.data.getAllCategories.results.forEach(category => {
-                    categories.push({ label: category.title, value: category.id })
-                });
-                setCategories(categories)
-            })
-        } catch (error) {
+        client.query({
+            query: GET_ALL_CATEGORIES,
+            variables: { page: 0, limit: 10 }
+        }).then(res => {
+            let categories = []
+            res.data.getAllCategories.results.forEach(category => {
+                categories.push({ label: category.title, value: category.id })
+            });
+            setCategories(categories)
+        }).catch(error => {
             console.log(error)
-        }
+        })
      }, [client, setCategories]);   
 
     return (

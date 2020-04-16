@@ -3,7 +3,7 @@ import { Container, NavigationContainer } from "./style"
 import { withApollo } from 'react-apollo'
 
 import Category from "../../components/Category"
-import { GET_ALL_CATEGORIES } from "./queries";
+import { GET_ALL_CATEGORIES } from "../Dashboard/queries";
 import { PrevButton, NextButton } from '../Employees/style';
 import Loading from '../../components/Loading';
 

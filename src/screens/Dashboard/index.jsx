@@ -4,10 +4,12 @@ import { Container,
             ActivityContainer, 
             CreateContainer,
             Create, 
-            CategoryContainer, 
+            CategoryItems, 
             ArrowContainer, 
             OverdueContainer,
-            OverdueItems } from './styles'
+            OverdueItems, 
+            CategoryContainer,
+            Header } from './styles'
 import Category from "../../components/Category";
 import Item from "../../components/Item";
 import { FaArrowLeft, FaArrowRight, FaPlus } from "react-icons/fa";
@@ -80,27 +82,31 @@ const Dashboard = ({client, history}) => {
                         <p>Create Employee</p>
                     </Create>
                 </CreateContainer>
-
                 <CategoryContainer>
-                    { page <= 0 ? <div></div> : 
-                        <ArrowContainer onClick={onPrevClicked}>
-                            <FaArrowLeft size="30" style={{alignSelf: "center", justifySelf: "center"}}/>
-                        </ArrowContainer> }
-                    <div style={{display: "grid", gridTemplateColumns: "1fr 1fr 1fr 1fr 1fr"}}>
-                        { isLoading && <Loading />}
-                        { categories.map(category => (<Category key = { category.id } 
-                                                    category = { category }
-                                                    history = { history } />)) }
-                    </div>
-                    { (page)*categoryLimit + categories.length>=categoryCount ? <div></div> :
-                        <ArrowContainer onClick={onNextClicked}>
-                            <FaArrowRight size="30" style={{alignSelf: "center", justifySelf: "center"}}/>
-                        </ArrowContainer> }
+                    <Header style={{gridRow: "1/2"}}>
+                        <h2>Categories</h2>
+                    </Header>
+                    <CategoryItems>
+                        { page <= 0 ? <div></div> : 
+                            <ArrowContainer onClick={onPrevClicked}>
+                                <FaArrowLeft size="30" style={{alignSelf: "center", justifySelf: "center"}}/>
+                            </ArrowContainer> }
+                        <div style={{display: "grid", gridTemplateColumns: "1fr 1fr 1fr 1fr 1fr"}}>
+                            { isLoading && <Loading />}
+                            { categories.map(category => (<Category key = { category.id } 
+                                                        category = { category }
+                                                        history = { history } />)) }
+                        </div>
+                        { (page)*categoryLimit + categories.length>=categoryCount ? <div></div> :
+                            <ArrowContainer onClick={onNextClicked}>
+                                <FaArrowRight size="30" style={{alignSelf: "center", justifySelf: "center"}}/>
+                            </ArrowContainer> }
+                    </CategoryItems>
                 </CategoryContainer>
                 <OverdueContainer>
-                    <div style={{gridRow: "1/2"}}>
-                        Overdue Items
-                    </div>
+                    <Header style={{gridRow: "1/2"}}>
+                        <h2>Overdue Items</h2>
+                    </Header>
                     <OverdueItems>
                         <ArrowContainer onClick={onPrevClicked}>
                             <FaArrowLeft size="30" style={{alignSelf: "center", justifySelf: "center"}}/>
@@ -116,7 +122,6 @@ const Dashboard = ({client, history}) => {
                     </OverdueItems>
                 </OverdueContainer>
             <ActivityContainer>
-                <p>Activity</p>
                 <Timeline items={events}/>
             </ActivityContainer>
         </Container>

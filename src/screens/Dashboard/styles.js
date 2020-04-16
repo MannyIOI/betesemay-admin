@@ -36,15 +36,24 @@ export const CreateContainer = styled.div`
 `
 
 
+export const CategoryItems = styled.div`
+    grid-row: 2/3;
+    // grid-column: 1/3;
+    display: grid;
+    grid-template-columns: 1fr 25fr 1fr;
+    overflow-x: hiden;
+    // overflow-y: hidden;
+    padding: 20px;
+`
+
 export const CategoryContainer = styled.div`
     grid-row: 2/3;
     grid-column: 1/3;
     display: grid;
-    grid-template-columns: 1fr 25fr 1fr;
-    grid-template-rows: 1fr;
-    overflow-x: hiden;
+    grid-template-rows: 1fr 3fr;
     overflow-y: hidden;
-    padding: 20px;
+    // padding: 20px;
+    height: 100%;
 `
 
 export const OverdueContainer = styled.div`
@@ -99,8 +108,8 @@ export const Create = styled.div`
 `
 
 export const ArrowContainer = styled.div`
-    height: 20%;
-    border-radius: 10px;
+    // height: 20%;
+    border-radius: 5px;
     align-self: center;
     display: grid;
     cursor: pointer;
@@ -111,5 +120,15 @@ export const ArrowContainer = styled.div`
     }
     :active {
         ${props => props.theme.neumorphicActive};
+    }
+`
+
+export const Header = styled.div`
+    margin-left: 5%;
+    display: grid;
+    h2 {
+        color: ${props => props.theme.themeColor4};
+        font-size: 25px;
+        align-self: end;
     }
 `
