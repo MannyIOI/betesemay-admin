@@ -8,7 +8,10 @@ export const SEARCH_ITEMS = gql`
                 title
                 category{
                     title
+                    
                 }
+                description
+                state
                 imageId
             }
             total
@@ -21,6 +24,7 @@ export const SEARCH_CATEGORIES = gql`
         searchCategories(title: $title, page: $page, limit: $limit){
             results{
                 id
+                title
             }
             total
         }

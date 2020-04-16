@@ -9,6 +9,7 @@ import { Select } from 'antd'
 import { withApollo } from 'react-apollo'
 import { SEARCH_ITEMS, SEARCH_EMPLOYEES, SEARCH_CATEGORIES } from './queries'
 import Item from '../../components/Item';
+import Category from '../../components/Category'
 
 const Search = ({ client, match }) => {
     const [searchFor, setSearchFor] = useState("item")
@@ -58,8 +59,8 @@ const Search = ({ client, match }) => {
                     limit: 5
                 }
             }).then(res => {
-                console.log(res)
-                setCategories([])
+                console.log(res.data.searchCategories.results)
+                setCategories(res.data.searchCategories.results)
             }).catch(error => {
                 console.log(error)
             })
@@ -77,12 +78,11 @@ const Search = ({ client, match }) => {
             </FilterContainer>
 
             <ResultContainer>
-                Results
                 { searchFor === "item" && <ItemsContainer>
-                    { items.map(item => <Item item={item} /> )}
+                    { items.map(item => <Item item={item} key={item.id} /> )}
                 </ItemsContainer> }
                 { searchFor ===  "category" && <CategoriesContainer>
-                    { categories.map(category => <div></div>)}
+                    { categories.map(category => <Category category={category} key={category.id} />)}
                 </CategoriesContainer>}
                 { searchFor === "employee" && <EmployeesContainer>
                     { employees.map(employee => <div></div> )}
