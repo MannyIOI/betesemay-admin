@@ -1,6 +1,6 @@
 import React from 'react'
-import { withApollo } from "react-apollo";
 import { Container, CategoryTitleContainer, Title } from "./styles"
+import { withRouter } from 'react-router-dom';
 
 const Category = ({ history, category }) => {
     return (
@@ -12,4 +12,4 @@ const Category = ({ history, category }) => {
     )
 }
 
-export default withApollo(Category);
+export default withRouter(Category);
