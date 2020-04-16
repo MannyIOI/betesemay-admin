@@ -76,7 +76,7 @@ export const Create = styled.div`
     height: 40%;
     padding: 10px;
     display: grid;
-    grid-template-columns: 1fr 3fr;
+    grid-template-columns: 1fr 4fr;
     transition: 1s;
     border-radius: 20px;
     p { 
@@ -84,6 +84,7 @@ export const Create = styled.div`
         color: ${props => props.theme.themeColor4}; 
         font-weight: 1000;
         font-size: 20px;
+        margin: 0px;
     }
     path {
         color: ${props => props.theme.themeColor4};

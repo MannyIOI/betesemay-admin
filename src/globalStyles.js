@@ -12,12 +12,12 @@ export const theme = {
 
     neumorphic: {
         backgroundColor: '#E0E5EC',
-        boxShadow: '12px 12px 24px 0 rgba(0, 0, 0, 0.2), -12px -12px 24px 0 rgba(255, 255, 255, 0.2)'
+        boxShadow: '5px 5px 10px 0 rgba(0, 0, 0, 0.2), -5px -5px 10px 0 rgba(255, 255, 255, 0.5)'
     },
 
     neumorphicHover: {
         backgroundColor: '#E0E5EC',
-        boxShadow: '14px 14px 20px rgb(163,177,198, 0.8), -14px -14px 20px rgba(255,255,255, 0.2)',
+        boxShadow: '12px 12px 24px rgb(163,177,198, 0.8), -12px -12px 24px rgba(255,255,255, 0.5)',
     },
 
     neumorphicConcave: {
