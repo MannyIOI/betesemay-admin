@@ -16,7 +16,6 @@ export const FilterContainer = styled.div`
 
 export const ResultContainer = styled.div`
     grid-row: 2/3;
-    // background: ${props=>props.theme.themeColor3};
     height: 100%;
     overflow-y: hidden;
 `

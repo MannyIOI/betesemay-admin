@@ -14,7 +14,7 @@ const Employee = ({ employee }) => {
                 <p>{employee.first_name + " " + employee.last_name}</p>
                 <p>Joined {new Date(parseInt(employee.created_at)).toDateString()}</p>
                 <p>{employee.email}</p>
-                <p>{employee.role}</p>
+                <p>Role - {employee.role}</p>
             </DetailContainer>
             
         </Container>
