@@ -4,6 +4,7 @@ import "react-datepicker/dist/react-datepicker.css";
 import { withApollo } from 'react-apollo';
 import { DISPENSE_COLLECT_ITEM, CREATE_ITEM_HISTORY } from '../DispenseModal/queries';
 import { GET_All_HISTORY } from '../../screens/Dashboard/queries';
+import { CancelButton, CollectButton } from './style';
 
 const customStyles = {
     content : {
@@ -11,11 +12,12 @@ const customStyles = {
       left                  : '50%',
       right                 : 'auto',
       bottom                : 'auto',
-      width                 : '50%',
+      width                 : '30%',
       height                : '30%',
       padding               : '5%',
       transform             : 'translate(-50%, -50%)',
-      backdrop              : 'grey'
+      backdrop              : 'grey',
+      borderRadius          : '15px'
     }
   };
 
@@ -75,8 +77,8 @@ const CollectModal = ({ client, isOpen, closeModal, item, histories, addHistory,
                     <p>Are you sure you want to collect this item from {histories.length > 0 && histories[0].to.first_name + " " + histories[0].to.last_name}</p>
                     
                     {/* <p style={{color:"red"}}>{modalError}</p> */}
-                    <button onClick={collect}>Collect</button>
-                    <button onClick={closeModal}>Cancel</button>
+                    <CollectButton onClick={collect}>Collect</CollectButton>
+                    <CancelButton onClick={closeModal}>Cancel</CancelButton>
             </Modal>
         </div>
     )
