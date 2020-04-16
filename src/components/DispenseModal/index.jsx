@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import Modal from "react-modal"
 import Select from 'react-select';
-import DatePicker from 'react-datepicker';
+import { DateInput } from './style';
 import "react-datepicker/dist/react-datepicker.css";
 import { withApollo } from 'react-apollo';
 import { GET_ALL_EMPLOYEES, DISPENSE_COLLECT_ITEM, CREATE_ITEM_HISTORY } from './queries';
@@ -16,9 +16,11 @@ const customStyles = {
       bottom                : 'auto',
       width                 : '50%',
       height                : '50%',
-      padding               : '5%',
+      padding               : '4%',
       transform             : 'translate(-50%, -50%)',
-      backdrop              : 'black'
+      backdrop              : 'black',
+      borderRadius          : "30px",
+      display               : "grid",
     }
   };
 
@@ -116,14 +118,14 @@ const DispenseModal = ({ client, isOpen, closeModal, item, addHistory, changeIte
                 contentLabel="Example Modal"
                 
                 >
-                    <Select placeholder="Employees" options={employees} onChange={({value})=>setEmployee(value)}/>
+                    <Select placeholder="Select Employee" options={employees} onChange={({value})=>setEmployee(value)}/>
 
-                    <DatePicker placeholderText="Dispense date" 
+                    <DateInput placeholderText="Dispense date" 
                                 selected={dispenseDate} 
                                 onChange={date=>setDispenseDate(date)}
-                                style={{width: "100%"}}/>
+                                css={{background: "black"}}/>
 
-                    <DatePicker placeholderText="Expected Return date" 
+                    <DateInput placeholderText="Expected Return date" 
                                 selected={expectedReturnDate} 
                                 onChange={date=>setExpectedReturnDate(date)}
                                 style={{width: "100%"}}/>
