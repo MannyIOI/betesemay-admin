@@ -75,7 +75,7 @@ const CreateItem = ({client, history}) => {
             setIsLoading(true)
             client.query({
                 query: GET_ALL_CATEGORIES,
-                variables: { page: 0 }
+                variables: { page: 0, limit: 10 }
             }).then(res => {
                 let categories = []
                 res.data.getAllCategories.results.forEach(category => {
