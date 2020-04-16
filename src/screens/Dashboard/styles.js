@@ -56,7 +56,6 @@ export const CategoryContainer = styled.div`
     height: 100%;
     h2 {
         color: ${props => props.theme.themeColor4};
-        font-size: 25px;
     }
 `
 

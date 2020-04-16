@@ -18,7 +18,7 @@ const CreateItem = ({client, history}) => {
     const { value: description, bind: bindDesc } = useInput("")
     const { value: dispense_period, bind: bindDispensePeriod } = useInput(0)
     const [file, setFile] = useState("")
-    const [imageId, setImageId] = useState("")
+    let imageId = ""
     const [isLoading, setIsLoading] = useState(true)
     const [error, setError] = useState("")
     const validate = () => {
@@ -38,6 +38,7 @@ const CreateItem = ({client, history}) => {
     }
 
     const createNewItem = async () => {
+        console.log(imageId==="")
         if(imageId === ""){
             const formdata = new FormData()
             formdata.append('file', file)
@@ -47,7 +48,7 @@ const CreateItem = ({client, history}) => {
                 `https://api.cloudinary.com/v1_1/${process.env.REACT_APP_CLOUDINARY_CLOUD_NAME}/image/upload`,
                 formdata
             )
-            setImageId(response.data.public_id)
+            imageId = response.data.public_id
         }
         await client.mutate({
             mutation: CREATE_ITEM,

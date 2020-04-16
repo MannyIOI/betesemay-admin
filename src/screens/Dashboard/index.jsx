@@ -63,13 +63,16 @@ const Dashboard = ({client, history}) => {
 
         client.query({
             query: GET_ALL_ITEMS,
-            variables: { page: 0, limit: itemLimit }
+            variables: { page: itemPage, limit: itemLimit }
         }).then(res => {
+            setIsLoading(false)
             setItems(res.data.getAllItems.results)
             setItemCount(res.data.getAllItems.total)
+        }).catch(error => {
+            console.log(error)
         })
         
-     }, [categories, client, page]);
+     }, [categories, client, page, itemPage]);
 
     const onNextClicked = async () => {
         setIsLoading(true)
@@ -79,6 +82,17 @@ const Dashboard = ({client, history}) => {
         setIsLoading(true)
         setPage(page-1)
     }
+
+    const onItemsNextClicked = async () => {
+        setIsLoading(true)
+        setItemPage(itemPage+1)
+    }
+
+    const onItemsPrevClicked = async () => {
+        setIsLoading(true)
+        setItemPage(itemPage-1)
+    }
+
 
     return (
         <Container>
@@ -110,7 +124,7 @@ const Dashboard = ({client, history}) => {
                             { categories.map(category => (<Category key = { category.id } 
                                                         category = { category }
                                                         history = { history } />)) }
-                            { categories.length === 0 && <h2>No Categories found, Please go ahead and create one</h2>} 
+                            { categories.length === 0 && <h2>No Categories found</h2>} 
                         </div>
                         { (page)*categoryLimit + categories.length>=categoryCount ? <div></div> :
                             <ArrowContainer onClick={onNextClicked}>
@@ -124,7 +138,7 @@ const Dashboard = ({client, history}) => {
                     </Header>
                     <OverdueItems>
                         { itemPage <= 0 ? <div></div> : 
-                        <ArrowContainer onClick={onPrevClicked}>
+                        <ArrowContainer onClick={onItemsPrevClicked}>
                             <FaArrowLeft size="30" style={{alignSelf: "center", justifySelf: "center"}}/>
                         </ArrowContainer> }
                         <div style={{display: "grid", gridTemplateColumns: "1fr 1fr 1fr", overflowY: "hidden"}}>
@@ -133,8 +147,8 @@ const Dashboard = ({client, history}) => {
                                                         item = { item }/>)) }
                             { items.length === 0 && <h2>No Overdue items found</h2> }
                         </div>
-                        { (page)*itemLimit + items.length>=itemCount ? <div></div> :
-                            <ArrowContainer onClick={onNextClicked}>
+                        { (itemPage)*itemLimit + items.length>=itemCount ? <div></div> :
+                            <ArrowContainer onClick={onItemsNextClicked}>
                                 <FaArrowRight size="30" style={{alignSelf: "center", justifySelf: "center"}}/>
                             </ArrowContainer>}
                     </OverdueItems>
