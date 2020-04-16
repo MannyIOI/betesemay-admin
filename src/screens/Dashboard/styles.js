@@ -54,6 +54,10 @@ export const CategoryContainer = styled.div`
     overflow-y: hidden;
     // padding: 20px;
     height: 100%;
+    h2 {
+        color: ${props => props.theme.themeColor4};
+        font-size: 25px;
+    }
 `
 
 export const OverdueContainer = styled.div`
@@ -69,10 +73,16 @@ export const OverdueContainer = styled.div`
 
 export const OverdueItems = styled.div`
     grid-row: 2/3;
-    height: 100%;
-    overflow-y: hidden;
-    grid-template-columns: 1fr 10fr 10fr 10fr 1fr;
+    // grid-column: 1/3;
     display: grid;
+    grid-template-columns: 1fr 25fr 1fr;
+    overflow-x: hidden;
+    // overflow-y: hidden;
+    padding: 20px;
+    h2 {
+        color: ${props => props.theme.themeColor4};
+        // font-size: 25px;
+    }
 `
 
 export const Create = styled.div`

@@ -14,16 +14,22 @@ import Category from "../../components/Category";
 import Item from "../../components/Item";
 import { FaArrowLeft, FaArrowRight, FaPlus } from "react-icons/fa";
 import { GET_ALL_CATEGORIES, GET_All_HISTORY } from './queries';
+import { GET_ALL_ITEMS } from "../Items/queries"
 import { withApollo } from 'react-apollo';
 import Loading from '../../components/Loading';
 
 const Dashboard = ({client, history}) => {
     const [categories, setCategories] = useState([]);
+    const [items, setItems] = useState([]);
+    
     const [page, setPage] = useState(0);
+    const [itemPage, setItemPage] = useState(0);
     const [categoryCount, setCategoryCount] = useState(0);
-    const [isLoading, setIsLoading] = useState(true)
-    const [events, setEvents] = useState([])
+    const [itemCount, setItemCount] = useState(0);
+    const [isLoading, setIsLoading] = useState(true);
+    const [events, setEvents] = useState([]);
     const categoryLimit = 5;
+    const itemLimit = 3;
     
     useEffect(() =>{
         client.query({
@@ -53,6 +59,14 @@ const Dashboard = ({client, history}) => {
             setEvents(events)
         }).catch(error => {
             console.log(error)
+        })
+
+        client.query({
+            query: GET_ALL_ITEMS,
+            variables: { page: 0, limit: itemLimit }
+        }).then(res => {
+            setItems(res.data.getAllItems.results)
+            setItemCount(res.data.getAllItems.total)
         })
         
      }, [categories, client, page]);
@@ -96,6 +110,7 @@ const Dashboard = ({client, history}) => {
                             { categories.map(category => (<Category key = { category.id } 
                                                         category = { category }
                                                         history = { history } />)) }
+                            { categories.length === 0 && <h2>No Categories found, Please go ahead and create one</h2>} 
                         </div>
                         { (page)*categoryLimit + categories.length>=categoryCount ? <div></div> :
                             <ArrowContainer onClick={onNextClicked}>
@@ -108,17 +123,20 @@ const Dashboard = ({client, history}) => {
                         <h2>Overdue Items</h2>
                     </Header>
                     <OverdueItems>
+                        { itemPage <= 0 ? <div></div> : 
                         <ArrowContainer onClick={onPrevClicked}>
                             <FaArrowLeft size="30" style={{alignSelf: "center", justifySelf: "center"}}/>
-                        </ArrowContainer>
-
-                        <Item item={{title: "title", imageId: "msiedvan1380uwvzfhk7", description: "description", state: "IN_STOCK", category: { title: "category long" }}}/>
-                        <Item item={{title: "title", imageId: "msiedvan1380uwvzfhk7", description: "description", state: "IN_STOCK", category: { title: "category" }}}/>
-                        <Item item={{title: "title", imageId: "msiedvan1380uwvzfhk7", description: "description", state: "IN_STOCK", category: { title: "short" }}}/>
-                        
-                        <ArrowContainer onClick={onNextClicked}>
-                            <FaArrowRight size="30" style={{alignSelf: "center", justifySelf: "center"}}/>
-                        </ArrowContainer>
+                        </ArrowContainer> }
+                        <div style={{display: "grid", gridTemplateColumns: "1fr 1fr 1fr", overflowY: "hidden"}}>
+                            { isLoading && <Loading />}
+                            { items.map(item => (<Item key = { item.id } 
+                                                        item = { item }/>)) }
+                            { items.length === 0 && <h2>No Overdue items found</h2> }
+                        </div>
+                        { (page)*itemLimit + items.length>=itemCount ? <div></div> :
+                            <ArrowContainer onClick={onNextClicked}>
+                                <FaArrowRight size="30" style={{alignSelf: "center", justifySelf: "center"}}/>
+                            </ArrowContainer>}
                     </OverdueItems>
                 </OverdueContainer>
             <ActivityContainer>
