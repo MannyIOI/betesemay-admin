@@ -6,8 +6,11 @@ import { Container,
             CategoriesContainer, 
             EmployeesContainer } from './style'
 import { Select } from 'antd'
+import { withApollo } from 'react-apollo'
+import { SEARCH_ITEMS, SEARCH_EMPLOYEES, SEARCH_CATEGORIES } from './queries'
+import Item from '../../components/Item';
 
-const Search = ({ match }) => {
+const Search = ({ client, match }) => {
     const [searchFor, setSearchFor] = useState("item")
     const [items, setItems] = useState([])
     const [categories, setCategories] = useState([])
@@ -15,13 +18,53 @@ const Search = ({ match }) => {
 
     useEffect(() => {
         if(searchFor==="item"){
-            // Search for items
+            // Search for Items
+            client.query({
+                query: SEARCH_ITEMS,
+                variables: {
+                    title: match.params.search,
+                    page: 0,
+                    limit: 5
+                }
+            }).then(res => {
+                console.log(res)
+                setItems(res.data.searchItems.results)
+            }).catch(error => {
+                console.log(error)
+            })
         } else if (searchFor === "employee"){
             // Search for employees
+            client.query({
+                query: SEARCH_EMPLOYEES,
+                variables: {
+                    title: match.params.search,
+                    page: 0,
+                    limit: 5
+                }
+            }).then(res => {
+                console.log(res)
+                setEmployees([])
+            }).catch(error => {
+                console.log(error)
+            })
+            
         } else if (searchFor === "category"){
             // Search for categories
+            client.query({
+                query: SEARCH_CATEGORIES,
+                variables: {
+                    title: match.params.search,
+                    page: 0,
+                    limit: 5
+                }
+            }).then(res => {
+                console.log(res)
+                setCategories([])
+            }).catch(error => {
+                console.log(error)
+            })
         }
-    })
+    }, [setCategories, setEmployees, setItems, match.params.search, searchFor, client])
     return (
         <Container>
             <FilterContainer>
@@ -36,17 +79,17 @@ const Search = ({ match }) => {
             <ResultContainer>
                 Results
                 { searchFor === "item" && <ItemsContainer>
-                    {items.map(item => {console.log(item)})}
+                    { items.map(item => <Item item={item} /> )}
                 </ItemsContainer> }
-                { searchFor === "category" && <CategoriesContainer>
-                    {categories.map(category => {console.log(category)})}
+                { searchFor ===  "category" && <CategoriesContainer>
+                    { categories.map(category => <div></div>)}
                 </CategoriesContainer>}
                 { searchFor === "employee" && <EmployeesContainer>
-                    {employees.map(employee => {console.log(employee)})}
+                    { employees.map(employee => <div></div> )}
                 </EmployeesContainer>}
             </ResultContainer>
         </Container>
     )
 }
 
-export default Search;
+export default withApollo(Search);

@@ -8,7 +8,6 @@ const SearchBar = ({ history }) => {
     const onSearch = (e) => {
         if(e.keyCode === 13){
             // ENTER Clicked
-            console.log(history)
             history.push("/search/"+search)
         }
     }

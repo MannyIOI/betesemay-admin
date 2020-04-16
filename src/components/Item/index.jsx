@@ -73,7 +73,7 @@ const Item = (props) => {
                 </Actions>
                 {!isDeleting ?
                     <div onClick={onItemClick}>
-                        <h2>{props.item.title}</h2>
+                        <h1>{props.item.title}</h1>
                         <Description>
                             <p>{props.item.description}</p>
                             <p>{props.item.state}</p>
