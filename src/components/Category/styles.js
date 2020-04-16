@@ -9,7 +9,6 @@ export const Container = styled.div`
     margin: 10px;
     cursor: pointer;
     ${props => props.theme.neumorphic};
-    // background: #6f4685;
     transition: 0.25s;
     :hover {
         ${props => props.theme.neumorphicHover};

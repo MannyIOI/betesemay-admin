@@ -2,17 +2,16 @@ import styled from 'styled-components'
 
 export const Container = styled.div`
     display: grid;
-    overflow-y: hidden;
-    overflox-x: hidden;
+    border-radius: 10px;
     grid-template-columns: 1fr 1fr;
-    padding: 10px;
-    ${props => props.theme.neumorphic};
+    display: grid;
+    margin: 10px;
     cursor: pointer;
+    ${props => props.theme.neumorphic};
     :hover {
         ${props => props.theme.neumorphicHover};
     }
-    border-radius: 10px;
-    margin: 10px;
+    transition: 0.25s;
 `
 
 export const ImageContainer = styled.div`
