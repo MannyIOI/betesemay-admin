@@ -1,10 +1,14 @@
 import React from 'react'
 import { Image } from 'cloudinary-react'
 import { Container, ImageContainer, DetailContainer } from './style'
+import { withRouter } from 'react-router-dom'
 
-const Employee = ({ employee }) => {
+const Employee = ({ employee, history }) => {
+    const onClick = () => {
+        history.push("/employees/"+employee.id)
+    }
     return (
-        <Container>
+        <Container onClick={onClick}>
             <ImageContainer>
                 <Image 
                     cloudName={process.env.REACT_APP_CLOUDINARY_CLOUD_NAME} 
@@ -21,4 +25,4 @@ const Employee = ({ employee }) => {
     )
 }
 
-export default Employee
+export default withRouter(Employee)
