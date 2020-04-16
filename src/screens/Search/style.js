@@ -11,6 +11,7 @@ export const FilterContainer = styled.div`
     
     display: grid;
     grid-template-columns: 1fr 1fr 8fr;
+    padding: 10px;
 `
 
 export const ResultContainer = styled.div`
