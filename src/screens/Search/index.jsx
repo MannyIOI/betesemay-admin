@@ -10,9 +10,10 @@ import { withApollo } from 'react-apollo'
 import { SEARCH_ITEMS, SEARCH_EMPLOYEES, SEARCH_CATEGORIES } from './queries'
 import Item from '../../components/Item';
 import Category from '../../components/Category'
+import Employee from '../../components/Employee'
 
 const Search = ({ client, match }) => {
-    const [searchFor, setSearchFor] = useState("item")
+    const [searchFor, setSearchFor] = useState("employee")
     const [items, setItems] = useState([])
     const [categories, setCategories] = useState([])
     const [employees, setEmployees] = useState([])
@@ -38,13 +39,13 @@ const Search = ({ client, match }) => {
             client.query({
                 query: SEARCH_EMPLOYEES,
                 variables: {
-                    title: match.params.search,
+                    q: match.params.search,
                     page: 0,
                     limit: 5
                 }
             }).then(res => {
                 console.log(res)
-                setEmployees([])
+                setEmployees(res.data.searchEmployees.results)
             }).catch(error => {
                 console.log(error)
             })
@@ -69,11 +70,10 @@ const Search = ({ client, match }) => {
     return (
         <Container>
             <FilterContainer>
-                <p>Search for</p>
-                <Select defaultValue="item" onChange={(value)=>{setSearchFor(value)}}>
-                    <Select.Option value="item">Items</Select.Option>
-                    <Select.Option value="category">Categories</Select.Option>
-                    <Select.Option value="employee">Employees</Select.Option>
+                <Select defaultValue={searchFor} onChange={(value)=>{setSearchFor(value)}}>
+                    <Select.Option value="item">Search for Items</Select.Option>
+                    <Select.Option value="category">Search for Categories</Select.Option>
+                    <Select.Option value="employee">Search for Employees</Select.Option>
                 </Select>
             </FilterContainer>
 
@@ -85,7 +85,7 @@ const Search = ({ client, match }) => {
                     { categories.map(category => <Category category={category} key={category.id} />)}
                 </CategoriesContainer>}
                 { searchFor === "employee" && <EmployeesContainer>
-                    { employees.map(employee => <div></div> )}
+                    { employees.map(employee => <Employee employee={employee} key={employee.id} /> )}
                 </EmployeesContainer>}
             </ResultContainer>
         </Container>

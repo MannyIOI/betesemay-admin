@@ -36,6 +36,11 @@ export const SEARCH_EMPLOYEES = gql`
         searchEmployees(q: $q, page: $page, limit: $limit){
             results{
                 id
+                first_name
+                last_name
+                email
+                role
+                created_at
             }
             total
         }
