@@ -25,14 +25,8 @@ const CreateEmployee = ({client, history, match}) => {
 
     const validate = () => {
         let val = false;
-        // if(email === "") { setError("* Email is required") }
         if (!validateEmail(email)) { setError("* Email is not valid")}
-        // else if(first_name === "") { setError("* First name is required") }
-        // else if (last_name === "") { setError("* Last name is required") }
-        // else if (phone_number === "") { setError("* Phone number is required") }
-        // else if (phone_number.length !== 10 || phone_number.length !== 9) { setError("* Please put in the right phone number. Example 0912345678") }
-        // else if (address==="") { setError("Invalid address") }
-        else { val = true }
+       else { val = true }
         return val
     }
 

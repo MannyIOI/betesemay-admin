@@ -14,9 +14,9 @@ const customStyles = {
       left                  : '50%',
       right                 : 'auto',
       bottom                : 'auto',
-      width                 : '50%',
+      width                 : '30%',
       height                : '50%',
-      padding               : '4%',
+      padding               : '5% 2%',
       transform             : 'translate(-50%, -50%)',
       backdrop              : 'black',
       borderRadius          : "30px",
@@ -127,8 +127,7 @@ const DispenseModal = ({ client, isOpen, closeModal, item, addHistory, changeIte
 
                     <DateInput placeholderText="Expected Return date" 
                                 selected={expectedReturnDate} 
-                                onChange={date=>setExpectedReturnDate(date)}
-                                style={{width: "100%"}}/>
+                                onChange={date=>setExpectedReturnDate(date)}/>
 
                     <p style={{color:"red"}}>{modalError}</p>
                     <DispenseButton onClick={dispense}>Dispense</DispenseButton>
