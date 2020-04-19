@@ -7,6 +7,7 @@ import { withApollo } from 'react-apollo';
 import { GET_ALL_EMPLOYEES, DISPENSE_COLLECT_ITEM, CREATE_ITEM_HISTORY } from './queries';
 import { DispenseButton } from '../../screens/DispenseCollect/style';
 import { GET_All_HISTORY } from '../../screens/Dashboard/queries';
+import { GET_ITEM_DETAIL } from '../../screens/DispenseCollect/queries'
 
 const customStyles = {
     content : {
@@ -88,8 +89,7 @@ const DispenseModal = ({ client, isOpen, closeModal, item, addHistory, changeIte
             await client.mutate({
                 mutation: DISPENSE_COLLECT_ITEM,
                 variables: { id: item.id, state: "DISPENSED" },
-                refetchQueries: { query: GET_All_HISTORY, variables: { page: 0 } },
-                awaitRefetchQuery: true
+                refetchQueries: [{ query: GET_ITEM_DETAIL, variables: {id: item.id}}]
             })
 
             const { data } = await client.mutate({
@@ -98,7 +98,9 @@ const DispenseModal = ({ client, isOpen, closeModal, item, addHistory, changeIte
                     item: item.id, 
                     to: employee,
                     type: "DISPENSED"
-                }
+                },
+                refetchQueries: [{ query: GET_All_HISTORY, variables: { page: 0 } }],
+                awaitRefetchQueries: true
             })
             await changeItemState("DISPENSED")
             await addHistory(data.createHistory)

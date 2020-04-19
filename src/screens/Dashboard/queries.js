@@ -26,6 +26,7 @@ export const GET_All_HISTORY = gql`
                     role
                 }
                 item{
+                    id
                     title
                 }
                 type

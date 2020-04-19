@@ -5,6 +5,7 @@ import { withApollo } from 'react-apollo';
 import { DISPENSE_COLLECT_ITEM, CREATE_ITEM_HISTORY } from '../DispenseModal/queries';
 import { GET_All_HISTORY } from '../../screens/Dashboard/queries';
 import { CancelButton, CollectButton } from './style';
+import { GET_ITEM_DETAIL } from '../../screens/DispenseCollect/queries'
 
 const customStyles = {
     content : {
@@ -35,7 +36,7 @@ const CollectModal = ({ client, isOpen, closeModal, item, histories, addHistory,
             await client.mutate({
                 mutation: DISPENSE_COLLECT_ITEM,
                 variables: { id: item.id, state: "IN_STOCK" },
-                refetchQueries: { query: GET_All_HISTORY, variables: { page: 0 } }
+                refetchQueries: [{ query: GET_ITEM_DETAIL, variables: {id: item.id}}]
             })
 
             const {data} = await client.mutate({
@@ -44,7 +45,9 @@ const CollectModal = ({ client, isOpen, closeModal, item, histories, addHistory,
                     item: item.id, 
                     to: histories[0].to.id,
                     type: "COLLECTED"
-                }
+                },
+                refetchQueries: [{ query: GET_All_HISTORY, variables: { page: 0 } }],
+                awaitRefetchQueries: true
             })
                 
             await changeItemState("IN_STOCK")
