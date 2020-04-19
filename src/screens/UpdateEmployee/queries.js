@@ -23,13 +23,14 @@ export const UPDATE_EMPLOYEE = gql`
                             $address: String, 
                             $phone_number: String,
                             $role: String){
-        updateEmployee(id: $id,
-                        first_name: $first_name,
-                        last_name: $lastn_name,
-                        email: $email,
-                        address: $address,
-                        phone_number: $phone_number,
-                        role: $role){
+        updateEmployee( data: {
+                            id: $id,
+                            first_name: $first_name,
+                            last_name: $last_name,
+                            email: $email,
+                            address: $address,
+                            phone_number: $phone_number,
+                            role: $role }){
             first_name
         }
     }

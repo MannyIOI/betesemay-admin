@@ -1,18 +1,19 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { withApollo } from 'react-apollo'
 import { Container, Input, FormContainer } from "./style";
 import { useInput } from "../../hooks/inputHooks";
 import { GET_ALL_EMPLOYEES } from "../Employees/queries";
 import CreateButton from '../../components/CreateButton';
-import { UPDATE_ITEM } from '../UpdateItem/queries';
+import { UPDATE_EMPLOYEE, GET_EMPLOYEE } from './queries';
 
-const CreateEmployee = ({client, history}) => {
-    const { value: first_name, bind: bindFirstName } = useInput("")
-    const { value: last_name, bind: bindLastName } = useInput("")
-    const { value: email, bind: bindEmail } = useInput("")
-    const { value: phone_number, bind: bindPhone } = useInput("")
-    const { value: role, bind: bindRole } = useInput("")
-    const { value: address, bind: bindAddress } = useInput("")
+const CreateEmployee = ({client, history, match}) => {
+    const { value: id, bind: bindId } = useInput(match.params.employeeId)
+    const { value: first_name, setValue: setFirstName, bind: bindFirstName } = useInput("")
+    const { value: last_name, setValue: setLastName, bind: bindLastName } = useInput("")
+    const { value: email, setValue: setEmail, bind: bindEmail } = useInput("")
+    const { value: phone_number, setValue: setPhoneNumber, bind: bindPhone } = useInput("")
+    const { value: role, setValue: setRole, bind: bindRole } = useInput("")
+    const { value: address, setValue: setAddress, bind: bindAddress } = useInput("")
     const [isLoading, setIsLoading] = useState(false)
     const [error, setError] = useState("")
 
@@ -24,13 +25,13 @@ const CreateEmployee = ({client, history}) => {
 
     const validate = () => {
         let val = false;
-        if(email === "") { setError("* Email is required") }
-        else if (!validateEmail(email)) { setError("* Email is not valid")}
-        else if(first_name === "") { setError("* First name is required") }
-        else if (last_name === "") { setError("* Last name is required") }
-        else if (phone_number === "") { setError("* Phone number is required") }
-        else if (phone_number.length !== 10) { setError("* Please put in the right phone number. Example 0912345678") }
-        else if (address==="") { setError("Invalid address") }
+        // if(email === "") { setError("* Email is required") }
+        if (!validateEmail(email)) { setError("* Email is not valid")}
+        // else if(first_name === "") { setError("* First name is required") }
+        // else if (last_name === "") { setError("* Last name is required") }
+        // else if (phone_number === "") { setError("* Phone number is required") }
+        // else if (phone_number.length !== 10 || phone_number.length !== 9) { setError("* Please put in the right phone number. Example 0912345678") }
+        // else if (address==="") { setError("Invalid address") }
         else { val = true }
         return val
     }
@@ -42,8 +43,9 @@ const CreateEmployee = ({client, history}) => {
     const UpdateEmployee = async () => {
         setIsLoading(true)
         await client.mutate({
-            mutation: UPDATE_ITEM,
+            mutation: UPDATE_EMPLOYEE,
             variables: { 
+                    id,
                     first_name, 
                     last_name, 
                     email, 
@@ -62,10 +64,28 @@ const CreateEmployee = ({client, history}) => {
         })
     }
 
+    useEffect(() => {
+        client.query({
+            query: GET_EMPLOYEE,
+            variables: { id }
+        }).then(res => {
+            let employee = res.data.getEmployee
+            setEmail(employee.email)
+            setPhoneNumber(employee.phone_number)
+            setFirstName(employee.first_name)
+            setLastName(employee.last_name)
+            setRole(employee.role)
+            setAddress(employee.address)
+        }).catch(error => {
+            console.log(error)
+        })
+    }, [match.params.id, client, id, setAddress, setEmail, setFirstName, setLastName, setPhoneNumber, setRole])
+
     return (
         <Container>
             <FormContainer title="Update Employee">
                 <h2 style={{color: "#1F88A7", fontWeight: "700", textAlign: "center"}}>Update Employee</h2>
+                <Input disabled {...bindId}/>
                 <Input placeholder="Email" {...bindEmail} />
                 <Input placeholder="Phone Number" {...bindPhone} type="number"/>
                 <Input placeholder="First Name" {...bindFirstName} />
