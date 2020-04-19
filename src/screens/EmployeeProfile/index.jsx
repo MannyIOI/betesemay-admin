@@ -2,12 +2,12 @@ import React, { useState, useEffect } from 'react'
 import { withApollo } from 'react-apollo'
 import Timeline from 'react-time-line'
 import { Image } from 'cloudinary-react'
-import { Container, ActivityContainer, ImageContainer, InfoContainer } from './style'
+import { Container, ActivityContainer, ImageContainer, InfoContainer, CreateButton } from './style'
 import { GET_All_HISTORY } from '../Dashboard/queries'
 import { GET_EMPLOYEE } from './queries'
 
 
-const EmployeeProfile = ({ client, match }) => {
+const EmployeeProfile = ({ client, history, match }) => {
     const [events, setEvents] = useState([])
     const [employee, setEmployee] = useState({})
 
@@ -47,18 +47,20 @@ const EmployeeProfile = ({ client, match }) => {
     return (
         <Container>
             <ImageContainer>
+                {/* <CreateButton onClick={()=>history.push("/employees/update/"+employee.id)} >Edit Profile</CreateButton> */}
                 <Image 
                     cloudName={process.env.REACT_APP_CLOUDINARY_CLOUD_NAME} 
-                    publicId={employee.imageId}/>
+                    publicId={employee.imageId}
+                    />
+                    <CreateButton onClick={()=>history.push("/employees/update/"+employee.id)} >Edit Profile</CreateButton>
             </ImageContainer>
             <InfoContainer>
-                <p>{employee.id}</p>
-                <p>{employee.first_name}</p>
-                <p>{employee.last_name}</p>
-                <p>{employee.email}</p>
-                <p>{employee.phone_number}</p>
-                <p>{employee.role}</p>
-                <p>{employee.created_at}</p>
+                <p>ID - {employee.id}</p>
+                <p>Full Name - {employee.first_name + " " + employee.last_name}</p>
+                <p>Email - {employee.email}</p>
+                <p>Phone Number - {employee.phone_number}</p>
+                <p>Role - {employee.role}</p>
+                <p>Joined - {new Date(parseInt(employee.created_at)).toDateString()}</p>
             </InfoContainer>
             <ActivityContainer>
                 <Timeline items={events} />
