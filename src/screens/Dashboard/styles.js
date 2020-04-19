@@ -15,6 +15,9 @@ export const ActivityContainer = styled.div`
     border-radius: 30px;
     margin: 10px;
     padding: 20px;
+    .time-line-ctnr .time-line .time-label span{
+        background-color: ${props=>props.theme.themeColor4};
+    }
 `
 
 

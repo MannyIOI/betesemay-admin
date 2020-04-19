@@ -3,6 +3,7 @@ export const Container = styled.div`
     // width: 22%;
     height: 100%;
     display: grid;
+    margin: 10px 50px;
     grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
     grid-template-rows: 1fr 1fr 1fr;
 `
@@ -32,7 +33,9 @@ export const InfoContainer = styled.div`
 export const ActivityContainer = styled.div`
     grid-column: 5/6;
     grid-row: 1/4;
-    // background: green;
+    .time-line-ctnr .time-line .time-label span{
+        background-color: ${props=>props.theme.themeColor4};
+    }
 `
 export const CreateButton = styled.button`
     background: ${props=>props.theme.themeColor4};

@@ -42,12 +42,11 @@ const ItemsPage = (props) => {
     
     return (
         <Container>
-            { items.map(item => (<Item key = {item.id} item={item} refreshItems={setNewItems} history={props.history} />)) }
+            { items.map(item => (<Item key = {item.id} item={item} refreshItems={setNewItems} />)) }
             
             <NavigationContainer> 
                 
                 <PrevButton onClick={onPrevClicked} disabled={page<=0}>Previous</PrevButton>
-                <CreateButton onClick={()=>props.history.push({pathname: "/items/create/"})}>Create</CreateButton>
                 <NextButton onClick={onNextClicked} disabled={(page)*11 + items.length>=itemCount}>Next</NextButton>
                 <Loading isLoading={isLoading}/>
             </NavigationContainer>
