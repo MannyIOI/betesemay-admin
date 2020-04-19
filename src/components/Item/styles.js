@@ -63,6 +63,7 @@ export const Description = styled.div`
 
 export const Card = styled.div`
     margin: 30px;
+    padding: 0px 0px 5px 0px;
     ${props => props.theme.neumorphic}
     border-radius: 10px;
     overflow: hidden;
