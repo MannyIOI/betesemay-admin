@@ -2,6 +2,8 @@ import React, { useState } from 'react'
 import { Image } from 'cloudinary-react'
 import { SearchInput, AccountImage, AccountContainer, Container } from './styles'
 import { withRouter } from 'react-router-dom';
+import { SearchOutlined } from '@ant-design/icons';
+
 
 const SearchBar = ({ history }) => {
     const [search, setSearch] = useState("")
@@ -14,7 +16,13 @@ const SearchBar = ({ history }) => {
 
     return (
         <Container>
-            <SearchInput placeholder="Search Items, Categories, Employees" onKeyUp={onSearch} onChange={(e)=>{setSearch(e.target.value)}} />
+            <SearchInput 
+                placeholder="Search Items, Categories, Employees" 
+                onKeyUp={onSearch} 
+                onChange={(e)=>{setSearch(e.target.value)}}
+                prefix={<SearchOutlined/>}
+                />
+                {/* <Input size="large" placeholder="large size" prefix={<UserOutlined />} /> */}
             <AccountContainer>
                 <AccountImage>
                     <Image 

@@ -1,4 +1,5 @@
 import styled from 'styled-components'
+import { Input } from 'antd';
 
 export const Container = styled.div`
     grid-column: 2/3;
@@ -9,11 +10,11 @@ export const Container = styled.div`
     padding: 0px 0px;
 `
 
-export const SearchInput = styled.input`
+export const SearchInput = styled(Input)`
     grid-column: 1/2;
     width: 40%;
     padding: 5px 30px;
-    // margin: 12px 0;
+    margin: 0px 50px;
     box-sizing: border-box;
     border-radius: 5px;
     line-height: 30px;
@@ -21,13 +22,16 @@ export const SearchInput = styled.input`
     border: 1px solid #dae4ee;
     transition: 0.4s;
     :hover{
-        width: 80%;
+        width: 60%;
     }
     :focus{
-        width: 80%;
+        width: 60%;
     }
     :active{
-        width: 80%;
+        width: 60%;
+    }
+    .ant-input-prefix {
+        align-self: center;
     }
 `
 
