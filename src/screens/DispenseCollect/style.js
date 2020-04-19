@@ -29,7 +29,7 @@ export const ActionContainer = styled.div`
 `
 
 export const DispenseButton = styled.div`
-    background: #0073cf;
+    background: ${props => props.theme.themeColor2};
     color: white;
     border: 0px;
     border-radius: 5px;
@@ -43,17 +43,14 @@ export const DispenseButton = styled.div`
     :disabled {
         background: grey;
     }
-    :active {
-        background: green;
-    }
     :hover {
-        background: #8f4685;
+        // background: #8f4685;
         cursor: pointer;
     }
 `
 
 export const CollectButton = styled.div`
-    background-color #ff4e00;
+    background: ${props => props.theme.themeColor4};
     color: white;
     border: 0px;
     border-radius: 5px;
@@ -67,11 +64,8 @@ export const CollectButton = styled.div`
     :disabled {
         background: grey;
     }
-    :active {
-        background: green;
-    }
     :hover {
-        background-color #ff7e00;
+        // background-color #ff7e00;
         cursor: pointer;
     }
 `

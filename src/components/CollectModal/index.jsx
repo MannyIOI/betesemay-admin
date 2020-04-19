@@ -10,7 +10,7 @@ import { GET_ITEM_DETAIL } from '../../screens/DispenseCollect/queries'
 const customStyles = {
     content : {
       top                   : '50%',
-      left                  : '50%',
+      left                  : '60%',
       right                 : 'auto',
       bottom                : 'auto',
       width                 : '30%',

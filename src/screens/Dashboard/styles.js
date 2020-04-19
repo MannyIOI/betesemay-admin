@@ -33,6 +33,9 @@ export const CreateContainer = styled.div`
     grid-template-columns: 1fr 1fr 1fr 1fr;
     grid-row: 1/2;
     grid-column: 1/3;
+    :first-child{
+        margin-left: 30px;
+    }
 `
 
 
@@ -44,6 +47,9 @@ export const CategoryItems = styled.div`
     overflow-x: hiden;
     // overflow-y: hidden;
     padding: 20px;
+    :nth-child(2) {
+        margin-left: 10px;
+    }
 `
 
 export const CategoryContainer = styled.div`

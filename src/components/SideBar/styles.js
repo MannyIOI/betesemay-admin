@@ -7,11 +7,11 @@ export const Container = styled.div`
 `
 
 export const NavContainer = styled.div`
-    margin: 20px;
+    // margin: 20px;
     padding: 30px;
-    border-radius: 40px;
+    // border-radius: 40px;
     background: ${props => props.theme.gradient2}
-    height: 88%;
+    height: 100%;
 `
 
 export const NavLinks = styled.div`

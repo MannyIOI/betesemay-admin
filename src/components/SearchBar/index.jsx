@@ -23,7 +23,7 @@ const SearchBar = ({ history }) => {
                 </AccountImage>
                 <div>
                     <h3 style={{marginBottom: 0, fontWeight: 700, color: "white"}}>Samuel Tamirat</h3>
-                    <a style={{color: "red", textDecoration: "underline"}} href="./employees">Log out</a>
+                    <a style={{color: "white", textDecoration: "underline"}} href="./employees">Log out</a>
                 </div>
             </AccountContainer>
         </Container>

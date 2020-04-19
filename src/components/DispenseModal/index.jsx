@@ -7,12 +7,12 @@ import { withApollo } from 'react-apollo';
 import { GET_ALL_EMPLOYEES, DISPENSE_COLLECT_ITEM, CREATE_ITEM_HISTORY } from './queries';
 import { DispenseButton } from '../../screens/DispenseCollect/style';
 import { GET_All_HISTORY } from '../../screens/Dashboard/queries';
-import { GET_ITEM_DETAIL } from '../../screens/DispenseCollect/queries'
+import { GET_ITEM_DETAIL, GET_ITEM_HISTORY } from '../../screens/DispenseCollect/queries'
 
 const customStyles = {
     content : {
       top                   : '50%',
-      left                  : '50%',
+      left                  : '60%',
       right                 : 'auto',
       bottom                : 'auto',
       width                 : '30%',
@@ -99,7 +99,9 @@ const DispenseModal = ({ client, isOpen, closeModal, item, addHistory, changeIte
                     to: employee,
                     type: "DISPENSED"
                 },
-                refetchQueries: [{ query: GET_All_HISTORY, variables: { page: 0 } }],
+                refetchQueries: [{ query: GET_All_HISTORY, variables: { page: 0 } }, 
+                                { query: GET_ITEM_HISTORY, variables: { item: item.id, page: 0 }},
+                                { query: GET_ITEM_DETAIL, variables: { id: item.id }}],
                 awaitRefetchQueries: true
             })
             await changeItemState("DISPENSED")
@@ -132,7 +134,7 @@ const DispenseModal = ({ client, isOpen, closeModal, item, addHistory, changeIte
                                 onChange={date=>setExpectedReturnDate(date)}/>
 
                     <p style={{color:"red"}}>{modalError}</p>
-                    <DispenseButton onClick={dispense}>Dispense</DispenseButton>
+                    <DispenseButton onClick={dispense} style={{width: "100% "}} >Dispense</DispenseButton>
             </Modal>
         </div>
     )

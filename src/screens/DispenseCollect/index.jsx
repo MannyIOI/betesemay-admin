@@ -128,7 +128,7 @@ const DispenseCollect = ({ client, match }) => {
             </InfoContainer>
             <TableContainer>
                 <Table bordered hover style={{width: "100%", textAlign: 'center'}}>
-                    <MDBTableHead style={{ background: '#8f4685', color: "white", textAlign: 'center'}} textWhite>
+                    <MDBTableHead style={{ background: '#587AAA', color: "white", textAlign: 'center'}} textWhite>
                         <tr>
                             <th>Full Name</th>
                             <th>Email</th>

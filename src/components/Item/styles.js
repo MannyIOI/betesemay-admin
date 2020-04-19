@@ -6,7 +6,7 @@ export const Category = styled.div`
     left: 0;
     height: 30px;
     padding: 0px 20px 0px 10px;
-    background-color: coral;
+    background-color: ${props=>props.theme.themeColor4};
     border-radius: 0 40px 0 0;
     color: #fff;
     text-transform: uppercase;
@@ -62,7 +62,7 @@ export const Description = styled.div`
 
 
 export const Card = styled.div`
-    margin: 30px;
+    margin: 20px;
     padding: 0px 0px 5px 0px;
     ${props => props.theme.neumorphic}
     border-radius: 10px;
@@ -86,7 +86,7 @@ export const Card = styled.div`
         display: flex;
     }
     h1 {
-        color: ${props => props.theme.themeColor2};
+        color: ${props => props.theme.themeColor4};
     }
 `
 

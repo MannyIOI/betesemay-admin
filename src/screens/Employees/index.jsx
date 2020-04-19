@@ -75,8 +75,8 @@ const Employee = ({client, history, match}) => {
                                         <Actions>
                                             <UpdateButton 
                                                 onClick={()=>history.push("employees/update/"+employee.id)}
-                                                style={{height: "25px", width: "30px"}}><FaPen color="white"/></UpdateButton>
-                                            <DeleteButton style={{height: "25px", width: "30px"}}><FaDumpster color="white"/></DeleteButton>
+                                                style={{height: "40px", width: "30px"}}><FaPen color="white"/></UpdateButton>
+                                            <DeleteButton style={{height: "40px", width: "30px"}}><FaDumpster color="white"/></DeleteButton>
                                         </Actions>
                                     </td>
                                 </Tr>
