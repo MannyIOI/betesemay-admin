@@ -19,23 +19,9 @@ const Search = ({ client, match }) => {
     const [employees, setEmployees] = useState([])
 
     useEffect(() => {
-        if(searchFor==="item"){
-            // Search for Items
-            client.query({
-                query: SEARCH_ITEMS,
-                variables: {
-                    title: match.params.search,
-                    page: 0,
-                    limit: 5
-                }
-            }).then(res => {
-                console.log(res)
-                setItems(res.data.searchItems.results)
-            }).catch(error => {
-                console.log(error)
-            })
-        } else if (searchFor === "employee"){
+        if (searchFor === "employee"){
             // Search for employees
+            console.log(searchFor)
             client.query({
                 query: SEARCH_EMPLOYEES,
                 variables: {
@@ -44,8 +30,12 @@ const Search = ({ client, match }) => {
                     limit: 5
                 }
             }).then(res => {
-                console.log(res)
-                setEmployees(res.data.searchEmployees.results)
+                console.log(res.data.searchEmployees.results.length === 0)
+                if(res.data.searchEmployees.results.length === 0){ 
+                    setSearchFor("category")
+                } else {
+                    setEmployees(res.data.searchEmployees.results)
+                }
             }).catch(error => {
                 console.log(error)
             })
@@ -60,8 +50,25 @@ const Search = ({ client, match }) => {
                     limit: 5
                 }
             }).then(res => {
-                console.log(res.data.searchCategories.results)
-                setCategories(res.data.searchCategories.results)
+                if(res.data.searchCategories.results.length === 0){ 
+                    setSearchFor("item")
+                } else {
+                    setCategories(res.data.searchCategories.results)
+                }
+            }).catch(error => {
+                console.log(error)
+            })
+        }else if(searchFor==="item"){
+            // Search for Items
+            client.query({
+                query: SEARCH_ITEMS,
+                variables: {
+                    title: match.params.search,
+                    page: 0,
+                    limit: 5
+                }
+            }).then(res => {
+                setItems(res.data.searchItems.results)
             }).catch(error => {
                 console.log(error)
             })
@@ -70,7 +77,7 @@ const Search = ({ client, match }) => {
     return (
         <Container>
             <FilterContainer>
-                <Select defaultValue={searchFor} onChange={(value)=>{setSearchFor(value)}}>
+                <Select defaultValue={searchFor} value={searchFor} onChange={(value)=>{setSearchFor(value)}}>
                     <Select.Option value="item">Search for Items</Select.Option>
                     <Select.Option value="category">Search for Categories</Select.Option>
                     <Select.Option value="employee">Search for Employees</Select.Option>

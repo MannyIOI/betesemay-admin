@@ -13,6 +13,7 @@ import { GET_ALL_ITEMS } from '../../screens/Items/queries';
 import { DotLoader } from 'react-spinners';
 
 import { css } from "@emotion/core";
+import { withRouter } from 'react-router-dom';
 
 const override = css`
     display: block;
@@ -91,4 +92,4 @@ const Item = (props) => {
     )
 }
 
-export default withApollo(Item);
+export default withApollo(withRouter(Item));
