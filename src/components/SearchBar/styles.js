@@ -32,6 +32,7 @@ export const SearchInput = styled(Input)`
     }
     .ant-input-prefix {
         align-self: center;
+        padding-right: 10px;
     }
 `
 
