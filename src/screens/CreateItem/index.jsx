@@ -59,7 +59,9 @@ const CreateItem = ({client, history}) => {
                             imageId: imageId
                         },
             refetchQueries: [{ query: GET_ALL_ITEMS, 
-                                variables: { page: 0, limit: 10 } }, 
+                                variables: { page: 0, limit: 10 } },
+                            { query: GET_ALL_ITEMS, 
+                                    variables: { page: 0, limit: 3 } }, 
                             { query: GET_ITEMS_BY_CATEGORY, 
                                 variables: { page: 0, category: category } }],
             

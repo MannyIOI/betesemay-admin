@@ -68,8 +68,8 @@ const CreateEmployee = ({client, history}) => {
                     address,
                     imageId
                 },
-                refetchQueries: [{ query: GET_ALL_EMPLOYEES, page: 0 }],
-                awaitRefetchQuery: true
+                refetchQueries: [{ query: GET_ALL_EMPLOYEES, variables: { page: 0} }],
+                awaitRefetchQueries: true
         }).then(_ => {
             setError("")
             history.push({pathname: "/employees/"})

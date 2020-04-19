@@ -7,8 +7,8 @@ export const SEARCH_ITEMS = gql`
                 id
                 title
                 category{
-                    title
-                    
+                    id
+                    title                    
                 }
                 description
                 state
