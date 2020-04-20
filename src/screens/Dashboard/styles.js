@@ -16,7 +16,7 @@ export const ActivityContainer = styled.div`
     margin: 10px;
     padding: 20px;
     .time-line-ctnr .time-line .time-label span{
-        background-color: ${props=>props.theme.themeColor4};
+        background-color: ${props=>props.theme.gradient2};
     }
     .time-line-header {
         background: ${props=>props.theme.backgroundColor};

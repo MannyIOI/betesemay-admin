@@ -69,14 +69,14 @@ const Employee = ({client, history, match}) => {
                                                 publicId={employee.imageId}/>
                                         </Profile>
                                     </td>
-                                    <td onClick={()=>{history.push("employees/"+employee.id)}}>{employee.first_name}</td>
+                                    <td onClick={()=>{history.push("employees/"+employee.id)}}>{employee.first_name + " " + employee.last_name}</td>
                                     <td onClick={()=>{history.push("employees/"+employee.id)}}>{employee.email}</td>
                                     <td onClick={()=>{history.push("employees/"+employee.id)}}>{employee.address}</td>
                                     <td onClick={()=>{history.push("employees/"+employee.id)}}>{employee.role}</td>
                                     <td>
                                         <Actions>
                                             <UpdateButton 
-                                                onClick={()=>history.push("employees/update/"+employee.id)}
+                                                onClick={()=>history.push("/employees/update/"+employee.id)}
                                                 style={{height: "40px", width: "30px"}}><FaPen color="white"/></UpdateButton>
                                             <DeleteButton style={{height: "40px", width: "30px"}}><FaDumpster color="white"/></DeleteButton>
                                         </Actions>

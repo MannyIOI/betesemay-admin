@@ -12,7 +12,7 @@ export const CreateButton = styled.button`
         background: grey;
     }
     :hover {
-        background: ${props=>props.theme.themeColor1};
+        background: ${props=>props.theme.themeColor4};
         cursor: pointer;
     }
 `

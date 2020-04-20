@@ -19,9 +19,11 @@ const Search = ({ client, match }) => {
     const [employees, setEmployees] = useState([])
 
     useEffect(() => {
+        console.log("New Search")
+    }, [match.params.search])
+
+    useEffect(() => {
         if (searchFor === "employee"){
-            // Search for employees
-            console.log(searchFor)
             client.query({
                 query: SEARCH_EMPLOYEES,
                 variables: {

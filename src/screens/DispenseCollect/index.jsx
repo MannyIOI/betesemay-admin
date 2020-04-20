@@ -142,7 +142,7 @@ const DispenseCollect = ({ client, match }) => {
                     <MDBTableBody>
                         {histories.map(history => 
                             <tr key={history.id}>
-                                <td>{history.to.first_name}</td> 
+                                <td>{history.to.first_name  + " " + history.to.last_name}</td> 
                                 <td>{history.to.email}</td>
                                 <td>{history.to.role}</td>
                                 <td>{history.type}</td>
